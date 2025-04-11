@@ -1540,7 +1540,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 250,
+        "x": 230,
         "y": 220,
         "wires": [
             [
