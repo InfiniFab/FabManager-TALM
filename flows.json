@@ -1088,7 +1088,7 @@
         "name": "mariadb",
         "host": "localhost",
         "port": "3306",
-        "db": "fabmanager",
+        "db": "nodered",
         "tz": "",
         "charset": "UTF8"
     },
@@ -3001,7 +3001,7 @@
         "id": "3c88d97910cfa874",
         "type": "mysql",
         "z": "29fd68d1903a9d50",
-        "mydb": "f3318311c7abaf8f",
+        "mydb": "057e3d4f7e6acd03",
         "name": "mariadb_prod",
         "x": 440,
         "y": 720,
