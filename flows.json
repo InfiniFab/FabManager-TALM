@@ -1536,7 +1536,7 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": "0.5",
+        "onceDelay": "1",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -3023,33 +3023,6 @@
             [
                 "7a9d9c4fb4c258a3"
             ]
-        ]
-    },
-    {
-        "id": "72682ce9796ac6f3",
-        "type": "inject",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 370,
-        "y": 80,
-        "wires": [
-            []
         ]
     },
     {
