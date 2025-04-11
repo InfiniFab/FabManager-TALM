@@ -1540,8 +1540,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
-        "y": 240,
+        "x": 210,
+        "y": 220,
         "wires": [
             [
                 "c722de89350dd765",
@@ -2431,8 +2431,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 80,
+        "x": 520,
+        "y": 140,
         "wires": []
     },
     {
@@ -2455,8 +2455,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 130,
-        "y": 540,
+        "x": 90,
+        "y": 520,
         "wires": [
             [
                 "3cab06745e944d2b"
