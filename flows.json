@@ -6997,7 +6997,7 @@
         "type": "debug",
         "z": "test_tab_001",
         "name": "resetSearch?",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -7714,7 +7714,8 @@
         "y": 1260,
         "wires": [
             [
-                "a4dc70681e2e2d2f"
+                "a4dc70681e2e2d2f",
+                "a24e4e6ac780469b"
             ]
         ]
     },
@@ -7735,5 +7736,22 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "a24e4e6ac780469b",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1180,
+        "wires": []
     }
 ]
