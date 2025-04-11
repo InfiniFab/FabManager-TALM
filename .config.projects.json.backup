@@ -1,7 +1,0 @@
-{
-    "projects": {
-        "Fabmanager": {
-            "credentialSecret": "raspberry"
-        }
-    }
-}

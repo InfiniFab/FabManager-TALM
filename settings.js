@@ -90,6 +90,12 @@ module.exports = {
         ]
     },
 
+    httpNodeAuth: { 
+     user: "pi", 
+     pass: "$2a$12$bTNmHyM1XPlRXbjIVIJy.u7D5hetJ9Y5jDYXlvKE3B6eGpPv2zFLO", 
+     type: "basic" 
+    },
+
     /** The following property can be used to enable HTTPS
      * This property can be either an object, containing both a (private) key
      * and a (public) certificate, or a function that returns such an object.
@@ -435,7 +441,7 @@ module.exports = {
                  * This can be overridden per-user from the 'Git config'
                  * section of 'User Settings' within the editor
                  */
-                mode: "auto"
+                mode: "manual"
             }
         },
 

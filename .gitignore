@@ -1,3 +1,36 @@
+# 🔁 Node.js
+node_modules/
+
+# 🔑 Fichiers sensibles / credentials
+projects/.sshkeys/
+credentials.json
+*.pem
+*.key
+*.crt
+
+# 🛑 Node-RED runtime files
+.sessions.json
+.config.*
+flows_*.json
+flows_*.backup
+
+# 🧹 Fichiers de log / temporaires / backup
+*.log
+*.tmp
+*.bak
+*.backup
+*.swp
+backups/
+
+# 🧾 Exports ou données
+*.sql
+*.csv
+
+# 🧠 IDE / fichiers système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
 # Ignorer les modules Node.js
 node_modules/
 
