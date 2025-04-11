@@ -1,0 +1,17 @@
+# Ignorer les modules Node.js
+node_modules/
+
+# Ignorer les clés SSH
+projects/.sshkeys/
+
+# Ignorer les fichiers de log ou temporaires
+*.log
+*.tmp
+
+# Ignorer les exports ou backups éventuels
+*.sql
+*.csv
+backups/
+
+# Credentials ou fichiers sensibles
+credentials.json
