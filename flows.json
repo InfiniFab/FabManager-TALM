@@ -1953,128 +1953,6 @@
         ]
     },
     {
-        "id": "07b9b6e4a903efb6",
-        "type": "debug",
-        "z": "29fd68d1903a9d50",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 380,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "3cab06745e944d2b",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "annee",
-                "pt": "msg",
-                "to": "annee",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "eleve",
-                "pt": "msg",
-                "to": "eleve",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "impr3d_bool",
-                "pt": "msg",
-                "to": "impr3d_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "filament",
-                "pt": "msg",
-                "to": "filament",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "filament_gr",
-                "pt": "msg",
-                "to": "filament_gr",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "laser_bool",
-                "pt": "msg",
-                "to": "laser_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_laser",
-                "pt": "msg",
-                "to": "mat_laser",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_laser_qte",
-                "pt": "msg",
-                "to": "mat_laser_qte",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "reglement_bool",
-                "pt": "msg",
-                "to": "reglement_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "cao_bool",
-                "pt": "msg",
-                "to": "cao_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "prix_laser",
-                "pt": "msg",
-                "to": "prix_laser",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "prix_3d",
-                "pt": "msg",
-                "to": "prix_3d",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 170,
-        "y": 640,
-        "wires": [
-            [
-                "07b9b6e4a903efb6",
-                "2ac9919.fbaf86e"
-            ]
-        ]
-    },
-    {
         "id": "a9ab54ffd8ec2a99",
         "type": "function",
         "z": "29fd68d1903a9d50",
@@ -2187,55 +2065,6 @@
         "y": 220,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "2ac9919.fbaf86e",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "INSERT",
-        "func": "//if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\n//if (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\nlet classe =msg.annee;\nlet nom = msg.eleve;\nlet fabrication=\"\";\nlet prix =0;\nif (msg.impr3d_bool)fabrication = '3d :'+ msg.filament +\" : \" + msg.filament_gr + \"gr\";\nif(msg.laser_bool)fabrication = fabrication +' // las :'  + msg.mat_laser +\" : \"+ msg.mat_laser_qte;\nlet prix_3d = flow.get('prix_3d');\nlet prix_laser = flow.get('prix_laser');\n\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name =\"usage_lab_test\";\nif (bdd_bool){\n    table_name=\"usage_lab\";\n}\nelse{\n    table_name=\"usage_lab_test\";\n}\n\nlet remarques = flow.get('remarques');\n\n\nif (msg.impr3d_bool)prix += parseFloat(prix_3d);\nif(msg.laser_bool)prix += parseFloat(prix_laser);\n//let prix = \"sousou\";\nlet reglement;\nif (flow.get('reglement_bool')){\n    reglement = 'true';\n}\nelse{\n    reglement = 'false';\n}\n\nlet cao;\nif (flow.get('cao_bool')){\n    cao = 'true';\n}\nelse{\n    cao = 'false';\n}\n\nlet date = new Date();\ndate = date.getDate() + \"/\" + (date.getMonth() + 1) + \"/\" + date.getFullYear() + \"  \" + \n      date.getHours() + \":\" + date.getMinutes() + \":\" + date.getSeconds();\n//let reglement = \"reglement\";\n\n//let Cao = flow.get('cao_bool');\n//let Cao = \"cao\";\n\nlet topic;\n//let Cao = msg.cao_bool;\n\n\ntopic = \"INSERT INTO `nodered`.`\";\ntopic = topic + table_name+\"` (classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES ('\";\ntopic = topic + classe +\"', '\";\ntopic = topic + nom + \"', '\";\ntopic = topic + fabrication + \"', '\";\ntopic = topic + prix + \"', \";\ntopic = topic + reglement + \", \";\ntopic = topic + cao + \", '\";\ntopic = topic + remarques + \"', '\";\ntopic = topic + date + \"'); \";\n\nmsg.topic = topic;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 370,
-        "y": 660,
-        "wires": [
-            [
-                "3c88d97910cfa874"
-            ]
-        ]
-    },
-    {
-        "id": "4c8d971646ca4bb4",
-        "type": "inject",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 200,
-        "y": 700,
-        "wires": [
-            [
-                "2ac9919.fbaf86e"
-            ]
         ]
     },
     {
@@ -2447,34 +2276,6 @@
         "x": 520,
         "y": 140,
         "wires": []
-    },
-    {
-        "id": "f5f0299ac92ac026",
-        "type": "ui_button",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "group": "cb7e38a87943e192",
-        "order": 34,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Valider",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 520,
-        "wires": [
-            [
-                "3cab06745e944d2b"
-            ]
-        ]
     },
     {
         "id": "101074f8bfe56e7d",
@@ -3011,20 +2812,6 @@
         ]
     },
     {
-        "id": "3c88d97910cfa874",
-        "type": "mysql",
-        "z": "29fd68d1903a9d50",
-        "mydb": "f3318311c7abaf8f",
-        "name": "",
-        "x": 420,
-        "y": 720,
-        "wires": [
-            [
-                "5cb746532d7ff88b"
-            ]
-        ]
-    },
-    {
         "id": "85eb08689fd153cf",
         "type": "mysql",
         "z": "29fd68d1903a9d50",
@@ -3035,6 +2822,219 @@
         "wires": [
             [
                 "7a9d9c4fb4c258a3"
+            ]
+        ]
+    },
+    {
+        "id": "13daba232b3bb5ab",
+        "type": "debug",
+        "z": "29fd68d1903a9d50",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "2d1b53b3c90af572",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annee",
+                "pt": "msg",
+                "to": "annee",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "eleve",
+                "pt": "msg",
+                "to": "eleve",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "impr3d_bool",
+                "pt": "msg",
+                "to": "impr3d_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "filament",
+                "pt": "msg",
+                "to": "filament",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "filament_gr",
+                "pt": "msg",
+                "to": "filament_gr",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "laser_bool",
+                "pt": "msg",
+                "to": "laser_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_laser",
+                "pt": "msg",
+                "to": "mat_laser",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_laser_qte",
+                "pt": "msg",
+                "to": "mat_laser_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "reglement_bool",
+                "pt": "msg",
+                "to": "reglement_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "cao_bool",
+                "pt": "msg",
+                "to": "cao_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "prix_laser",
+                "pt": "msg",
+                "to": "prix_laser",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "prix_3d",
+                "pt": "msg",
+                "to": "prix_3d",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 660,
+        "wires": [
+            [
+                "13daba232b3bb5ab",
+                "10ca40917ec713d3"
+            ]
+        ]
+    },
+    {
+        "id": "10ca40917ec713d3",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "INSERT",
+        "func": "//if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\n//if (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\nlet classe =msg.annee;\nlet nom = msg.eleve;\nlet fabrication=\"\";\nlet prix =0;\nif (msg.impr3d_bool)fabrication = '3d :'+ msg.filament +\" : \" + msg.filament_gr + \"gr\";\nif(msg.laser_bool)fabrication = fabrication +' // las :'  + msg.mat_laser +\" : \"+ msg.mat_laser_qte;\nlet prix_3d = flow.get('prix_3d');\nlet prix_laser = flow.get('prix_laser');\n\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name =\"usage_lab_test\";\nif (bdd_bool){\n    table_name=\"usage_lab\";\n}\nelse{\n    table_name=\"usage_lab_test\";\n}\n\nlet remarques = flow.get('remarques');\n\n\nif (msg.impr3d_bool)prix += parseFloat(prix_3d);\nif(msg.laser_bool)prix += parseFloat(prix_laser);\n//let prix = \"sousou\";\nlet reglement;\nif (flow.get('reglement_bool')){\n    reglement = 'true';\n}\nelse{\n    reglement = 'false';\n}\n\nlet cao;\nif (flow.get('cao_bool')){\n    cao = 'true';\n}\nelse{\n    cao = 'false';\n}\n\nlet date = new Date();\ndate = date.getDate() + \"/\" + (date.getMonth() + 1) + \"/\" + date.getFullYear() + \"  \" + \n      date.getHours() + \":\" + date.getMinutes() + \":\" + date.getSeconds();\n//let reglement = \"reglement\";\n\n//let Cao = flow.get('cao_bool');\n//let Cao = \"cao\";\n\nlet topic;\n//let Cao = msg.cao_bool;\n\n\ntopic = \"INSERT INTO `nodered`.`\";\ntopic = topic + table_name+\"` (classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES ('\";\ntopic = topic + classe +\"', '\";\ntopic = topic + nom + \"', '\";\ntopic = topic + fabrication + \"', '\";\ntopic = topic + prix + \"', \";\ntopic = topic + reglement + \", \";\ntopic = topic + cao + \", '\";\ntopic = topic + remarques + \"', '\";\ntopic = topic + date + \"'); \";\n\nmsg.topic = topic;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 660,
+        "wires": [
+            [
+                "3049e6c5aedade10"
+            ]
+        ]
+    },
+    {
+        "id": "3569d93c7f7802b5",
+        "type": "inject",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 700,
+        "wires": [
+            [
+                "10ca40917ec713d3"
+            ]
+        ]
+    },
+    {
+        "id": "c0fa7d7784f99056",
+        "type": "ui_button",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "group": "cb7e38a87943e192",
+        "order": 39,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Valider",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 130,
+        "y": 580,
+        "wires": [
+            [
+                "2d1b53b3c90af572"
+            ]
+        ]
+    },
+    {
+        "id": "3049e6c5aedade10",
+        "type": "mysql",
+        "z": "29fd68d1903a9d50",
+        "mydb": "f3318311c7abaf8f",
+        "name": "mariadb",
+        "x": 400,
+        "y": 720,
+        "wires": [
+            [
+                "5cb746532d7ff88b"
             ]
         ]
     },
