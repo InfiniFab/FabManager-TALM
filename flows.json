@@ -1124,6 +1124,45 @@
         "height": 1
     },
     {
+        "id": "mariadb",
+        "type": "MySQLdatabase",
+        "name": "mariadb",
+        "host": "localhost",
+        "port": "3306",
+        "db": "nodered",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "ui_tab_1",
+        "type": "ui_tab",
+        "name": "Test",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_group_buttons",
+        "type": "ui_group",
+        "name": "Student Buttons",
+        "tab": "ui_tab_1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_group_dropdown",
+        "type": "ui_group",
+        "name": "Student Dropdown",
+        "tab": "ui_tab_1",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
         "id": "b4846b2d55a7522e",
         "type": "debug",
         "z": "63c575ee660634f9",
@@ -6107,8 +6146,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1010,
-        "y": 340,
+        "x": 1030,
+        "y": 320,
         "wires": [
             [
                 "715d5ec20e958988"
@@ -7213,7 +7252,7 @@
         "topicType": "msg",
         "className": "",
         "x": 1210,
-        "y": 340,
+        "y": 320,
         "wires": [
             [
                 "3fc66bc346f9018b",
@@ -7893,7 +7932,7 @@
         "order": 1,
         "width": 19,
         "height": 10,
-        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
+        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in lastStudents\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" \n               ng-click=\"send({payload: el})\">\n      {{el.nom}} <span ng-if=\"el.classe\">({{el.classe}})</span>\n    </md-button>\n  </div>\n</div>\n\n<script>\n  // Récupère les derniers élèves stockés dans flow (via l'API Angular de Node-RED)\n  (function(scope) {\n      // On récupère la variable dans le contexte global du dashboard (si tu l'as stockée dans le contexte global Node-RED,\n      // il faut la transmettre ici, soit via msg ou l'API Angular)\n      // Ici, on suppose que ton flow envoie msg.lastStudents.\n      scope.lastStudents = (scope.msg && scope.msg.lastStudents) || [];\n  })(scope);\n</script>\n",
         "storeOutMessages": true,
         "fwdInMessages": false,
         "resendOnRefresh": true,
@@ -7922,10 +7961,159 @@
         "x": 1230,
         "y": 1460,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "inject_last_students",
+        "type": "inject",
+        "z": "test_tab_001",
+        "name": "Get Last Students",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 1560,
+        "wires": [
             [
-                "325172790c7d6837",
-                "3fc66bc346f9018b"
+                "function_SELECT"
             ]
+        ]
+    },
+    {
+        "id": "function_SELECT",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "SELECT LAST STUDENTS",
+        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = (bdd_bool) ? \"usage_lab\" : \"usage_lab_test\";\n\n// Construction de la requête SQL\nlet topic = \"SELECT nom, classe, MAX(date) AS derniere_utilisation FROM `nodered`.`\" + table_name + \"` GROUP BY nom, classe ORDER BY derniere_utilisation DESC LIMIT 10;\";\n\nmsg.topic = topic;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1560,
+        "wires": [
+            [
+                "mysql_last_students"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_last_students",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 610,
+        "y": 1560,
+        "wires": [
+            [
+                "function_format"
+            ]
+        ]
+    },
+    {
+        "id": "function_format",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Format Last Students",
+        "func": "// On suppose que msg.payload contient le tableau de résultats SQL\n// On mappe pour ne retenir que { nom, classe }\nmsg.lastStudents = msg.payload.map(el => { \n    return { nom: el.nom, classe: el.classe };\n});\n\n// Transmet le tableau pour le ui_template\nmsg.payload = msg.lastStudents;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1560,
+        "wires": [
+            [
+                "ui_template_buttons"
+            ]
+        ]
+    },
+    {
+        "id": "ui_template_buttons",
+        "type": "ui_template",
+        "z": "test_tab_001",
+        "group": "ui_group_buttons",
+        "name": "Last Students Buttons",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n      {{el.nom}} <span ng-if=\"el.classe\">({{el.classe}})</span>\n    </md-button>\n  </div>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1030,
+        "y": 1560,
+        "wires": [
+            [
+                "function_set_selected"
+            ]
+        ]
+    },
+    {
+        "id": "function_set_selected",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Set Selected Student",
+        "func": "// Le payload reçu est un objet { nom: \"...\", classe: \"...\" }\nlet student = msg.payload;\n\n// Mettre à jour la variable flow 'eleve' avec le nom\nflow.set(\"eleve\", student.nom);\n\n// Préparer le tableau d'options pour le ui_dropdown\nmsg.options = [{ \n    label: student.nom + (student.classe ? \" (\" + student.classe + \")\" : \"\"), \n    value: student.nom \n}];\n\n// Forcer la sélection du dropdown en définissant msg.payload\nmsg.payload = student.nom;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 1560,
+        "wires": [
+            [
+                "ui_dropdown_eleve"
+            ]
+        ]
+    },
+    {
+        "id": "ui_dropdown_eleve",
+        "type": "ui_dropdown",
+        "z": "test_tab_001",
+        "name": "Eleve Dropdown",
+        "label": "Élève",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "ui_group_dropdown",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "default",
+                "value": "default",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 1450,
+        "y": 1560,
+        "wires": [
+            []
         ]
     }
 ]
