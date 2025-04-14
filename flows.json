@@ -7885,8 +7885,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 1840,
+        "x": 380,
+        "y": 1460,
         "wires": [
             [
                 "becf860f11f780cd",
@@ -7907,8 +7907,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 1780,
+        "x": 600,
+        "y": 1400,
         "wires": []
     },
     {
@@ -7917,8 +7917,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "",
-        "x": 620,
-        "y": 1840,
+        "x": 600,
+        "y": 1460,
         "wires": [
             [
                 "16ae57173bd5fd50",
@@ -7939,8 +7939,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
-        "y": 1780,
+        "x": 800,
+        "y": 1400,
         "wires": []
     },
     {
@@ -7964,8 +7964,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 190,
-        "y": 1840,
+        "x": 170,
+        "y": 1460,
         "wires": [
             [
                 "08eb9741157b369f"
@@ -7984,8 +7984,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 830,
-        "y": 1840,
+        "x": 810,
+        "y": 1460,
         "wires": [
             [
                 "c68503d27449dafb"
@@ -8001,14 +8001,14 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<div ng-repeat=\"el in msg.payload\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n        {{el.label}}\n    </md-button>\n</div>",
+        "format": "msg.payload = msg.payload.map(el => {\n    return {\n        label: el.nom + \" (\" + el.classe + \")\",\n        payload: el.nom // juste le nom à injecter\n    };\n});\nreturn msg;\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1040,
-        "y": 1840,
+        "x": 1020,
+        "y": 1460,
         "wires": [
             []
         ]
