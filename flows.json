@@ -909,12 +909,12 @@
         "tab": "0a675065a55c6a8b",
         "order": 1,
         "disp": true,
-        "width": 7,
+        "width": 12,
         "collapse": true,
         "className": ""
     },
     {
-        "id": "eea365a8a02753d2",
+        "id": "27873762b0e38785",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -924,7 +924,7 @@
         "height": 1
     },
     {
-        "id": "c43fbb8647afa530",
+        "id": "ad207f23ce408f70",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -934,7 +934,7 @@
         "height": 1
     },
     {
-        "id": "3de42e0efd6b7df1",
+        "id": "00b9b2f4c1eca7c8",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -944,7 +944,7 @@
         "height": 1
     },
     {
-        "id": "2df1595a1a241766",
+        "id": "27281acaddb57b4d",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -954,7 +954,7 @@
         "height": 1
     },
     {
-        "id": "40908a90d313c0d4",
+        "id": "b7fd615c8aa0d1c0",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -964,7 +964,7 @@
         "height": 1
     },
     {
-        "id": "ebe40c91b5484dc3",
+        "id": "9e38942fba483ccc",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -974,7 +974,7 @@
         "height": 1
     },
     {
-        "id": "cf1712b70e226139",
+        "id": "26bb505ccbba49e3",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -984,7 +984,7 @@
         "height": 1
     },
     {
-        "id": "a57adbd568bdcc47",
+        "id": "acea894960b441cb",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -994,7 +994,7 @@
         "height": 1
     },
     {
-        "id": "a1d1c5c9c3a5f0d5",
+        "id": "366d171f8554e7d6",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1004,7 +1004,7 @@
         "height": 1
     },
     {
-        "id": "3172d9d6578ae087",
+        "id": "481398f6eafdf436",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1014,7 +1014,7 @@
         "height": 1
     },
     {
-        "id": "401e7ea37064230d",
+        "id": "d44ee1d94e9e6450",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1024,7 +1024,7 @@
         "height": 1
     },
     {
-        "id": "9d6614a4c6724c22",
+        "id": "a3baae2075e56b9e",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1034,7 +1034,7 @@
         "height": 1
     },
     {
-        "id": "451b0bd3ddadd335",
+        "id": "97877003f85439e7",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1044,7 +1044,7 @@
         "height": 1
     },
     {
-        "id": "f43644cf68e05185",
+        "id": "ce850d44f4070244",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1054,7 +1054,7 @@
         "height": 1
     },
     {
-        "id": "281b2d8b24f2835a",
+        "id": "4f48632fa2260ea5",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1064,7 +1064,7 @@
         "height": 1
     },
     {
-        "id": "025c2e2bdafd67d4",
+        "id": "15710ef1a440cccd",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1074,7 +1074,7 @@
         "height": 1
     },
     {
-        "id": "3ebdc2a6d7e2e2de",
+        "id": "11f8c90cb90550b9",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1084,7 +1084,7 @@
         "height": 1
     },
     {
-        "id": "bb6f6a6167778099",
+        "id": "67db7e6ca143b688",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1094,7 +1094,7 @@
         "height": 1
     },
     {
-        "id": "17220e607e30a72d",
+        "id": "949e9411ada0a1f2",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1104,7 +1104,7 @@
         "height": 1
     },
     {
-        "id": "260eb1a730d698a9",
+        "id": "f1537f0c6d50e98e",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1114,12 +1114,122 @@
         "height": 1
     },
     {
-        "id": "c455063b35b7ee64",
+        "id": "3911a18e5c3457e8",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
         "group": "3f0df9d3616d3899",
         "order": 38,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "c97670a78b608f50",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 1,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "73bc262c4fa834d8",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 2,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "2170fc8dd32ece0b",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 3,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "680d7aa0243469c0",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 4,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "5fe0bc21cc292864",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 5,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "a67f7970e0b0d7f9",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 6,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "d6ea5f1ca6fe89b9",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 7,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "849e7e912fbe583e",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 8,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "7e45969f768ea6ab",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 9,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "da0cd65a6555248a",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 10,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "81b8b7670f753b4d",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "eb348c43ea325940",
+        "order": 11,
         "width": 13,
         "height": 1
     },
@@ -7734,7 +7844,7 @@
         "z": "test_tab_001",
         "group": "eb348c43ea325940",
         "name": "",
-        "order": 1,
+        "order": 12,
         "width": 13,
         "height": 43,
         "columns": [],
@@ -7888,7 +7998,7 @@
         "z": "test_tab_001",
         "group": "9fbd1a17f1217b11",
         "name": "",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
         "format": "<div ng-repeat=\"el in msg.payload\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n        {{el.label}}\n    </md-button>\n</div>",
