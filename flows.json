@@ -6059,7 +6059,7 @@
         "finalize": "",
         "libs": [],
         "x": 830,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "325172790c7d6837"
@@ -6088,7 +6088,9 @@
         "x": 1250,
         "y": 240,
         "wires": [
-            []
+            [
+                "cf2005064aeefb8d"
+            ]
         ]
     },
     {
@@ -6111,7 +6113,7 @@
         "to": "",
         "reg": false,
         "x": 650,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "327d2cd87b0bc4e9"
@@ -6138,7 +6140,7 @@
         "to": "",
         "reg": false,
         "x": 1030,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "715d5ec20e958988"
@@ -6383,7 +6385,7 @@
         "to": "",
         "reg": false,
         "x": 1380,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "7f71b7c77c94c902"
@@ -6715,9 +6717,8 @@
                 "5b79cb0b332dcb20",
                 "385ae025df0520e3",
                 "97e3e9ccccbcae7b",
-                "ba1de49267e5a808",
-                "715d5ec20e958988",
-                "60a7a291bd69592d"
+                "60a7a291bd69592d",
+                "de1af86d4fd27b98"
             ]
         ]
     },
@@ -7212,8 +7213,7 @@
         "y": 240,
         "wires": [
             [
-                "c87dede7c3ea6d24",
-                "629f1a027442594a"
+                "c87dede7c3ea6d24"
             ]
         ]
     },
@@ -7243,7 +7243,7 @@
         "topicType": "msg",
         "className": "",
         "x": 1210,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "3fc66bc346f9018b",
@@ -7710,7 +7710,7 @@
         "columns": "*",
         "headers": true,
         "x": 490,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "8e7c8d1e4875345c"
@@ -7796,166 +7796,6 @@
         "wires": []
     },
     {
-        "id": "08eb9741157b369f",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "SELECT",
-        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool = flow.get(\"bdd_bool\");\n\n// Nom de la table à utiliser (prod ou test)\nlet table_name = \"\";\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n} else {\n    table_name = \"usage_lab_test\";\n}\n\n// Construction de la requête SQL\nlet topic = \"\";\ntopic += \"SELECT nom, classe, MAX(date) AS derniere_utilisation \";\ntopic += \"FROM `nodered`.`\" + table_name + \"` \";\ntopic += \"GROUP BY nom, classe \";\ntopic += \"ORDER BY derniere_utilisation DESC \";\ntopic += \"LIMIT 10;\";\n\n// Création du message de sortie\nlet newMsg = {\n    topic: topic\n};\n\nreturn newMsg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 1460,
-        "wires": [
-            [
-                "becf860f11f780cd",
-                "f9223c8f254ac3db"
-            ]
-        ]
-    },
-    {
-        "id": "f9223c8f254ac3db",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 600,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "becf860f11f780cd",
-        "type": "mysql",
-        "z": "test_tab_001",
-        "mydb": "f3318311c7abaf8f",
-        "name": "",
-        "x": 600,
-        "y": 1460,
-        "wires": [
-            [
-                "16ae57173bd5fd50",
-                "c8795f3d9a83feb8"
-            ]
-        ]
-    },
-    {
-        "id": "16ae57173bd5fd50",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 800,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "00ca02443ad492b2",
-        "type": "inject",
-        "z": "test_tab_001",
-        "name": "get 10 last users",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 1460,
-        "wires": [
-            [
-                "08eb9741157b369f"
-            ]
-        ]
-    },
-    {
-        "id": "c8795f3d9a83feb8",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "function 20",
-        "func": "msg.payload = msg.payload.map(el => {\n    return {\n        label: el.nom + \" (\" + el.classe + \")\",\n        payload: {\n            nom: el.nom,\n            classe: el.classe\n        }\n    };\n});\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 810,
-        "y": 1460,
-        "wires": [
-            [
-                "42713f6b9ac01877"
-            ]
-        ]
-    },
-    {
-        "id": "42713f6b9ac01877",
-        "type": "ui_template",
-        "z": "test_tab_001",
-        "group": "9fbd1a17f1217b11",
-        "name": "Boutons Derniers Élèves",
-        "order": 1,
-        "width": 19,
-        "height": 10,
-        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in lastStudents\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" \n               ng-click=\"send({payload: el})\">\n      {{el.nom}} <span ng-if=\"el.classe\">({{el.classe}})</span>\n    </md-button>\n  </div>\n</div>\n\n<script>\n  // Récupère les derniers élèves stockés dans flow (via l'API Angular de Node-RED)\n  (function(scope) {\n      // On récupère la variable dans le contexte global du dashboard (si tu l'as stockée dans le contexte global Node-RED,\n      // il faut la transmettre ici, soit via msg ou l'API Angular)\n      // Ici, on suppose que ton flow envoie msg.lastStudents.\n      scope.lastStudents = (scope.msg && scope.msg.lastStudents) || [];\n  })(scope);\n</script>\n",
-        "storeOutMessages": true,
-        "fwdInMessages": false,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 1010,
-        "y": 1460,
-        "wires": [
-            [
-                "5316082bf64377bc"
-            ]
-        ]
-    },
-    {
-        "id": "5316082bf64377bc",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "function 21",
-        "func": "// On reçoit { nom: \"...\", classe: \"...\" }\nflow.set(\"eleve\", msg.payload.nom);\n\n// On modifie msg.payload pour mettre à jour le ui_dropdown\nmsg.payload = [\n  {\n    label: msg.payload.nom + \" (\" + msg.payload.classe + \")\",\n    value: msg.payload.nom\n  }\n];\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1230,
-        "y": 1460,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "inject_last_students",
         "type": "inject",
         "z": "test_tab_001",
@@ -7972,8 +7812,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
-        "y": 1560,
+        "x": 100,
+        "y": 1480,
         "wires": [
             [
                 "function_SELECT"
@@ -7992,8 +7832,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 1560,
+        "x": 330,
+        "y": 1480,
         "wires": [
             [
                 "mysql_last_students"
@@ -8006,8 +7846,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "",
-        "x": 610,
-        "y": 1560,
+        "x": 540,
+        "y": 1480,
         "wires": [
             [
                 "function_format"
@@ -8026,8 +7866,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 810,
-        "y": 1560,
+        "x": 740,
+        "y": 1480,
         "wires": [
             [
                 "ui_template_buttons"
@@ -8049,8 +7889,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1030,
-        "y": 1560,
+        "x": 960,
+        "y": 1480,
         "wires": [
             [
                 "function_set_selected"
@@ -8068,13 +7908,85 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1250,
-        "y": 1560,
+        "x": 1180,
+        "y": 1480,
         "wires": [
             [
-                "ba1de49267e5a808",
-                "715d5ec20e958988"
+                "197f22faecc6c2e8"
             ]
         ]
+    },
+    {
+        "id": "197f22faecc6c2e8",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "1b3b44f86ae626c6"
+        ],
+        "x": 1345,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "1b3b44f86ae626c6",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 2",
+        "links": [
+            "197f22faecc6c2e8",
+            "de1af86d4fd27b98"
+        ],
+        "x": 885,
+        "y": 300,
+        "wires": [
+            [
+                "715d5ec20e958988",
+                "ba1de49267e5a808"
+            ]
+        ]
+    },
+    {
+        "id": "8a60fcee97ca7722",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 3",
+        "links": [
+            "cf2005064aeefb8d"
+        ],
+        "x": 405,
+        "y": 340,
+        "wires": [
+            [
+                "629f1a027442594a"
+            ]
+        ]
+    },
+    {
+        "id": "cf2005064aeefb8d",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "8a60fcee97ca7722"
+        ],
+        "x": 1445,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "de1af86d4fd27b98",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 4",
+        "mode": "link",
+        "links": [
+            "1b3b44f86ae626c6"
+        ],
+        "x": 885,
+        "y": 860,
+        "wires": []
     }
 ]
