@@ -7893,7 +7893,7 @@
         "order": 1,
         "width": 19,
         "height": 1,
-        "format": "msg.payload = msg.payload.map(el => {\n    return {\n        label: el.nom + \" (\" + el.classe + \")\",\n        payload: el.nom // juste le nom à injecter\n    };\n});\nreturn msg;\n",
+        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -7901,6 +7901,35 @@
         "className": "",
         "x": 1020,
         "y": 1460,
+        "wires": [
+            [
+                "force_dropdown_value"
+            ]
+        ]
+    },
+    {
+        "id": "force_dropdown_value",
+        "type": "change",
+        "z": "test_tab_001",
+        "name": "Injecte élève sélectionné",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "options",
+                "pt": "msg",
+                "to": "[{ \"label\": $string(payload), \"value\": $string(payload) }]",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 1250,
+        "y": 1480,
         "wires": [
             []
         ]
