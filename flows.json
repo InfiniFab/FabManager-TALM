@@ -7902,7 +7902,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Set Selected Student",
-        "func": "// On part du principe que msg.payload contient un objet { classe: \"laClasse\", nom: \"leNom\" }\nlet student = msg.payload;\n\n// Si c'est un objet, on construit la chaîne en commençant par la classe\nlet selected;\nif (typeof student === \"object\") {\n  selected = (student.classe ? student.classe + \" \" : \"\") + student.nom;\n} else {\n  // Sinon, on considère que c'est déjà une chaîne\n  selected = student;\n}\n\n// Met à jour la variable flow \"eleve\" avec la valeur complète (classe + nom)\nflow.set(\"eleve\", selected);\n\n// Pour imiter la logique classique de tes dropdowns, renvoie un tableau contenant la chaîne \n// (ce tableau sera ensuite recopié dans msg.options par ton change node)\nmsg.payload = [ selected ];\n\nreturn msg;\n",
+        "func": "// Vérifie que msg.payload est un objet et contient \"classe\" et \"nom\"\nlet student = msg.payload;\nif (typeof student !== 'object') {\n    // Si ce n'est pas un objet, on crée un objet par défaut\n    student = { classe: \"\", nom: student };\n}\n\n// Construit la valeur combinée en commençant par la classe puis le nom\nlet combined = (student.classe ? student.classe + \" \" : \"\") + student.nom;\n\n// Met à jour la variable flow pour l'insertion\nflow.set(\"eleve\", combined);\n\n// Prépare le tableau d'options pour le dropdown\n// Le dropdown dans ton setup classique attend que msg.payload soit un tableau d'objets \n// avec les propriétés \"label\" et \"value\"\nmsg.payload = [\n    { label: combined, value: combined }\n];\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
