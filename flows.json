@@ -7880,7 +7880,7 @@
         "y": 1460,
         "wires": [
             [
-                "c68503d27449dafb"
+                "42713f6b9ac01877"
             ]
         ]
     },
@@ -7902,9 +7902,7 @@
         "x": 1020,
         "y": 1460,
         "wires": [
-            [
-                "force_dropdown_value"
-            ]
+            []
         ]
     },
     {
@@ -7933,6 +7931,29 @@
         "wires": [
             [
                 "6730ac2075d964f5"
+            ]
+        ]
+    },
+    {
+        "id": "42713f6b9ac01877",
+        "type": "ui_template",
+        "z": "test_tab_001",
+        "group": "9fbd1a17f1217b11",
+        "name": "Boutons Derniers Élèves",
+        "order": 1,
+        "width": 19,
+        "height": 10,
+        "format": "<div layout='row' layout-wrap>\n    <div ng-repeat=\"el in msg.payload\" style=\"padding: 5px;\">\n        <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.nom})\">\n            {{el.nom}} <span ng-if=\"el.classe\">({{el.classe}})</span>\n        </md-button>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1030,
+        "y": 1560,
+        "wires": [
+            [
+                "force_dropdown_value"
             ]
         ]
     }
