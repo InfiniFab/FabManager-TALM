@@ -3417,14 +3417,14 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "SELECT",
-        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet unpayed = flow.get(\"payed\");\nlet table_name = \"usage_lab_prod\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\nlet topic = \"\";\n// Construction correcte de la requête\ntopic = \"SELECT * FROM `fabmanager`.`\" + table_name + \"`\";\n\n// Ajout de WHERE après le nom de la table\nif (unpayed) {\n    topic += \" WHERE `reglement` = 0\";\n}\n\ntopic += \" ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
+        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet unpayed = flow.get(\"payed\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\nlet topic = \"\";\n// Construction correcte de la requête\ntopic = \"SELECT * FROM `nodered`.`\" + table_name + \"`\";\n\n// Ajout de WHERE après le nom de la table\nif (unpayed) {\n    topic += \" WHERE `reglement` = 0\";\n}\n\ntopic += \" ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
+        "x": 700,
         "y": 780,
         "wires": [
             [
