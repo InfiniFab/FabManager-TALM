@@ -7893,8 +7893,7 @@
         "y": 1480,
         "wires": [
             [
-                "function_set_selected",
-                "0f56706617290f0e"
+                "function_set_selected"
             ]
         ]
     },
@@ -7903,8 +7902,8 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Set Selected Student",
-        "func": "// Vérifie que msg.payload est un objet et contient \"classe\" et \"nom\"\nlet student = msg.payload;\nif (typeof student !== 'object') {\n    // Si ce n'est pas un objet, on crée un objet par défaut\n    student = { classe: \"\", nom: student };\n}\n\n// Construit la valeur combinée en commençant par la classe puis le nom\nlet combined = (student.classe ? student.classe + \" \" : \"\") + student.nom;\n\n// Met à jour la variable flow pour l'insertion\nflow.set(\"eleve\", combined);\n\n// Prépare le tableau d'options pour le dropdown\n// Le dropdown dans ton setup classique attend que msg.payload soit un tableau d'objets \n// avec les propriétés \"label\" et \"value\"\nmsg.payload = [\n    { label: combined, value: combined }\n];\n\nmsg.options=\"toto\";\n\nreturn msg;\n",
-        "outputs": 1,
+        "func": "// Vérifie que msg.payload est un objet et contient \"classe\" et \"nom\"\nlet student = msg.payload;\nif (typeof student !== 'object') {\n    // Si ce n'est pas un objet, on crée un objet par défaut\n    student = { classe: \"\", nom: student };\n}\n\n// Construit la valeur combinée en commençant par la classe puis le nom\nlet combined = (student.classe ? student.classe + \" \" : \"\") + student.nom;\n\n// Met à jour la variable flow pour l'insertion\nflow.set(\"eleve\", combined);\n\n// Prépare le tableau d'options pour le dropdown\n// Le dropdown dans ton setup classique attend que msg.payload soit un tableau d'objets \n// avec les propriétés \"label\" et \"value\"\nmsg.payload = [\n    { label: combined, value: combined }\n];\n\nmsg.options=\"toto\";\nmsg2.options=\"tata\";\n\nreturn [msg,msg2];\n",
+        "outputs": 2,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
@@ -7916,6 +7915,9 @@
             [
                 "197f22faecc6c2e8",
                 "dc83ca62f5aa5f89"
+            ],
+            [
+                "0f56706617290f0e"
             ]
         ]
     },
@@ -7929,7 +7931,7 @@
             "1b3b44f86ae626c6"
         ],
         "x": 1345,
-        "y": 1480,
+        "y": 1460,
         "wires": []
     },
     {
