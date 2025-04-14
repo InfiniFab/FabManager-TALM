@@ -7885,33 +7885,6 @@
         ]
     },
     {
-        "id": "force_dropdown_value",
-        "type": "change",
-        "z": "test_tab_001",
-        "name": "Injecte élève sélectionné",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "options",
-                "pt": "msg",
-                "to": "[{ \t\"label\": $string(payload), \t\"value\": $string(payload) \t}]",
-                "tot": "jsonata"
-            }
-        ],
-        "x": 1250,
-        "y": 1460,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "42713f6b9ac01877",
         "type": "ui_template",
         "z": "test_tab_001",
@@ -7920,7 +7893,7 @@
         "order": 1,
         "width": 19,
         "height": 10,
-        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
+        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": true,
         "fwdInMessages": false,
         "resendOnRefresh": true,
@@ -7930,8 +7903,26 @@
         "y": 1460,
         "wires": [
             [
-                "force_dropdown_value"
+                "5316082bf64377bc"
             ]
+        ]
+    },
+    {
+        "id": "5316082bf64377bc",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 21",
+        "func": "// On reçoit { nom: \"...\", classe: \"...\" }\nflow.set(\"eleve\", msg.payload.nom);\n\n// On modifie msg.payload pour mettre à jour le ui_dropdown\nmsg.payload = [\n  {\n    label: msg.payload.nom + \" (\" + msg.payload.classe + \")\",\n    value: msg.payload.nom\n  }\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 1460,
+        "wires": [
+            []
         ]
     }
 ]
