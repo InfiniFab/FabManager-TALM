@@ -7200,8 +7200,8 @@
         "multiple": false,
         "options": [
             {
-                "label": "default",
-                "value": "default",
+                "label": "",
+                "value": "",
                 "type": "str"
             }
         ],
