@@ -7751,5 +7751,145 @@
         "x": 900,
         "y": 1180,
         "wires": []
+    },
+    {
+        "id": "08eb9741157b369f",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "SELECT",
+        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = bdd_bool ? \"usage_lab\" : \"usage_lab_test\";\n\nlet topic = `\n  SELECT nom, classe, MAX(date) as derniere_utilisation\n  FROM nodered.\\`${table_name}\\`\n  GROUP BY nom, classe\n  ORDER BY derniere_utilisation DESC\n  LIMIT 10;\n`;\n\nmsg.topic = topic;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1840,
+        "wires": [
+            [
+                "becf860f11f780cd",
+                "f9223c8f254ac3db"
+            ]
+        ]
+    },
+    {
+        "id": "f9223c8f254ac3db",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "becf860f11f780cd",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 620,
+        "y": 1860,
+        "wires": [
+            [
+                "16ae57173bd5fd50",
+                "c8795f3d9a83feb8"
+            ]
+        ]
+    },
+    {
+        "id": "16ae57173bd5fd50",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "00ca02443ad492b2",
+        "type": "inject",
+        "z": "test_tab_001",
+        "name": "get 10 last users",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 1800,
+        "wires": [
+            [
+                "08eb9741157b369f"
+            ]
+        ]
+    },
+    {
+        "id": "c8795f3d9a83feb8",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 20",
+        "func": "msg.payload = msg.payload.map(el => {\n    return {\n        label: el.nom + \" (\" + el.classe + \")\",\n        payload: {\n            nom: el.nom,\n            classe: el.classe\n        }\n    };\n});\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 1900,
+        "wires": [
+            [
+                "c68503d27449dafb"
+            ]
+        ]
+    },
+    {
+        "id": "c68503d27449dafb",
+        "type": "ui_template",
+        "z": "test_tab_001",
+        "group": "",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-repeat=\"el in msg.payload\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n        {{el.label}}\n    </md-button>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1040,
+        "y": 1900,
+        "wires": [
+            []
+        ]
     }
 ]
