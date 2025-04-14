@@ -7885,27 +7885,6 @@
         ]
     },
     {
-        "id": "c68503d27449dafb",
-        "type": "ui_template",
-        "z": "test_tab_001",
-        "group": "9fbd1a17f1217b11",
-        "name": "",
-        "order": 1,
-        "width": 19,
-        "height": 1,
-        "format": "<div layout='row' layout-wrap>\\n    \n<div ng-repeat=\\\"el in msg.payload\\\" style=\\\"padding: 5px;\\\">\\n \n<md-button class=\\\"md-raised md-primary\\\" ng-click=\\\"send({payload: el.nom})\\\">\\n            {{el.nom}} <span ng-if=\\\"el.classe\\\">({{el.classe}})\n  </span>\\n        \n  </md-button>\\n    \n  </div>\\n\n  </div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 1020,
-        "y": 1460,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "force_dropdown_value",
         "type": "change",
         "z": "test_tab_001",
@@ -7943,14 +7922,14 @@
         "order": 1,
         "width": 19,
         "height": 10,
-        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
+        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": true,
         "fwdInMessages": false,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1030,
-        "y": 1560,
+        "x": 1010,
+        "y": 1460,
         "wires": [
             [
                 "force_dropdown_value"
