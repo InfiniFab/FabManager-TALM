@@ -7878,7 +7878,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "SELECT",
-        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = bdd_bool ? \"usage_lab\" : \"usage_lab_test\";\n\nlet topic = `\n  SELECT nom, classe, MAX(date) as derniere_utilisation\n  FROM nodered.\\`${table_name}\\`\n  GROUP BY nom, classe\n  ORDER BY derniere_utilisation DESC\n  LIMIT 10;\n`;\n\nmsg.topic = topic;\nreturn msg;\n",
+        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool = flow.get(\"bdd_bool\");\n\n// Nom de la table à utiliser (prod ou test)\nlet table_name = \"\";\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n} else {\n    table_name = \"usage_lab_test\";\n}\n\n// Construction de la requête SQL\nlet topic = \"\";\ntopic += \"SELECT nom, classe, MAX(date) AS derniere_utilisation \";\ntopic += \"FROM `nodered`.`\" + table_name + \"` \";\ntopic += \"GROUP BY nom, classe \";\ntopic += \"ORDER BY derniere_utilisation DESC \";\ntopic += \"LIMIT 10;\";\n\n// Création du message de sortie\nlet newMsg = {\n    topic: topic\n};\n\nreturn newMsg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
