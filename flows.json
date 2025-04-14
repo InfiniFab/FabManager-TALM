@@ -7924,14 +7924,16 @@
                 "t": "set",
                 "p": "options",
                 "pt": "msg",
-                "to": "[{ \"label\": $string(payload), \"value\": $string(payload) }]",
+                "to": "[{ \t\"label\": $string(payload), \t\"value\": $string(payload) \t}]",
                 "tot": "jsonata"
             }
         ],
         "x": 1250,
-        "y": 1480,
+        "y": 1460,
         "wires": [
-            []
+            [
+                "6730ac2075d964f5"
+            ]
         ]
     }
 ]
