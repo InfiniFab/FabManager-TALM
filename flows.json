@@ -3816,7 +3816,7 @@
         "type": "function",
         "z": "f2c08f5a386b30e6",
         "name": "SELECT",
-        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_prod\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `fabmanager`.`\";\ntopic = topic + table_name + \"` ORDER BY date DESC;\";\n\nvar newMsg = {\n\"topic\" : topic\n}\nreturn newMsg;\n",
+        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `nodered`.`\";\ntopic = topic + table_name + \"` ORDER BY date DESC;\";\n\nvar newMsg = {\n\"topic\" : topic\n}\nreturn newMsg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -7808,7 +7808,7 @@
         "mydb": "f3318311c7abaf8f",
         "name": "",
         "x": 620,
-        "y": 1860,
+        "y": 1840,
         "wires": [
             [
                 "16ae57173bd5fd50",
@@ -7829,8 +7829,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
-        "y": 1720,
+        "x": 820,
+        "y": 1780,
         "wires": []
     },
     {
@@ -7854,8 +7854,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 250,
-        "y": 1800,
+        "x": 190,
+        "y": 1840,
         "wires": [
             [
                 "08eb9741157b369f"
@@ -7874,8 +7874,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 850,
-        "y": 1900,
+        "x": 830,
+        "y": 1840,
         "wires": [
             [
                 "c68503d27449dafb"
@@ -7898,7 +7898,7 @@
         "templateScope": "local",
         "className": "",
         "x": 1040,
-        "y": 1900,
+        "y": 1840,
         "wires": [
             []
         ]
