@@ -7943,7 +7943,7 @@
         "order": 1,
         "width": 19,
         "height": 10,
-        "format": "<div layout='row' layout-wrap>\n    <div ng-repeat=\"el in msg.payload\" style=\"padding: 5px;\">\n        <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.nom})\">\n            {{el.nom}} <span ng-if=\"el.classe\">({{el.classe}})</span>\n        </md-button>\n    </div>\n</div>",
+        "format": "<div layout=\"row\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:4px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el.payload})\">\n      {{el.label}}\n    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": true,
         "fwdInMessages": false,
         "resendOnRefresh": true,
