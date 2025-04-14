@@ -7041,7 +7041,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "SELECT",
-        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `fabmanager`.`\";\ntopic = topic + table_name + \"` ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
+        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `nodered`.`\";\ntopic = topic + table_name + \"` ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
