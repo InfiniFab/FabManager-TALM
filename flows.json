@@ -3015,7 +3015,7 @@
         "type": "mysql",
         "z": "29fd68d1903a9d50",
         "mydb": "f3318311c7abaf8f",
-        "name": "mariadb",
+        "name": "",
         "x": 420,
         "y": 720,
         "wires": [
