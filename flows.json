@@ -1134,19 +1134,10 @@
         "charset": "UTF8"
     },
     {
-        "id": "ui_tab_1",
-        "type": "ui_tab",
-        "name": "Test",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "ui_group_buttons",
         "type": "ui_group",
         "name": "Student Buttons",
-        "tab": "ui_tab_1",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -1156,7 +1147,7 @@
         "id": "ui_group_dropdown",
         "type": "ui_group",
         "name": "Student Dropdown",
-        "tab": "ui_tab_1",
+        "tab": "",
         "order": 2,
         "disp": true,
         "width": "6",
@@ -8047,7 +8038,7 @@
         "id": "ui_template_buttons",
         "type": "ui_template",
         "z": "test_tab_001",
-        "group": "ui_group_buttons",
+        "group": "9fbd1a17f1217b11",
         "name": "Last Students Buttons",
         "order": 1,
         "width": "6",
@@ -8081,39 +8072,9 @@
         "y": 1560,
         "wires": [
             [
-                "ui_dropdown_eleve"
+                "ba1de49267e5a808",
+                "715d5ec20e958988"
             ]
-        ]
-    },
-    {
-        "id": "ui_dropdown_eleve",
-        "type": "ui_dropdown",
-        "z": "test_tab_001",
-        "name": "Eleve Dropdown",
-        "label": "Élève",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "ui_group_dropdown",
-        "order": 2,
-        "width": "6",
-        "height": "1",
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "default",
-                "value": "default",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "",
-        "topicType": "str",
-        "className": "",
-        "x": 1450,
-        "y": 1560,
-        "wires": [
-            []
         ]
     }
 ]
