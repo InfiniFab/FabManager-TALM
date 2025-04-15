@@ -5998,8 +5998,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 100,
+        "x": 70,
+        "y": 20,
         "wires": [
             [
                 "c693401f5eaf99b0"
@@ -6018,8 +6018,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
-        "y": 240,
+        "x": 560,
+        "y": 280,
         "wires": [
             [
                 "6730ac2075d964f5"
@@ -6045,8 +6045,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 870,
-        "y": 240,
+        "x": 750,
+        "y": 280,
         "wires": [
             [
                 "ba1de49267e5a808",
@@ -6093,8 +6093,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1250,
-        "y": 240,
+        "x": 1130,
+        "y": 280,
         "wires": [
             [
                 "cf2005064aeefb8d"
@@ -6901,8 +6901,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 160,
+        "x": 640,
+        "y": 80,
         "wires": []
     },
     {
@@ -7001,8 +7001,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 240,
-        "y": 180,
+        "x": 200,
+        "y": 100,
         "wires": [
             [
                 "6e039010befbe73b",
@@ -7023,8 +7023,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1060,
-        "y": 160,
+        "x": 940,
+        "y": 200,
         "wires": []
     },
     {
@@ -7040,8 +7040,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 500,
-        "y": 160,
+        "x": 460,
+        "y": 80,
         "wires": []
     },
     {
@@ -7134,8 +7134,8 @@
         "z": "test_tab_001",
         "name": "en cas de bug",
         "info": "",
-        "x": 310,
-        "y": 280,
+        "x": 90,
+        "y": 420,
         "wires": []
     },
     {
@@ -7186,8 +7186,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 310,
-        "y": 240,
+        "x": 270,
+        "y": 160,
         "wires": [
             [
                 "f4f401acb784a89d"
@@ -7219,8 +7219,8 @@
         "topic": "options",
         "topicType": "msg",
         "className": "",
-        "x": 1060,
-        "y": 240,
+        "x": 940,
+        "y": 280,
         "wires": [
             [
                 "c87dede7c3ea6d24"
@@ -7701,11 +7701,10 @@
         "format": "xlsx",
         "columns": "*",
         "headers": true,
-        "x": 450,
-        "y": 240,
+        "x": 410,
+        "y": 160,
         "wires": [
             [
-                "aba1e7620377741b",
                 "3b6a84cd9e9505bf",
                 "2d40fef4bf3415dd"
             ]
@@ -7957,8 +7956,8 @@
             "197f22faecc6c2e8",
             "de1af86d4fd27b98"
         ],
-        "x": 715,
-        "y": 320,
+        "x": 595,
+        "y": 360,
         "wires": [
             [
                 "6e0a1a83254a23a8"
@@ -7990,8 +7989,8 @@
         "links": [
             "8a60fcee97ca7722"
         ],
-        "x": 1445,
-        "y": 240,
+        "x": 1325,
+        "y": 280,
         "wires": []
     },
     {
@@ -8159,8 +8158,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 850,
-        "y": 320,
+        "x": 730,
+        "y": 360,
         "wires": [
             [
                 "ba1de49267e5a808"
@@ -8197,10 +8196,30 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 300,
+        "x": 550,
+        "y": 220,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "daa38b2dd84333aa",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 21",
+        "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 280,
+        "wires": [
+            [
+                "aba1e7620377741b"
+            ]
         ]
     }
 ]
