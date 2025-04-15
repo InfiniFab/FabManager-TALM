@@ -7884,7 +7884,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Set Selected Student",
-        "func": "\nmsg.options= msg.payload.classe;\n\nlet msg1 = Object.assign({}, msg);\nlet msg2 = msg;\n\nmsg2.options=msg.payload.nom;\n\nreturn [msg1,msg2];\n",
+        "func": "\nmsg= msg.payload.classe;\n\nlet msg1 = Object.assign({}, msg);\nlet msg2 = msg;\n\nmsg2=msg.payload.nom;\n\nreturn [msg1,msg2];\n",
         "outputs": 2,
         "timeout": "",
         "noerr": 0,
