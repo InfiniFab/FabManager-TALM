@@ -7186,11 +7186,11 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 270,
-        "y": 160,
+        "x": 70,
+        "y": 220,
         "wires": [
             [
-                "f4f401acb784a89d"
+                "daa38b2dd84333aa"
             ]
         ]
     },
