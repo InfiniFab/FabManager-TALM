@@ -893,16 +893,6 @@
         "charset": ""
     },
     {
-        "id": "057e3d4f7e6acd03",
-        "type": "MySQLdatabase",
-        "name": "mariadb_prod",
-        "host": "127.0.0.1",
-        "port": "3306",
-        "db": "fabmanager_prod",
-        "tz": "",
-        "charset": "UTF8"
-    },
-    {
         "id": "9fbd1a17f1217b11",
         "type": "ui_group",
         "name": "boutons 10 elvs",
@@ -912,16 +902,6 @@
         "width": 19,
         "collapse": true,
         "className": ""
-    },
-    {
-        "id": "mariadb",
-        "type": "MySQLdatabase",
-        "name": "mariadb",
-        "host": "localhost",
-        "port": "3306",
-        "db": "nodered",
-        "tz": "",
-        "charset": "UTF8"
     },
     {
         "id": "ui_group_buttons",
