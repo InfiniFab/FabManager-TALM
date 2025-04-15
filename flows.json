@@ -5970,8 +5970,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 160,
+        "x": 110,
+        "y": 100,
         "wires": [
             [
                 "c693401f5eaf99b0"
@@ -6972,11 +6972,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 320,
-        "y": 160,
+        "x": 240,
+        "y": 180,
         "wires": [
             [
-                "6e039010befbe73b"
+                "6e039010befbe73b",
+                "f4f401acb784a89d"
             ]
         ]
     },
