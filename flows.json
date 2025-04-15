@@ -8063,8 +8063,8 @@
         "z": "test_tab_001",
         "name": "",
         "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
+        "timeout": "300",
+        "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
@@ -8074,7 +8074,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1400,
+        "x": 1410,
         "y": 1520,
         "wires": [
             [
