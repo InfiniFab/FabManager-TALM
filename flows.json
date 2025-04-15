@@ -3049,6 +3049,34 @@
         ]
     },
     {
+        "id": "c6340d56079f7839",
+        "type": "ui_button",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "group": "cb7e38a87943e192",
+        "order": 1,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "reset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "c722de89350dd765"
+            ]
+        ]
+    },
+    {
         "id": "f1a8a57d.896448",
         "type": "inject",
         "z": "b527c2c14fc2357e",
