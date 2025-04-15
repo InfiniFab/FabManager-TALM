@@ -7899,7 +7899,7 @@
             ],
             [
                 "0f56706617290f0e",
-                "2c55ac2da9fe2ae4"
+                "2934845b91ab8bc9"
             ]
         ]
     },
@@ -8036,7 +8036,7 @@
         "links": [
             "d817f2a7d4e644b2"
         ],
-        "x": 1355,
+        "x": 1535,
         "y": 1520,
         "wires": []
     },
@@ -8055,5 +8055,25 @@
         "x": 1160,
         "y": 1580,
         "wires": []
+    },
+    {
+        "id": "2934845b91ab8bc9",
+        "type": "timer-node",
+        "z": "test_tab_001",
+        "name": "",
+        "topic": "",
+        "timer": 5,
+        "payloadOn": "true",
+        "payloadOnType": "bool",
+        "payloadOff": "false",
+        "payloadOffType": "bool",
+        "x": 1410,
+        "y": 1520,
+        "wires": [
+            [
+                "2c55ac2da9fe2ae4"
+            ],
+            []
+        ]
     }
 ]
