@@ -8037,7 +8037,7 @@
         "links": [
             "d817f2a7d4e644b2"
         ],
-        "x": 1495,
+        "x": 1525,
         "y": 1520,
         "wires": []
     },
@@ -8063,7 +8063,7 @@
         "z": "test_tab_001",
         "name": "",
         "pauseType": "delay",
-        "timeout": "300",
+        "timeout": "500",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
