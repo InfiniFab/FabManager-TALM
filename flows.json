@@ -5999,7 +5999,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 70,
-        "y": 20,
+        "y": 100,
         "wires": [
             [
                 "c693401f5eaf99b0"
@@ -6901,8 +6901,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
-        "y": 80,
+        "x": 560,
+        "y": 40,
         "wires": []
     },
     {
@@ -7001,7 +7001,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
+        "x": 300,
         "y": 100,
         "wires": [
             [
@@ -7040,8 +7040,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
-        "y": 80,
+        "x": 380,
+        "y": 40,
         "wires": []
     },
     {
@@ -7701,8 +7701,8 @@
         "format": "xlsx",
         "columns": "*",
         "headers": true,
-        "x": 410,
-        "y": 160,
+        "x": 490,
+        "y": 100,
         "wires": [
             [
                 "3b6a84cd9e9505bf",
@@ -8179,8 +8179,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 220,
+        "x": 750,
+        "y": 100,
         "wires": [
             []
         ]
