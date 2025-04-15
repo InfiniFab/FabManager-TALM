@@ -7701,12 +7701,13 @@
         "format": "xlsx",
         "columns": "*",
         "headers": true,
-        "x": 510,
+        "x": 450,
         "y": 240,
         "wires": [
             [
                 "aba1e7620377741b",
-                "3b6a84cd9e9505bf"
+                "3b6a84cd9e9505bf",
+                "2d40fef4bf3415dd"
             ]
         ]
     },
@@ -8178,8 +8179,26 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 490,
+        "x": 430,
         "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d40fef4bf3415dd",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 20",
+        "func": "global.set(\"elevesExcel\", msg.payload); \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 300,
         "wires": [
             []
         ]
