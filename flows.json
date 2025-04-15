@@ -7187,7 +7187,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 70,
-        "y": 220,
+        "y": 280,
         "wires": [
             [
                 "daa38b2dd84333aa"
@@ -7711,23 +7711,6 @@
         ]
     },
     {
-        "id": "629f1a027442594a",
-        "type": "alafile in",
-        "z": "test_tab_001",
-        "name": "",
-        "filename": "/home/pi/Documents/test",
-        "format": "xlsx",
-        "columns": "*",
-        "headers": true,
-        "x": 410,
-        "y": 480,
-        "wires": [
-            [
-                "8e7c8d1e4875345c"
-            ]
-        ]
-    },
-    {
         "id": "26a75cce05f63d51",
         "type": "mysql",
         "z": "test_tab_001",
@@ -7972,11 +7955,11 @@
         "links": [
             "cf2005064aeefb8d"
         ],
-        "x": 325,
+        "x": 215,
         "y": 480,
         "wires": [
             [
-                "629f1a027442594a"
+                "9f9fabcb2e291cb0"
             ]
         ]
     },
@@ -8158,7 +8141,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 730,
+        "x": 750,
         "y": 360,
         "wires": [
             [
@@ -8206,7 +8189,7 @@
         "id": "daa38b2dd84333aa",
         "type": "function",
         "z": "test_tab_001",
-        "name": "function 21",
+        "name": "read eleves database",
         "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -8214,11 +8197,31 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
+        "x": 320,
         "y": 280,
         "wires": [
             [
                 "aba1e7620377741b"
+            ]
+        ]
+    },
+    {
+        "id": "9f9fabcb2e291cb0",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "read eleves database",
+        "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "8e7c8d1e4875345c"
             ]
         ]
     }
