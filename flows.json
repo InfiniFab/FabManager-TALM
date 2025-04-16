@@ -7395,11 +7395,12 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 150,
+        "x": 110,
         "y": 1220,
         "wires": [
             [
-                "e17b038fc0a048ca"
+                "e17b038fc0a048ca",
+                "e80744e61a58be2a"
             ]
         ]
     },
@@ -7958,5 +7959,24 @@
                 "8e7c8d1e4875345c"
             ]
         ]
+    },
+    {
+        "id": "e80744e61a58be2a",
+        "type": "ui_toast",
+        "z": "test_tab_001",
+        "position": "top right",
+        "displayTime": "10",
+        "highlight": "red",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "! base de production ",
+        "x": 340,
+        "y": 1120,
+        "wires": []
     }
 ]
