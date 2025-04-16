@@ -729,7 +729,7 @@
         "tab": "0a675065a55c6a8b",
         "order": 1,
         "disp": true,
-        "width": 18,
+        "width": 10,
         "collapse": true,
         "className": ""
     },
@@ -924,7 +924,7 @@
         "height": 1
     },
     {
-        "id": "72f0d722d75cc3f8",
+        "id": "7e15e1f8668a51e7",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -934,7 +934,7 @@
         "height": 1
     },
     {
-        "id": "92d40b6784284af2",
+        "id": "66128e70e825ee29",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -944,7 +944,7 @@
         "height": 1
     },
     {
-        "id": "510bd126c717941e",
+        "id": "6f157ad512e2d37f",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -954,7 +954,7 @@
         "height": 1
     },
     {
-        "id": "8922a7f8f3a038c4",
+        "id": "48b7c426c894af8e",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -964,7 +964,7 @@
         "height": 1
     },
     {
-        "id": "4b4f9e6b1580379c",
+        "id": "6babeb74ed39bee1",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -974,7 +974,7 @@
         "height": 1
     },
     {
-        "id": "32906aec530c2d40",
+        "id": "5e9c103556998d7d",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -984,7 +984,7 @@
         "height": 1
     },
     {
-        "id": "34cbe0fa509069a0",
+        "id": "57c7c7e5de886160",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -994,7 +994,7 @@
         "height": 1
     },
     {
-        "id": "7503ba9a45601986",
+        "id": "8393cfaf37fe4c79",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1004,7 +1004,7 @@
         "height": 1
     },
     {
-        "id": "01e463b7137d6181",
+        "id": "b207776b394fdb2b",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1014,7 +1014,7 @@
         "height": 1
     },
     {
-        "id": "63da89e9a1d51988",
+        "id": "45dc6db4a05b1d05",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1024,7 +1024,7 @@
         "height": 1
     },
     {
-        "id": "dd39773ae3d3928a",
+        "id": "9141663d1b3e99fe",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1034,7 +1034,7 @@
         "height": 1
     },
     {
-        "id": "1e8664829c5ab703",
+        "id": "309ef3639d33385d",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1044,7 +1044,7 @@
         "height": 1
     },
     {
-        "id": "2f220a2b18ff99b6",
+        "id": "9669a2bcb54a4a5e",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1054,7 +1054,7 @@
         "height": 1
     },
     {
-        "id": "67ce1b8cb9b9b519",
+        "id": "82e038b01d550742",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1064,7 +1064,7 @@
         "height": 1
     },
     {
-        "id": "a7cb6290e0d7ceaa",
+        "id": "3a257945023fc6b9",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1074,7 +1074,7 @@
         "height": 1
     },
     {
-        "id": "19263adcb53cd0eb",
+        "id": "a09735df24446aa4",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1084,7 +1084,7 @@
         "height": 1
     },
     {
-        "id": "3125b810a956294e",
+        "id": "784b272b9b641206",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1094,7 +1094,7 @@
         "height": 1
     },
     {
-        "id": "0398ff97f2ad7dec",
+        "id": "5fcc82cfafebb13a",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1104,7 +1104,7 @@
         "height": 1
     },
     {
-        "id": "a7604967a6f97d04",
+        "id": "8e6ee69daa7aa849",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1114,7 +1114,7 @@
         "height": 1
     },
     {
-        "id": "360d49ae033c42e7",
+        "id": "80167416f9294690",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1124,7 +1124,7 @@
         "height": 1
     },
     {
-        "id": "513f7a3e024c6d27",
+        "id": "59e6d3f550420e6e",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -7875,8 +7875,8 @@
         "group": "9fbd1a17f1217b11",
         "name": "Last Students Buttons",
         "order": 1,
-        "width": 18,
-        "height": 4,
+        "width": 10,
+        "height": 19,
         "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n      {{el.classe}} <span ng-if=\"el.classe\">{{el.nom}}</span>\n    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
