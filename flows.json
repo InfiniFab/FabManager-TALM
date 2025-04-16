@@ -6835,7 +6835,6 @@
         "y": 960,
         "wires": [
             [
-                "60a7a291bd69592d",
                 "de1af86d4fd27b98",
                 "4ed9c31def9b04b0"
             ]
@@ -6892,8 +6891,8 @@
         "y": 1180,
         "wires": [
             [
-                "function_SELECT",
-                "2d1997bdd6c309ce"
+                "2d1997bdd6c309ce",
+                "325f948297a7aafc"
             ]
         ]
     },
@@ -7028,8 +7027,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 510,
-        "y": 820,
+        "x": 330,
+        "y": 900,
         "wires": [
             [
                 "e80a4727e8a6c53f"
@@ -7571,7 +7570,7 @@
         "wires": [
             [
                 "eda577487cc7e102",
-                "function_SELECT"
+                "24c0b79966777b30"
             ]
         ]
     },
@@ -7990,7 +7989,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
+        "x": 530,
         "y": 1180,
         "wires": [
             [
@@ -8038,8 +8037,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 860,
-        "y": 1340,
+        "x": 880,
+        "y": 1300,
         "wires": []
     },
     {
@@ -8055,8 +8054,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 280,
-        "y": 1360,
+        "x": 1080,
+        "y": 1300,
         "wires": []
     },
     {
@@ -8080,8 +8079,8 @@
         "topic": "",
         "payload": "false",
         "payloadType": "bool",
-        "x": 200,
-        "y": 1040,
+        "x": 100,
+        "y": 1140,
         "wires": [
             [
                 "d37b9b7560b3030f"
@@ -8100,7 +8099,8 @@
             "f83a04ef05ce76f6",
             "650b0b8a2f98d748",
             "a8b3e924368ccee2",
-            "fcaf2034175db8e0"
+            "fcaf2034175db8e0",
+            "a397d83f41122d5c"
         ],
         "x": 1315,
         "y": 960,
@@ -8201,5 +8201,104 @@
                 "a644b18c49e8fbae"
             ]
         ]
+    },
+    {
+        "id": "27d7771dbabedaa6",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 11",
+        "links": [
+            "24c0b79966777b30",
+            "325f948297a7aafc"
+        ],
+        "x": 355,
+        "y": 1560,
+        "wires": [
+            [
+                "function_SELECT"
+            ]
+        ]
+    },
+    {
+        "id": "24c0b79966777b30",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 7",
+        "mode": "link",
+        "links": [
+            "27d7771dbabedaa6"
+        ],
+        "x": 885,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "325f948297a7aafc",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 8",
+        "mode": "link",
+        "links": [
+            "27d7771dbabedaa6"
+        ],
+        "x": 475,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "a397d83f41122d5c",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 12",
+        "links": [
+            "4ed9c31def9b04b0"
+        ],
+        "x": 885,
+        "y": 1140,
+        "wires": [
+            [
+                "60a7a291bd69592d"
+            ]
+        ]
+    },
+    {
+        "id": "d8f12075d6f57e0e",
+        "type": "comment",
+        "z": "test_tab_001",
+        "name": "vers boutons students",
+        "info": "",
+        "x": 900,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "4d7ab11226c845df",
+        "type": "comment",
+        "z": "test_tab_001",
+        "name": "vers les classe/noms",
+        "info": "",
+        "x": 1850,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "097ca8105a614fd7",
+        "type": "comment",
+        "z": "test_tab_001",
+        "name": "Boutons last student",
+        "info": "",
+        "x": 110,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "4428c89ea4319695",
+        "type": "comment",
+        "z": "test_tab_001",
+        "name": "Changement de base de donnée",
+        "info": "",
+        "x": 130,
+        "y": 1080,
+        "wires": []
     }
 ]
