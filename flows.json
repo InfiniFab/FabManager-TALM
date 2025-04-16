@@ -7968,7 +7968,7 @@
         "highlight": "",
         "sendall": true,
         "outputs": 1,
-        "ok": "OK",
+        "ok": "ok",
         "cancel": "Cancel",
         "raw": false,
         "className": "",
