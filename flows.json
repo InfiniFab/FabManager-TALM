@@ -47,6 +47,14 @@
         "info": ""
     },
     {
+        "id": "cfa0df8141897434",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "db6f982c.51d3d",
         "type": "websocket-listener",
         "z": "test_tab_001",
@@ -1143,6 +1151,22 @@
         "order": 34,
         "width": 12,
         "height": 1
+    },
+    {
+        "id": "ui_tab1",
+        "type": "ui_tab",
+        "name": "Test Tab",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "ui_group1",
+        "type": "ui_group",
+        "name": "Test Group",
+        "tab": "ui_tab1",
+        "order": 1,
+        "disp": true,
+        "width": "6"
     },
     {
         "id": "b4846b2d55a7522e",
@@ -8834,6 +8858,90 @@
             [
                 "daa38b2dd84333aa"
             ]
+        ]
+    },
+    {
+        "id": "node1",
+        "type": "ui_dropdown",
+        "z": "cfa0df8141897434",
+        "name": "Sélection Élève",
+        "label": "Sélection Élève",
+        "tooltip": "",
+        "place": "Select an option",
+        "group": "ui_group1",
+        "order": 1,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "non inscrit",
+                "value": "non_inscrit",
+                "type": "str"
+            },
+            {
+                "label": "Jean Dupont",
+                "value": "jean_dupont",
+                "type": "str"
+            },
+            {
+                "label": "Marie Curie",
+                "value": "marie_curie",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "eleve_selection",
+        "topicType": "str",
+        "className": "",
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "node2"
+            ]
+        ]
+    },
+    {
+        "id": "node2",
+        "type": "function",
+        "z": "cfa0df8141897434",
+        "name": "Vérifie selection",
+        "func": "if (msg.payload === \"non_inscrit\") {\n    msg.showCustomInput = true;\n} else {\n    msg.showCustomInput = false;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 140,
+        "wires": [
+            [
+                "node3"
+            ]
+        ]
+    },
+    {
+        "id": "node3",
+        "type": "ui_template",
+        "z": "cfa0df8141897434",
+        "group": "ui_group1",
+        "name": "Champ nom élève non inscrit",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "format": "<div ng-if=\"msg.showCustomInput\">\n    <md-input-container>\n        <label>Nom de l'élève non inscrit</label>\n        <input ng-model=\"msg.customName\">\n    </md-input-container>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 760,
+        "y": 140,
+        "wires": [
+            []
         ]
     }
 ]
