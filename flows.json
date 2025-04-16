@@ -6898,7 +6898,8 @@
         "wires": [
             [
                 "60a7a291bd69592d",
-                "function_SELECT"
+                "function_SELECT",
+                "e80744e61a58be2a"
             ]
         ]
     },
@@ -7399,8 +7400,7 @@
         "y": 1220,
         "wires": [
             [
-                "e17b038fc0a048ca",
-                "e80744e61a58be2a"
+                "e17b038fc0a048ca"
             ]
         ]
     },
@@ -7975,8 +7975,27 @@
         "className": "",
         "topic": "",
         "name": "! base de production ",
-        "x": 340,
+        "x": 720,
         "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "5892415e4e9e0a0b",
+        "type": "ui_toast",
+        "z": "test_tab_001",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 540,
+        "y": 1320,
         "wires": []
     }
 ]
