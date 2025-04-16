@@ -7995,7 +7995,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "annulation",
-        "func": "if (msg.payload === \"\") {\n    // On continue\n    flow.set(\"bdd_bool\", true);\n    return [msg, null];\n} else {\n    // On annule\n    return [null, false];\n}\n\n",
+        "func": "if (msg.payload === \"\") {\n    // On continue\n    flow.set(\"bdd_bool\", true);\n    return [false, null];\n} else {\n    // On annule\n    return [null, false];\n}\n\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -8006,7 +8006,8 @@
         "y": 1240,
         "wires": [
             [
-                "60a7a291bd69592d"
+                "60a7a291bd69592d",
+                "d37b9b7560b3030f"
             ],
             [
                 "d37b9b7560b3030f",
@@ -8070,7 +8071,7 @@
         "payload": "false",
         "payloadType": "bool",
         "x": 100,
-        "y": 1140,
+        "y": 1100,
         "wires": [
             [
                 "d37b9b7560b3030f"
@@ -8287,8 +8288,8 @@
         "z": "test_tab_001",
         "name": "Changement de base de donnée",
         "info": "",
-        "x": 130,
-        "y": 1080,
+        "x": 150,
+        "y": 1060,
         "wires": []
     }
 ]
