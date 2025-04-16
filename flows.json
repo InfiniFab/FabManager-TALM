@@ -8011,7 +8011,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "annulation",
-        "func": "if (msg.payload === \"\") {\n    // Utilisateur a cliqué sur OK\n    flow.set(\"bdd_bool\", true);\n    return { payload: true }; // continue vers function_SELECT\n} else {\n    // Annulé, on remet le switch à false\n    return { payload: false }; // pour renvoyer vers le switch\n}\n",
+        "func": "if (msg.payload === \"\") {\n    // On continue\n    flow.set(\"bdd_bool\", true);\n    return [msg, null];\n} else {\n    // On annule\n    return [null, false];\n}\n\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
