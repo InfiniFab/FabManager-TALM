@@ -7070,8 +7070,8 @@
         "multiple": false,
         "options": [
             {
-                "label": "",
-                "value": "",
+                "label": "null",
+                "value": "null",
                 "type": "str"
             }
         ],
@@ -7103,8 +7103,8 @@
         "multiple": false,
         "options": [
             {
-                "label": "",
-                "value": "",
+                "label": "null",
+                "value": "null",
                 "type": "str"
             }
         ],
