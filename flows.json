@@ -6224,8 +6224,7 @@
         "y": 280,
         "wires": [
             [
-                "ba1de49267e5a808",
-                "abef512966fd2066"
+                "ba1de49267e5a808"
             ]
         ]
     },
@@ -6570,27 +6569,8 @@
         "x": 1300,
         "y": 480,
         "wires": [
-            [
-                "7f71b7c77c94c902"
-            ]
+            []
         ]
-    },
-    {
-        "id": "83bfc8a875145ba2",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 32",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 360,
-        "y": 820,
-        "wires": []
     },
     {
         "id": "e80a4727e8a6c53f",
@@ -6692,7 +6672,6 @@
         "y": 900,
         "wires": [
             [
-                "83bfc8a875145ba2",
                 "1dfb885551b2b1a4"
             ]
         ]
@@ -6774,43 +6753,6 @@
         "wires": [
             [
                 "111842c30eb7a261"
-            ]
-        ]
-    },
-    {
-        "id": "85b312e2b6f74d91",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1970,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "a9bf2db4e7889f77",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "TABLE",
-        "func": "topic = \"CREATE TABLE `usage_lab_prod` ( \";\ntopic = topic + \"`no` INT NULL AUTO_INCREMENT,\";\ntopic = topic + \"`date` TIMESTAMP NOT NULL,\";\ntopic = topic + \"`classe` VARCHAR(80) NULL,\";\ntopic = topic + \"`nom` VARCHAR(80) NULL,\";\ntopic = topic + \"`fabrication` VARCHAR(80) NULL,\";\ntopic = topic + \"`prix` VARCHAR(80) NULL,\";\ntopic = topic + \"`reglement` BOOLEAN,\";\ntopic = topic + \"`CAO` BOOLEAN,\";\ntopic = topic + \"INDEX `no` (`no`)) COLLATE='latin1_swedish_ci';\";\nmsg.topic = topic;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1870,
-        "y": 240,
-        "wires": [
-            [
-                "86cb65ab500a12e7"
             ]
         ]
     },
@@ -6899,7 +6841,6 @@
                 "a644b18c49e8fbae",
                 "5b79cb0b332dcb20",
                 "385ae025df0520e3",
-                "97e3e9ccccbcae7b",
                 "60a7a291bd69592d",
                 "de1af86d4fd27b98"
             ]
@@ -6934,23 +6875,6 @@
         ]
     },
     {
-        "id": "bbe3d9db87bd3ba8",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 33",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1300,
-        "y": 540,
-        "wires": []
-    },
-    {
         "id": "e17b038fc0a048ca",
         "type": "change",
         "z": "test_tab_001",
@@ -6979,23 +6903,6 @@
         ]
     },
     {
-        "id": "80ea44898ae5efe8",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 34",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2120,
-        "y": 1340,
-        "wires": []
-    },
-    {
         "id": "cde2c82b88668ced",
         "type": "change",
         "z": "test_tab_001",
@@ -7014,8 +6921,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2160,
-        "y": 1400,
+        "x": 1680,
+        "y": 1200,
         "wires": [
             []
         ]
@@ -7039,63 +6946,13 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1690,
-        "y": 1280,
+        "x": 1310,
+        "y": 1200,
         "wires": [
             [
                 "bb79787c894cdc0b"
             ]
         ]
-    },
-    {
-        "id": "7f71b7c77c94c902",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 35",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1520,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "abef512966fd2066",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 37",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 940,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "97e3e9ccccbcae7b",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "resetSearch?",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 1020,
-        "wires": []
     },
     {
         "id": "7d2634c54b02bb68",
@@ -7142,27 +6999,9 @@
         "y": 1220,
         "wires": [
             [
-                "8f38ca494de7d3a1",
-                "a3e94676fed1bc36"
+                "8f38ca494de7d3a1"
             ]
         ]
-    },
-    {
-        "id": "a3e94676fed1bc36",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 39",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 1180,
-        "wires": []
     },
     {
         "id": "6d67b9766ba0e39c",
@@ -7292,8 +7131,7 @@
         "y": 480,
         "wires": [
             [
-                "3fc66bc346f9018b",
-                "bbe3d9db87bd3ba8"
+                "3fc66bc346f9018b"
             ]
         ]
     },
@@ -7635,11 +7473,10 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 1900,
-        "y": 1340,
+        "x": 1490,
+        "y": 1200,
         "wires": [
             [
-                "80ea44898ae5efe8",
                 "cde2c82b88668ced"
             ]
         ]
@@ -7744,20 +7581,6 @@
         ]
     },
     {
-        "id": "86cb65ab500a12e7",
-        "type": "mysql",
-        "z": "test_tab_001",
-        "mydb": "f3318311c7abaf8f",
-        "name": "",
-        "x": 1800,
-        "y": 300,
-        "wires": [
-            [
-                "85b312e2b6f74d91"
-            ]
-        ]
-    },
-    {
         "id": "8f38ca494de7d3a1",
         "type": "mysql",
         "z": "test_tab_001",
@@ -7767,8 +7590,7 @@
         "y": 1260,
         "wires": [
             [
-                "a4dc70681e2e2d2f",
-                "a24e4e6ac780469b"
+                "a4dc70681e2e2d2f"
             ]
         ]
     },
@@ -7789,23 +7611,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "a24e4e6ac780469b",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 900,
-        "y": 1180,
-        "wires": []
     },
     {
         "id": "inject_last_students",
@@ -7905,8 +7710,7 @@
         "y": 1480,
         "wires": [
             [
-                "function_set_selected",
-                "6165f5ac9579acbe"
+                "function_set_selected"
             ]
         ]
     },
@@ -7926,11 +7730,9 @@
         "y": 1480,
         "wires": [
             [
-                "197f22faecc6c2e8",
-                "dc83ca62f5aa5f89"
+                "197f22faecc6c2e8"
             ],
             [
-                "0f56706617290f0e",
                 "13f8f55a4b4f0108"
             ]
         ]
@@ -8009,40 +7811,6 @@
         "wires": []
     },
     {
-        "id": "0f56706617290f0e",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1400,
-        "y": 1560,
-        "wires": []
-    },
-    {
-        "id": "dc83ca62f5aa5f89",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 4",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1400,
-        "y": 1480,
-        "wires": []
-    },
-    {
         "id": "d817f2a7d4e644b2",
         "type": "link in",
         "z": "test_tab_001",
@@ -8070,22 +7838,6 @@
         ],
         "x": 1525,
         "y": 1520,
-        "wires": []
-    },
-    {
-        "id": "6165f5ac9579acbe",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1160,
-        "y": 1580,
         "wires": []
     },
     {
@@ -8165,24 +7917,6 @@
             [
                 "ba1de49267e5a808"
             ]
-        ]
-    },
-    {
-        "id": "d646ea1a04f0f34c",
-        "type": "file in",
-        "z": "test_tab_001",
-        "name": "",
-        "filename": "",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 430,
-        "y": 360,
-        "wires": [
-            []
         ]
     },
     {
