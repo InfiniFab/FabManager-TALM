@@ -8063,5 +8063,34 @@
         "x": 280,
         "y": 1360,
         "wires": []
+    },
+    {
+        "id": "18e24250481758c8",
+        "type": "inject",
+        "z": "test_tab_001",
+        "name": "inject false",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 200,
+        "y": 1040,
+        "wires": [
+            [
+                "d37b9b7560b3030f"
+            ]
+        ]
     }
 ]
