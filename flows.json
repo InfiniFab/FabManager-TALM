@@ -7045,11 +7045,12 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 130,
+        "x": 70,
         "y": 100,
         "wires": [
             [
-                "daa38b2dd84333aa"
+                "daa38b2dd84333aa",
+                "9f9fabcb2e291cb0"
             ]
         ]
     },
@@ -8262,7 +8263,7 @@
         "links": [
             "de1af86d4fd27b98"
         ],
-        "x": 175,
+        "x": 185,
         "y": 140,
         "wires": [
             [
