@@ -8094,7 +8094,7 @@
         "z": "test_tab_001",
         "name": "",
         "pauseType": "delay",
-        "timeout": "500",
+        "timeout": "50",
         "timeoutUnits": "milliseconds",
         "rate": "1",
         "nbRateUnits": "1",
