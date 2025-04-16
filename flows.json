@@ -7969,7 +7969,7 @@
         "sendall": true,
         "outputs": 1,
         "ok": "ok",
-        "cancel": "caca",
+        "cancel": "annuler",
         "raw": false,
         "className": "",
         "topic": "",
