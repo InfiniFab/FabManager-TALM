@@ -9053,7 +9053,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "update materiaux",
-        "func": "msg.topic = \n    `UPDATE materiaux \n    SET prix = ${msg.payload.prix} \n    WHERE id = ${msg.payload.id};`;\nreturn msg;\n",
+        "func": "msg.topic = `UPDATE materiaux SET prix = ${msg.payload.prix} WHERE id = ${msg.payload.id}`;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
