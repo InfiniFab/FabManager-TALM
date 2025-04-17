@@ -4619,7 +4619,8 @@
         "mode": "link",
         "links": [
             "8b089876db0dfe6e",
-            "988ee3a15f32b724"
+            "988ee3a15f32b724",
+            "7b99c56d07e6134d"
         ],
         "x": 1025,
         "y": 960,
@@ -8959,37 +8960,13 @@
         ]
     },
     {
-        "id": "inject_get",
-        "type": "inject",
-        "z": "fd7dc8247b3e3472",
-        "name": "Charger matériaux",
-        "props": [
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "SELECT id, nom, prix FROM materiaux",
-        "x": 150,
-        "y": 260,
-        "wires": [
-            [
-                "mysql_get_mat"
-            ]
-        ]
-    },
-    {
         "id": "mysql_get_mat",
         "type": "mysql",
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Get Materials",
-        "x": 350,
-        "y": 260,
+        "x": 750,
+        "y": 320,
         "wires": [
             [
                 "ui_template_mat"
@@ -9011,8 +8988,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 560,
-        "y": 260,
+        "x": 980,
+        "y": 320,
         "wires": [
             [
                 "func_to_array"
@@ -9031,8 +9008,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
-        "y": 260,
+        "x": 370,
+        "y": 440,
         "wires": [
             [
                 "split_mat"
@@ -9051,8 +9028,8 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 1000,
-        "y": 260,
+        "x": 580,
+        "y": 440,
         "wires": [
             [
                 "ee5ae9e46cb980b9"
@@ -9065,8 +9042,8 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
-        "x": 1440,
-        "y": 260,
+        "x": 1000,
+        "y": 440,
         "wires": [
             []
         ]
@@ -9083,11 +9060,47 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1230,
-        "y": 260,
+        "x": 790,
+        "y": 440,
         "wires": [
             [
                 "mysql_update_mat"
+            ]
+        ]
+    },
+    {
+        "id": "7b99c56d07e6134d",
+        "type": "link in",
+        "z": "fd7dc8247b3e3472",
+        "name": "link in reset",
+        "links": [
+            "e4e5be2af9511b04"
+        ],
+        "x": 335,
+        "y": 240,
+        "wires": [
+            [
+                "e5bba153e5974a31"
+            ]
+        ]
+    },
+    {
+        "id": "e5bba153e5974a31",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "select * materiaux",
+        "func": "msg.topic = \"SELECT id, nom, prix FROM materiaux\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [
+                "mysql_get_mat"
             ]
         ]
     }
