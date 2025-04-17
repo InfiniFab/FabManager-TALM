@@ -6818,11 +6818,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1610,
+        "x": 1170,
         "y": 100,
         "wires": [
             [
-                "cf2005064aeefb8d"
+                "424bfd6b347e851b"
             ]
         ]
     },
@@ -7635,7 +7635,7 @@
         "wires": [
             [
                 "ddb177db3005ce2d",
-                "424bfd6b347e851b"
+                "c87dede7c3ea6d24"
             ]
         ]
     },
@@ -8824,30 +8824,6 @@
         ]
     },
     {
-        "id": "424bfd6b347e851b",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "Vérifie selection",
-        "func": "if (msg.payload === \"non_inscrit\") {\n    msg.showCustomInput = true;\n    return [null, msg];\n} else {\n    msg.showCustomInput = false;\n    return [msg, null];\n}\n",
-        "outputs": 2,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1120,
-        "y": 100,
-        "wires": [
-            [
-                "190aa3a372be5208",
-                "c87dede7c3ea6d24"
-            ],
-            [
-                "d48750a31b1eb0a7"
-            ]
-        ]
-    },
-    {
         "id": "d48750a31b1eb0a7",
         "type": "ui_template",
         "z": "test_tab_001",
@@ -8862,7 +8838,7 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 1360,
+        "x": 1640,
         "y": 140,
         "wires": [
             [
@@ -8901,8 +8877,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1320,
-        "y": 40,
+        "x": 1600,
+        "y": 20,
         "wires": []
     },
     {
@@ -8918,8 +8894,32 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1560,
-        "y": 200,
+        "x": 1900,
+        "y": 220,
         "wires": []
+    },
+    {
+        "id": "424bfd6b347e851b",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Vérifie selection",
+        "func": "if (msg.payload === \"non_inscrit\") {\n    msg.showCustomInput = true;\n    return [null, msg];\n} else {\n    msg.showCustomInput = false;\n    return [msg, null];\n}\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 100,
+        "wires": [
+            [
+                "cf2005064aeefb8d",
+                "190aa3a372be5208"
+            ],
+            [
+                "d48750a31b1eb0a7"
+            ]
+        ]
     }
 ]
