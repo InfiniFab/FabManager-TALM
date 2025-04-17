@@ -47,6 +47,14 @@
         "info": ""
     },
     {
+        "id": "fd7dc8247b3e3472",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "db6f982c.51d3d",
         "type": "websocket-listener",
         "z": "test_tab_001",
@@ -1129,6 +1137,22 @@
         "order": 36,
         "width": 20,
         "height": 1
+    },
+    {
+        "id": "admin_tab",
+        "type": "ui_tab",
+        "name": "Admin Matériaux",
+        "icon": "settings",
+        "order": 10
+    },
+    {
+        "id": "admin_group",
+        "type": "ui_group",
+        "name": "Gestion Matériaux",
+        "tab": "admin_tab",
+        "order": 1,
+        "disp": true,
+        "width": "12"
     },
     {
         "id": "b4846b2d55a7522e",
@@ -3841,10 +3865,10 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "TABLE",
-        "func": "topic = \"CREATE TABLE `access` ( \";\ntopic = topic + \"`no` INT NULL AUTO_INCREMENT,\";\ntopic = topic + \"`date` TIMESTAMP NOT NULL,\";\ntopic = topic + \"`room` INT NULL,\";\ntopic = topic + \"`id` INT NULL,\";\ntopic = topic + \"INDEX `no` (`no`)) COLLATE='latin1_swedish_ci';\";\nmsg.topic = topic;\n\nreturn msg;",
+        "func": "let topic = \"CREATE TABLE IF NOT EXISTS `materiaux` ( \";\ntopic += \"`id` INT NOT NULL AUTO_INCREMENT, \";\ntopic += \"`nom` VARCHAR(255) UNIQUE NOT NULL, \";\ntopic += \"`prix` FLOAT NOT NULL, \";\ntopic += \"PRIMARY KEY (`id`)\";\ntopic += \") COLLATE='latin1_swedish_ci';\";\nmsg.topic = topic;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
-        "noerr": 12,
+        "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -8866,6 +8890,134 @@
             [
                 "325172790c7d6837"
             ]
+        ]
+    },
+    {
+        "id": "inject_get",
+        "type": "inject",
+        "z": "fd7dc8247b3e3472",
+        "name": "Charger matériaux",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "SELECT id, nom, prix FROM materiaux",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "mysql_get_mat"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_get_mat",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "Get Materials",
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "ui_template_mat"
+            ]
+        ]
+    },
+    {
+        "id": "ui_template_mat",
+        "type": "ui_template",
+        "z": "fd7dc8247b3e3472",
+        "group": "admin_group",
+        "name": "Table Matériaux",
+        "order": 1,
+        "width": 12,
+        "height": 10,
+        "format": "<table>\n  <tr><th>Nom</th><th>Prix (€)</th></tr>\n  <tr ng-repeat=\"m in msg.payload\">\n    <td>{{m.nom}}</td>\n    <td><input type=\"number\" ng-model=\"m.prix\"></td>\n  </tr>\n</table>\n<md-button class=\"md-raised md-primary\" ng-click=\"send({payload: msg.payload})\">Enregistrer</md-button>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 750,
+        "y": 140,
+        "wires": [
+            [
+                "func_to_array"
+            ]
+        ]
+    },
+    {
+        "id": "func_to_array",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Prépare mise à jour",
+        "func": "// msg.payload est un tableau d’objets {id, nom, prix}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1000,
+        "y": 140,
+        "wires": [
+            [
+                "split_mat"
+            ]
+        ]
+    },
+    {
+        "id": "split_mat",
+        "type": "split",
+        "z": "fd7dc8247b3e3472",
+        "name": "Split matériaux",
+        "splt": "payload",
+        "spltType": "msg",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 1200,
+        "y": 140,
+        "wires": [
+            [
+                "change_query"
+            ]
+        ]
+    },
+    {
+        "id": "change_query",
+        "type": "change",
+        "z": "fd7dc8247b3e3472",
+        "name": "Set Update Query",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "UPDATE materiaux SET prix = ${payload.prix} WHERE id = ${payload.id}",
+                "tot": "str"
+            }
+        ],
+        "x": 1400,
+        "y": 140,
+        "wires": [
+            [
+                "mysql_update_mat"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_update_mat",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "Update Material",
+        "x": 1600,
+        "y": 140,
+        "wires": [
+            []
         ]
     }
 ]
