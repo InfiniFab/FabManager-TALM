@@ -8876,7 +8876,7 @@
         "order": 7,
         "width": 6,
         "height": 1,
-        "format": "<div ng-if=\"msg.showCustomInput\">\n    <md-input-container>\n        <label>Nom de l'élève non inscrit</label>\n        <input ng-model=\"msg.customName\">\n    </md-input-container>\n</div>",
+        "format": "<div ng-if=\"msg.showCustomInput\">\n    <md-input-container>\n        <label>Nom de l'élève non inscrit</label>\n        <input ng-model=\"msg.customName\">\n    </md-input-container>\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: msg.customName})\">\n        Valider\n    </md-button>\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
@@ -8887,7 +8887,7 @@
         "wires": [
             [
                 "3d8f0bc4b692d3bd",
-                "c87dede7c3ea6d24"
+                "3fc66bc346f9018b"
             ]
         ]
     },
@@ -8896,7 +8896,7 @@
         "type": "debug",
         "z": "test_tab_001",
         "name": "debug 1",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
