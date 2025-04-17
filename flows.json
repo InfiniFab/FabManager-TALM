@@ -7654,7 +7654,8 @@
         "y": 100,
         "wires": [
             [
-                "c87dede7c3ea6d24"
+                "c87dede7c3ea6d24",
+                "ddb177db3005ce2d"
             ]
         ]
     },
@@ -8858,7 +8859,8 @@
         "y": 100,
         "wires": [
             [
-                "d48750a31b1eb0a7"
+                "d48750a31b1eb0a7",
+                "190aa3a372be5208"
             ]
         ]
     },
@@ -8880,7 +8882,57 @@
         "x": 1380,
         "y": 100,
         "wires": [
-            []
+            [
+                "3d8f0bc4b692d3bd"
+            ]
         ]
+    },
+    {
+        "id": "ddb177db3005ce2d",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "190aa3a372be5208",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "3d8f0bc4b692d3bd",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 160,
+        "wires": []
     }
 ]
