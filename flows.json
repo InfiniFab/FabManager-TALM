@@ -8784,7 +8784,7 @@
         "order": 7,
         "width": 6,
         "height": 2,
-        "format": "<div ng-if=\"msg.showCustomInput\">\n    <md-input-container >\n        <label style=\"color: white;\">Nom de l'élève non inscrit</label>\n        <input ng-model=\"msg.customName\">\n    </md-input-container>\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: msg.customName})\">\n        Valider\n    </md-button>\n</div>",
+        "format": "<div ng-if=\"msg.showCustomInput\">\n    <md-input-container >\n        <label style=\"color: white;\">Nom de l'élève non inscrit</label>\n        <input ng-model=\"msg.customName\">\n    </md-input-container>\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: msg.customName})\">\n        Ajouter\n    </md-button>\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
@@ -8860,8 +8860,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1510,
-        "y": 200,
+        "x": 1850,
+        "y": 140,
         "wires": [
             [
                 "325172790c7d6837"
