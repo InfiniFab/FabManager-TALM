@@ -8992,7 +8992,8 @@
         "y": 340,
         "wires": [
             [
-                "func_to_array"
+                "func_to_array",
+                "switch_actions"
             ]
         ]
     },
@@ -9185,6 +9186,41 @@
             [
                 "e5bba153e5974a31"
             ]
+        ]
+    },
+    {
+        "id": "switch_actions",
+        "type": "switch",
+        "z": "fd7dc8247b3e3472",
+        "name": "Action Switch",
+        "property": "",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": null,
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": null,
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "save",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1160,
+        "y": 340,
+        "wires": [
+            [],
+            [],
+            []
         ]
     }
 ]
