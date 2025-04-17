@@ -9137,8 +9137,37 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 420,
-        "y": 140,
+        "x": 440,
+        "y": 200,
         "wires": []
+    },
+    {
+        "id": "fdb3b343cfd346fb",
+        "type": "inject",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "e5bba153e5974a31"
+            ]
+        ]
     }
 ]
