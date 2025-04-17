@@ -3655,9 +3655,7 @@
         "x": 300,
         "y": 240,
         "wires": [
-            [
-                "16d49f4f.2f72e1"
-            ]
+            []
         ]
     },
     {
@@ -3701,7 +3699,9 @@
         "x": 300,
         "y": 300,
         "wires": [
-            []
+            [
+                "9e50c24de70392cb"
+            ]
         ]
     },
     {
@@ -4573,6 +4573,26 @@
         "y": 960,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "9e50c24de70392cb",
+        "type": "function",
+        "z": "b527c2c14fc2357e",
+        "name": "INTO",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "fdbcc9a.f22b838"
+            ]
         ]
     },
     {
