@@ -8988,11 +8988,10 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 920,
+        "x": 880,
         "y": 340,
         "wires": [
             [
-                "func_to_array",
                 "action_router"
             ]
         ]
@@ -9009,8 +9008,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 420,
+        "x": 1490,
+        "y": 400,
         "wires": [
             [
                 "split_mat"
@@ -9029,7 +9028,7 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 600,
+        "x": 1680,
         "y": 420,
         "wires": [
             [
@@ -9049,8 +9048,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 850,
-        "y": 420,
+        "x": 1690,
+        "y": 460,
         "wires": [
             [
                 "mysql_update_mat"
@@ -9103,8 +9102,8 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
-        "x": 1100,
-        "y": 420,
+        "x": 1900,
+        "y": 320,
         "wires": [
             []
         ]
@@ -9199,7 +9198,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1140,
+        "x": 1080,
         "y": 340,
         "wires": [
             [
@@ -9234,12 +9233,58 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 1360,
+        "x": 1280,
         "y": 340,
         "wires": [
-            [],
-            [],
-            []
+            [
+                "1fc99abde25b9165"
+            ],
+            [
+                "2852f54f65728a2a"
+            ],
+            [
+                "func_to_array"
+            ]
+        ]
+    },
+    {
+        "id": "1fc99abde25b9165",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "delete",
+        "func": "// msg.deleteId contient l’id à supprimer\nmsg.topic = \"DELETE FROM materiaux WHERE id = \" + msg.deleteId;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 280,
+        "wires": [
+            [
+                "mysql_update_mat"
+            ]
+        ]
+    },
+    {
+        "id": "2852f54f65728a2a",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "desactiver",
+        "func": "// msg.disableId contient l’id à désactiver\nmsg.topic = \"UPDATE materiaux SET prix = -1 WHERE id = \" + msg.disableId;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1470,
+        "y": 340,
+        "wires": [
+            [
+                "mysql_update_mat"
+            ]
         ]
     }
 ]
