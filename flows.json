@@ -9110,7 +9110,7 @@
         "type": "debug",
         "z": "fd7dc8247b3e3472",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
