@@ -9037,18 +9037,6 @@
         ]
     },
     {
-        "id": "mysql_update_mat",
-        "type": "mysql",
-        "z": "fd7dc8247b3e3472",
-        "mydb": "f3318311c7abaf8f",
-        "name": "Update Material",
-        "x": 1100,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ee5ae9e46cb980b9",
         "type": "function",
         "z": "fd7dc8247b3e3472",
