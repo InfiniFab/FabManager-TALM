@@ -9051,7 +9051,9 @@
         "x": 790,
         "y": 420,
         "wires": [
-            []
+            [
+                "mysql_update_mat"
+            ]
         ]
     },
     {
@@ -9107,6 +9109,18 @@
             [
                 "e5bba153e5974a31"
             ]
+        ]
+    },
+    {
+        "id": "mysql_update_mat",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "Update Material",
+        "x": 1100,
+        "y": 420,
+        "wires": [
+            []
         ]
     }
 ]
