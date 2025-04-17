@@ -6838,7 +6838,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1650,
+        "x": 1610,
         "y": 100,
         "wires": [
             [
@@ -8848,8 +8848,8 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Vérifie selection",
-        "func": "if (msg.payload === \"non_inscrit\") {\n    msg.showCustomInput = true;\n} else {\n    msg.showCustomInput = false;\n}\nreturn msg;",
-        "outputs": 1,
+        "func": "if (msg.payload === \"non_inscrit\") {\n    msg.showCustomInput = true;\n    return [null, msg];\n} else {\n    msg.showCustomInput = false;\n    return [msg, null];\n}\n",
+        "outputs": 2,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
@@ -8859,8 +8859,11 @@
         "y": 100,
         "wires": [
             [
-                "d48750a31b1eb0a7",
-                "190aa3a372be5208"
+                "190aa3a372be5208",
+                "c87dede7c3ea6d24"
+            ],
+            [
+                "d48750a31b1eb0a7"
             ]
         ]
     },
@@ -8879,8 +8882,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 1380,
-        "y": 100,
+        "x": 1360,
+        "y": 140,
         "wires": [
             [
                 "3d8f0bc4b692d3bd",
@@ -8918,8 +8921,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1300,
-        "y": 160,
+        "x": 1320,
+        "y": 40,
         "wires": []
     },
     {
@@ -8936,7 +8939,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1560,
-        "y": 160,
+        "y": 200,
         "wires": []
     }
 ]
