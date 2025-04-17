@@ -2950,26 +2950,6 @@
         "x": 1170,
         "y": 840,
         "wires": [
-            [
-                "94af375c9b81f0ef"
-            ]
-        ]
-    },
-    {
-        "id": "94af375c9b81f0ef",
-        "type": "ui_table",
-        "z": "29fd68d1903a9d50",
-        "group": "eb348c43ea325940",
-        "name": "",
-        "order": 1,
-        "width": 19,
-        "height": 11,
-        "columns": [],
-        "outputs": 1,
-        "cts": true,
-        "x": 1320,
-        "y": 840,
-        "wires": [
             []
         ]
     },
