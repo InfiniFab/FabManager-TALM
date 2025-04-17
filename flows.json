@@ -47,14 +47,6 @@
         "info": ""
     },
     {
-        "id": "cfa0df8141897434",
-        "type": "tab",
-        "label": "Flux 1",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "db6f982c.51d3d",
         "type": "websocket-listener",
         "z": "test_tab_001",
@@ -7455,7 +7447,7 @@
         "rules": [
             {
                 "t": "set",
-                "p": "bdd_bool",
+                "p": "bdd_bool_test",
                 "pt": "flow",
                 "to": "payload",
                 "tot": "msg"
@@ -7466,7 +7458,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 310,
+        "x": 320,
         "y": 820,
         "wires": [
             [
@@ -7560,7 +7552,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "SELECT bdd",
-        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `nodered`.`\";\ntopic = topic + table_name + \"` ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
+        "func": "let bdd_bool_test = flow.get(\"bdd_bool_test\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool_test) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `nodered`.`\";\ntopic = topic + table_name + \"` ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -8206,7 +8198,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "SELECT LAST STUDENTS",
-        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = (bdd_bool) ? \"usage_lab\" : \"usage_lab_test\";\n\n// Construction de la requête SQL\nlet topic = \"SELECT nom, classe, MAX(date) AS derniere_utilisation FROM `nodered`.`\" + table_name + \"` GROUP BY nom, classe ORDER BY derniere_utilisation DESC LIMIT 10;\";\n\nmsg.topic = topic;\nreturn msg;",
+        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool_test = flow.get(\"bdd_bool_test\");\nlet table_name = (bdd_bool_test) ? \"usage_lab\" : \"usage_lab_test\";\n\n// Construction de la requête SQL\nlet topic = \"SELECT nom, classe, MAX(date) AS derniere_utilisation FROM `nodered`.`\" + table_name + \"` GROUP BY nom, classe ORDER BY derniere_utilisation DESC LIMIT 10;\";\n\nmsg.topic = topic;\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -8550,7 +8542,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "confirmation",
-        "func": "if (msg.payload === false) {\n    // On désactive sans confirmation\n    flow.set(\"bdd_bool\", false);\n    return [msg, null];\n} else {\n    // On demande confirmation\n    return [null, { payload: \"Activer la base de production ?\", originalMsg: msg }];\n}\n",
+        "func": "if (msg.payload === false) {\n    // On désactive sans confirmation\n    flow.set(\"bdd_bool_test\", false);\n    return [msg, null];\n} else {\n    // On demande confirmation\n    return [null, { payload: \"Activer la base de production ?\", originalMsg: msg }];\n}\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -8573,14 +8565,14 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "annulation",
-        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    flow.set(\"bdd_bool\", true);\n    return [{ payload: true }, null]; // vers SELECT et on laisse le switch sur ON\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, { payload: false }]; // renvoie au switch pour le remettre à OFF\n}\n",
+        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    flow.set(\"bdd_bool_test\", true);\n    return [{ payload: true }, null]; // vers SELECT et on laisse le switch sur ON\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, { payload: false }]; // renvoie au switch pour le remettre à OFF\n}\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
+        "x": 710,
         "y": 880,
         "wires": [
             [
@@ -8887,90 +8879,6 @@
         "className": "",
         "x": 1380,
         "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "node1",
-        "type": "ui_dropdown",
-        "z": "cfa0df8141897434",
-        "name": "Sélection Élève",
-        "label": "Sélection Élève",
-        "tooltip": "",
-        "place": "Select an option",
-        "group": "ui_group1",
-        "order": 1,
-        "width": "6",
-        "height": "1",
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "non inscrit",
-                "value": "non_inscrit",
-                "type": "str"
-            },
-            {
-                "label": "Jean Dupont",
-                "value": "jean_dupont",
-                "type": "str"
-            },
-            {
-                "label": "Marie Curie",
-                "value": "marie_curie",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "eleve_selection",
-        "topicType": "str",
-        "className": "",
-        "x": 280,
-        "y": 140,
-        "wires": [
-            [
-                "node2"
-            ]
-        ]
-    },
-    {
-        "id": "node2",
-        "type": "function",
-        "z": "cfa0df8141897434",
-        "name": "Vérifie selection",
-        "func": "if (msg.payload === \"non_inscrit\") {\n    msg.showCustomInput = true;\n} else {\n    msg.showCustomInput = false;\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 480,
-        "y": 140,
-        "wires": [
-            [
-                "node3"
-            ]
-        ]
-    },
-    {
-        "id": "node3",
-        "type": "ui_template",
-        "z": "cfa0df8141897434",
-        "group": "ui_group1",
-        "name": "Champ nom élève non inscrit",
-        "order": 2,
-        "width": "6",
-        "height": "1",
-        "format": "<div ng-if=\"msg.showCustomInput\">\n    <md-input-container>\n        <label>Nom de l'élève non inscrit</label>\n        <input ng-model=\"msg.customName\">\n    </md-input-container>\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "className": "",
-        "x": 760,
-        "y": 140,
         "wires": [
             []
         ]
