@@ -9048,7 +9048,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
+        "x": 850,
         "y": 420,
         "wires": [
             [
@@ -9077,22 +9077,6 @@
         ]
     },
     {
-        "id": "6fd18f80b3ac028f",
-        "type": "debug",
-        "z": "fd7dc8247b3e3472",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 440,
-        "y": 200,
-        "wires": []
-    },
-    {
         "id": "fdb3b343cfd346fb",
         "type": "inject",
         "z": "fd7dc8247b3e3472",
@@ -9107,7 +9091,8 @@
         "y": 340,
         "wires": [
             [
-                "e5bba153e5974a31"
+                "e5bba153e5974a31",
+                "51bf9bee690c6e95"
             ]
         ]
     },
@@ -9119,6 +9104,84 @@
         "name": "Update Material",
         "x": 1100,
         "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "51bf9bee690c6e95",
+        "type": "ui_form",
+        "z": "fd7dc8247b3e3472",
+        "name": "ajout matériaux",
+        "label": "",
+        "group": "admin_group",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Nom",
+                "value": "nom",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Prix (€)",
+                "value": "prix",
+                "type": "number",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "nom": "",
+            "prix": ""
+        },
+        "payload": "",
+        "submit": "ajouter",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "59ebe8306adc0e78"
+            ]
+        ]
+    },
+    {
+        "id": "59ebe8306adc0e78",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "insert material",
+        "func": "// msg.payload = { nom: <string>, prix: <number> }\nconst { nom, prix } = msg.payload;\nmsg.topic = `INSERT INTO materiaux (nom, prix) VALUES ('${nom}', ${prix});`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "173426d140a750af",
+                "e5bba153e5974a31"
+            ]
+        ]
+    },
+    {
+        "id": "173426d140a750af",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "insert mat",
+        "x": 920,
+        "y": 240,
         "wires": [
             []
         ]
