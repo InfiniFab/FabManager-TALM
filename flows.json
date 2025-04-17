@@ -9101,27 +9101,9 @@
         "y": 340,
         "wires": [
             [
-                "mysql_get_mat",
-                "65597df510e47aa1"
+                "mysql_get_mat"
             ]
         ]
-    },
-    {
-        "id": "65597df510e47aa1",
-        "type": "debug",
-        "z": "fd7dc8247b3e3472",
-        "name": "debug 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 200,
-        "wires": []
     },
     {
         "id": "6fd18f80b3ac028f",
