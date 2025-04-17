@@ -8853,7 +8853,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "function 21",
-        "func": "\nlet eleves = global.get(\"elevesExcel\") || [];\n\nlet newEleve = {\n    \"Nom et Prénom d'usage\": msg.payload,\n    \"Promotion\": \"non_inscrit\"\n};\n\n// On évite les doublons\nlet exists = eleves.some(e => e[\"Nom et Prénom d'usage\"] === newEleve[\"Nom et Prénom d'usage\"] && e[\"Promotion\"] === \"non_inscrit\");\n\nif (!exists) {\n    eleves.push(newEleve);\n    global.set(\"elevesExcel\", eleves);\n}\n\n//msg.payload = eleves.filter(e => e[\"Promotion\"] === \"non_inscrit\").map(e => e[\"Nom et Prénom d'usage\"]).sort();\nmsg.annee = \"non_inscrit\";\nreturn msg;\n",
+        "func": "\nlet eleves = global.get(\"elevesExcel\") || [];\n\nlet newEleve = {\n    \"Nom et Prénom d'usage\": msg.payload,\n    \"Promotion\": \"non_inscrit\"\n};\n\n// On évite les doublons\nlet exists = eleves.some(e => e[\"Nom et Prénom d'usage\"] === newEleve[\"Nom et Prénom d'usage\"] && e[\"Promotion\"] === \"non_inscrit\");\n\nif (!exists) {\n    eleves.push(newEleve);\n    global.set(\"elevesExcel\", eleves);\n}\n\nmsg.payload = eleves.filter(e => e[\"Promotion\"] === \"non_inscrit\").map(e => e[\"Nom et Prénom d'usage\"]).sort();\nmsg.annee = \"non_inscrit\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
