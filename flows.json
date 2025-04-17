@@ -9197,19 +9197,19 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": null,
-                "v": "",
-                "vt": "str"
+                "t": "cont",
+                "v": "deleteId",
+                "vt": "msg"
             },
             {
-                "t": null,
-                "v": "",
-                "vt": "str"
+                "t": "cont",
+                "v": "disableId",
+                "vt": "msg"
             },
             {
-                "t": "eq",
+                "t": "cont",
                 "v": "save",
-                "vt": "str"
+                "vt": "msg"
             }
         ],
         "checkall": "false",
