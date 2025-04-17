@@ -6757,7 +6757,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "function 14",
-        "func": "//msg.payload = msg.payload[0][\"Nom de naissance\"];\nconst annee=[];\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (!annee.includes(msg.payload[i][\"Promotion\"])) {\n        annee.push(msg.payload[i][\"Promotion\"]);\n    }\n    \n    \n}\nannee.sort();\nmsg.payload=annee;\n\nreturn msg;",
+        "func": "//msg.payload = msg.payload[0][\"Nom de naissance\"];\nconst annee=[];\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (!annee.includes(msg.payload[i][\"Promotion\"])) {\n        annee.push(msg.payload[i][\"Promotion\"]);\n    }\n    \n    \n}\nannee.sort();\nannee.push(\"non_inscrit\");\n\nmsg.payload=annee;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
