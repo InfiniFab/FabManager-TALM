@@ -8927,7 +8927,7 @@
         "onceDelay": 0.1,
         "topic": "SELECT id, nom, prix FROM materiaux",
         "x": 150,
-        "y": 80,
+        "y": 260,
         "wires": [
             [
                 "mysql_get_mat"
@@ -8941,7 +8941,7 @@
         "mydb": "f3318311c7abaf8f",
         "name": "Get Materials",
         "x": 450,
-        "y": 140,
+        "y": 260,
         "wires": [
             [
                 "ui_template_mat"
@@ -8962,7 +8962,7 @@
         "fwdInMessages": true,
         "templateScope": "local",
         "x": 750,
-        "y": 140,
+        "y": 260,
         "wires": [
             [
                 "func_to_array"
@@ -8978,7 +8978,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 1000,
-        "y": 140,
+        "y": 260,
         "wires": [
             [
                 "split_mat"
@@ -8997,7 +8997,7 @@
         "stream": false,
         "addname": "",
         "x": 1200,
-        "y": 140,
+        "y": 260,
         "wires": [
             [
                 "change_query"
@@ -9019,7 +9019,7 @@
             }
         ],
         "x": 1400,
-        "y": 140,
+        "y": 260,
         "wires": [
             [
                 "mysql_update_mat"
@@ -9033,7 +9033,7 @@
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
         "x": 1600,
-        "y": 140,
+        "y": 260,
         "wires": [
             []
         ]
