@@ -9105,7 +9105,9 @@
         "x": 1880,
         "y": 320,
         "wires": [
-            []
+            [
+                "b524787c77625f65"
+            ]
         ]
     },
     {
@@ -9296,7 +9298,7 @@
         "links": [
             "9fd9ac4efdb80ea2"
         ],
-        "x": 2115,
+        "x": 2215,
         "y": 320,
         "wires": []
     },
@@ -9313,6 +9315,26 @@
         "wires": [
             [
                 "e5bba153e5974a31"
+            ]
+        ]
+    },
+    {
+        "id": "b524787c77625f65",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "clean the payload",
+        "func": "msg.payload = null;  // évite les doubles envois\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2070,
+        "y": 320,
+        "wires": [
+            [
+                "881eaa8fc460d970"
             ]
         ]
     }
