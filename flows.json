@@ -3632,6 +3632,22 @@
         ]
     },
     {
+        "id": "8b089876db0dfe6e",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in reset",
+        "links": [
+            "e4e5be2af9511b04"
+        ],
+        "x": 65,
+        "y": 80,
+        "wires": [
+            [
+                "7f901eb74e679cf7"
+            ]
+        ]
+    },
+    {
         "id": "f1a8a57d.896448",
         "type": "inject",
         "z": "b527c2c14fc2357e",
@@ -4570,7 +4586,9 @@
         "x": 810,
         "y": 960,
         "wires": [
-            []
+            [
+                "e4e5be2af9511b04"
+            ]
         ]
     },
     {
@@ -4592,6 +4610,19 @@
                 "fdbcc9a.f22b838"
             ]
         ]
+    },
+    {
+        "id": "e4e5be2af9511b04",
+        "type": "link out",
+        "z": "b527c2c14fc2357e",
+        "name": "link out insert xlsx",
+        "mode": "link",
+        "links": [
+            "8b089876db0dfe6e"
+        ],
+        "x": 1025,
+        "y": 960,
+        "wires": []
     },
     {
         "id": "87ff094e498a9ea3",
