@@ -8794,7 +8794,7 @@
         "y": 140,
         "wires": [
             [
-                "325172790c7d6837"
+                "e9960797950c3c57"
             ]
         ]
     },
@@ -8845,6 +8845,26 @@
         "wires": [
             [
                 "ba1de49267e5a808"
+            ]
+        ]
+    },
+    {
+        "id": "e9960797950c3c57",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 21",
+        "func": "\nlet eleves = global.get(\"elevesExcel\") || [];\n\nlet newEleve = {\n    \"Nom et Prénom d'usage\": msg.payload,\n    \"Promotion\": \"non_inscrit\"\n};\n\n// On évite les doublons\nlet exists = eleves.some(e => e[\"Nom et Prénom d'usage\"] === newEleve[\"Nom et Prénom d'usage\"] && e[\"Promotion\"] === \"non_inscrit\");\n\nif (!exists) {\n    eleves.push(newEleve);\n    global.set(\"elevesExcel\", eleves);\n}\n\nmsg.payload = eleves.filter(e => e[\"Promotion\"] === \"non_inscrit\").map(e => e[\"Nom et Prénom d'usage\"]).sort();\nmsg.annee = \"non_inscrit\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1510,
+        "y": 200,
+        "wires": [
+            [
+                "325172790c7d6837"
             ]
         ]
     }
