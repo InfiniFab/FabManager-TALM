@@ -9146,23 +9146,13 @@
         "type": "inject",
         "z": "fd7dc8247b3e3472",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
+        "props": [],
         "repeat": "",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 110,
+        "x": 100,
         "y": 180,
         "wires": [
             [
