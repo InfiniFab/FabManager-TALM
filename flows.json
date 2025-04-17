@@ -8993,7 +8993,7 @@
         "wires": [
             [
                 "func_to_array",
-                "switch_actions"
+                "action_router"
             ]
         ]
     },
@@ -9189,33 +9189,52 @@
         ]
     },
     {
+        "id": "action_router",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Prépare Action",
+        "func": "// Détermine l'action en fonction des propriétés présentes\nif (msg.deleteId) {\n    msg.action = \"delete\";\n} else if (msg.disableId) {\n    msg.action = \"disable\";\n} else {\n    msg.action = \"save\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 340,
+        "wires": [
+            [
+                "switch_actions"
+            ]
+        ]
+    },
+    {
         "id": "switch_actions",
         "type": "switch",
         "z": "fd7dc8247b3e3472",
         "name": "Action Switch",
-        "property": "",
+        "property": "action",
         "propertyType": "msg",
         "rules": [
             {
-                "t": "cont",
-                "v": "deleteId",
-                "vt": "msg"
+                "t": "eq",
+                "v": "delete",
+                "vt": "str"
             },
             {
-                "t": "cont",
-                "v": "disableId",
-                "vt": "msg"
+                "t": "eq",
+                "v": "disable",
+                "vt": "str"
             },
             {
-                "t": "cont",
+                "t": "eq",
                 "v": "save",
-                "vt": "msg"
+                "vt": "str"
             }
         ],
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 1160,
+        "x": 1360,
         "y": 340,
         "wires": [
             [],
