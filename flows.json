@@ -8940,7 +8940,7 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Get Materials",
-        "x": 450,
+        "x": 350,
         "y": 260,
         "wires": [
             [
@@ -8960,8 +8960,10 @@
         "format": "<table>\n  <tr><th>Nom</th><th>Prix (€)</th></tr>\n  <tr ng-repeat=\"m in msg.payload\">\n    <td>{{m.nom}}</td>\n    <td><input type=\"number\" ng-model=\"m.prix\"></td>\n  </tr>\n</table>\n<md-button class=\"md-raised md-primary\" ng-click=\"send({payload: msg.payload})\">Enregistrer</md-button>",
         "storeOutMessages": true,
         "fwdInMessages": true,
+        "resendOnRefresh": false,
         "templateScope": "local",
-        "x": 750,
+        "className": "",
+        "x": 560,
         "y": 260,
         "wires": [
             [
@@ -8976,8 +8978,12 @@
         "name": "Prépare mise à jour",
         "func": "// msg.payload est un tableau d’objets {id, nom, prix}\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
-        "x": 1000,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
         "y": 260,
         "wires": [
             [
@@ -8996,33 +9002,12 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 1200,
+        "property": "payload",
+        "x": 1000,
         "y": 260,
         "wires": [
             [
-                "change_query"
-            ]
-        ]
-    },
-    {
-        "id": "change_query",
-        "type": "change",
-        "z": "fd7dc8247b3e3472",
-        "name": "Set Update Query",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "UPDATE materiaux SET prix = ${payload.prix} WHERE id = ${payload.id}",
-                "tot": "str"
-            }
-        ],
-        "x": 1400,
-        "y": 260,
-        "wires": [
-            [
-                "mysql_update_mat"
+                "ee5ae9e46cb980b9"
             ]
         ]
     },
@@ -9032,10 +9017,30 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
-        "x": 1600,
+        "x": 1440,
         "y": 260,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "ee5ae9e46cb980b9",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "update materiaux",
+        "func": "msg.topic = \n    `UPDATE materiaux \n    SET prix = ${msg.payload.prix} \n    WHERE id = ${msg.payload.id};`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 260,
+        "wires": [
+            [
+                "mysql_update_mat"
+            ]
         ]
     }
 ]
