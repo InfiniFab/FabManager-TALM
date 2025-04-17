@@ -3699,9 +3699,7 @@
         "x": 300,
         "y": 300,
         "wires": [
-            [
-                "9e50c24de70392cb"
-            ]
+            []
         ]
     },
     {
@@ -4580,10 +4578,10 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "INTO",
-        "func": "// On part des variables flow ou msg que tu as déjà définies :\n//   flow.get(\"room\"), flow.get(\"material_id\"), flow.get(\"filament\"), msg.payload (poids en g)\n\nconst now = new Date().toISOString().slice(0, 19).replace('T', ' ');\nconst room = flow.get(\"room\") || 'NULL';\nconst materialId = flow.get(\"material_id\") || 'NULL';\n\n// Calcul du prix/kg selon le filament\nlet prix_kg;\nswitch (flow.get(\"filament\")) {\n    case 'PLA': prix_kg = 19.9; break;\n    case 'PLA flex': prix_kg = 50; break;\n    case 'PLA transparent': prix_kg = 40; break;\n    case 'PLA bois': prix_kg = 51.8; break;\n    default: prix_kg = 0;\n}\n\n// Prix total pour le poids consommé\nconst poids = parseInt(msg.payload, 10);\nconst prix_total = prix_kg * poids / 1000;\n\n// Construction de la requête INSERT\nlet topic = \"INSERT INTO `materiaux` \";\ntopic += \"(date, room, id, prix_unitaire, prix_total) \";\ntopic += \"VALUES (\";\ntopic += `'${now}', ${room}, ${materialId}, ${prix_kg}, ${prix_total}`;\ntopic += \");\";\n\nmsg.topic = topic;\nreturn msg;\n",
+        "func": "topic = INSERT INTO materiaux(nom, prix) VALUES\n    ('PLA', 19.9),\n    ('PLA flex', 50.0),\n    ('PLA transparent', 40.0),\n    ('PLA bois', 51.8);\n\nmsg.topic = topic;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
-        "noerr": 0,
+        "noerr": 13,
         "initialize": "",
         "finalize": "",
         "libs": [],
