@@ -8965,8 +8965,8 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Get Materials",
-        "x": 750,
-        "y": 320,
+        "x": 670,
+        "y": 340,
         "wires": [
             [
                 "ui_template_mat"
@@ -8988,8 +8988,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 980,
-        "y": 320,
+        "x": 920,
+        "y": 340,
         "wires": [
             [
                 "func_to_array"
@@ -9008,8 +9008,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
-        "y": 440,
+        "x": 390,
+        "y": 420,
         "wires": [
             [
                 "split_mat"
@@ -9028,8 +9028,8 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 580,
-        "y": 440,
+        "x": 600,
+        "y": 420,
         "wires": [
             [
                 "ee5ae9e46cb980b9"
@@ -9043,9 +9043,11 @@
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
         "x": 1000,
-        "y": 440,
+        "y": 420,
         "wires": [
-            []
+            [
+                "e5bba153e5974a31"
+            ]
         ]
     },
     {
@@ -9061,7 +9063,7 @@
         "finalize": "",
         "libs": [],
         "x": 790,
-        "y": 440,
+        "y": 420,
         "wires": [
             [
                 "mysql_update_mat"
@@ -9076,8 +9078,8 @@
         "links": [
             "e4e5be2af9511b04"
         ],
-        "x": 335,
-        "y": 240,
+        "x": 205,
+        "y": 340,
         "wires": [
             [
                 "e5bba153e5974a31"
@@ -9096,8 +9098,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
-        "y": 320,
+        "x": 410,
+        "y": 340,
         "wires": [
             [
                 "mysql_get_mat"
