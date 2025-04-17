@@ -8965,7 +8965,7 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Get Materials",
-        "x": 670,
+        "x": 710,
         "y": 340,
         "wires": [
             [
@@ -9057,26 +9057,6 @@
         ]
     },
     {
-        "id": "e5bba153e5974a31",
-        "type": "function",
-        "z": "fd7dc8247b3e3472",
-        "name": "select * materiaux",
-        "func": "msg.topic = \"SELECT id, nom, prix FROM materiaux\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 340,
-        "wires": [
-            [
-                "mysql_get_mat"
-            ]
-        ]
-    },
-    {
         "id": "fdb3b343cfd346fb",
         "type": "inject",
         "z": "fd7dc8247b3e3472",
@@ -9087,12 +9067,12 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 100,
-        "y": 340,
+        "x": 80,
+        "y": 300,
         "wires": [
             [
-                "e5bba153e5974a31",
-                "51bf9bee690c6e95"
+                "51bf9bee690c6e95",
+                "b524787c77625f65"
             ]
         ]
     },
@@ -9106,7 +9086,7 @@
         "y": 320,
         "wires": [
             [
-                "b524787c77625f65"
+                "881eaa8fc460d970"
             ]
         ]
     },
@@ -9185,7 +9165,7 @@
         "y": 240,
         "wires": [
             [
-                "e5bba153e5974a31"
+                "b524787c77625f65"
             ]
         ]
     },
@@ -9196,6 +9176,7 @@
         "name": "Prépare Action",
         "func": "// Détermine l'action en fonction des propriétés présentes\nif (msg.deleteId) {\n    msg.action = \"delete\";\n} else if (msg.disableId) {\n    msg.action = \"disable\";\n} else {\n    msg.action = \"save\";\n}\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -9301,7 +9282,7 @@
         "y": 440,
         "wires": [
             [
-                "e5bba153e5974a31"
+                "b524787c77625f65"
             ]
         ]
     },
@@ -9309,18 +9290,20 @@
         "id": "b524787c77625f65",
         "type": "function",
         "z": "fd7dc8247b3e3472",
-        "name": "clean the payload",
-        "func": "msg.payload = null;  // évite les doubles envois\nmsg.topic = \"SELECT id, nom, prix FROM materiaux\";\nreturn msg;\n",
+        "name": "clean and select the payload",
+        "func": "msg.payload = null;  // évite les doubles envois\nmsg.topic = \"SELECT id, nom, prix FROM materiaux\";\nmsg.action = null;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2070,
-        "y": 320,
+        "x": 480,
+        "y": 340,
         "wires": [
-            []
+            [
+                "mysql_get_mat"
+            ]
         ]
     },
     {
