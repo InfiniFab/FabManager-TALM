@@ -7121,7 +7121,7 @@
         "y": 580,
         "wires": [
             [
-                "7cebf610dd800332"
+                "62fc5a98cc476bef"
             ]
         ]
     },
@@ -7293,12 +7293,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2460,
-        "y": 580,
+        "x": 2730,
+        "y": 480,
         "wires": [
-            [
-                "a4fe69580356a279"
-            ]
+            []
         ]
     },
     {
@@ -9029,6 +9027,26 @@
         "wires": [
             [
                 "03ddbfa7f18488b5"
+            ]
+        ]
+    },
+    {
+        "id": "62fc5a98cc476bef",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 16",
+        "func": "const prix_u = flow.get(\"prix_u\"); // récupéré depuis la base\nconst qte = parseInt(msg.payload);\n\nconst prix = prix_u * qte;\nflow.set(\"prix_laser\", prix);\nmsg.payload = prix;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2470,
+        "y": 640,
+        "wires": [
+            [
+                "a4fe69580356a279"
             ]
         ]
     },
