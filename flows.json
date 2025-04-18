@@ -7322,7 +7322,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "function 19",
-        "func": "let prix_u;\n\nswitch (flow.get(\"mat_laser\")) {\n  case 'PMMA 3mm':\n    prix_u=7.8;\n    break;\n  case 'PMMA 5mm':\n    prix_u=12.59;\n    break;\n  case 'CP 3mm':\n    prix_u=3;\n    break;\n  case 'CP 5mm':\n    prix_u=3.3;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nconst prix = prix_u*parseInt(msg.payload);\nflow.set('prix_laser',prix);\nmsg.payload=prix;\nreturn msg;",
+        "func": "const prix_u = flow.get(\"prix_u\"); // récupéré depuis la base\nconst qte = parseInt(msg.payload);\n\nconst prix = prix_u * qte;\nflow.set(\"prix_laser\", prix);\nmsg.payload = prix;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -8085,7 +8085,7 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 2620,
+        "x": 2700,
         "y": 580,
         "wires": []
     },
@@ -9035,15 +9035,15 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "function 16",
-        "func": "const prix_u = flow.get(\"prix_u\"); // récupéré depuis la base\nconst qte = parseInt(msg.payload);\n\nconst prix = prix_u * qte;\nflow.set(\"prix_laser\", prix);\nmsg.payload = prix;\nreturn msg;\n",
+        "func": "const prix_kg = flow.get(\"prix_kg\"); // récupéré depuis la base\nconst poids_gr = parseInt(msg.payload);\n\nconst prix = prix_kg * poids_gr / 1000;\nflow.set(\"prix_3d\", prix);\n\nmsg.payload = prix;\nmsg.prix_kg = prix_kg;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2470,
-        "y": 640,
+        "x": 2510,
+        "y": 580,
         "wires": [
             [
                 "a4fe69580356a279"
