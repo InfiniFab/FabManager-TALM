@@ -7282,24 +7282,6 @@
         ]
     },
     {
-        "id": "46496866b346d64c",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "function 16",
-        "func": "\nswitch (msg.payload) {\n  case 'PLA':\n    msg.payload=19.9;\n    break;\n  case 'PLA flex':\n    msg.payload=50;\n    break;\n  case 'PLA transparent':\n    msg.payload=40;\n    break;\n  case 'PLA bois':\n    msg.payload=51.8;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2130,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "7cebf610dd800332",
         "type": "function",
         "z": "test_tab_001",
