@@ -7090,8 +7090,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1800,
-        "y": 780,
+        "x": 1820,
+        "y": 740,
         "wires": [
             [
                 "2d156a39325298be"
@@ -7144,8 +7144,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2480,
-        "y": 680,
+        "x": 2700,
+        "y": 740,
         "wires": [
             [
                 "c321c5ee6106d86e"
@@ -7313,12 +7313,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1780,
-        "y": 740,
+        "x": 2390,
+        "y": 860,
         "wires": [
-            [
-                "03ddbfa7f18488b5"
-            ]
+            []
         ]
     },
     {
@@ -7333,8 +7331,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2670,
-        "y": 680,
+        "x": 2890,
+        "y": 740,
         "wires": [
             [
                 "111842c30eb7a261"
@@ -7799,7 +7797,7 @@
         "wires": [
             [
                 "7d74c3261937c256",
-                "32b9e3674ec9b089"
+                "get_laser_price_q"
             ]
         ]
     },
@@ -7991,8 +7989,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 2270,
-        "y": 680,
+        "x": 2490,
+        "y": 740,
         "wires": [
             [
                 "64b9e5cd34a9104e"
@@ -8110,8 +8108,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1920,
-        "y": 740,
+        "x": 2750,
+        "y": 800,
         "wires": []
     },
     {
@@ -8131,8 +8129,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 2830,
-        "y": 680,
+        "x": 3050,
+        "y": 740,
         "wires": []
     },
     {
@@ -8981,6 +8979,52 @@
         "wires": [
             [
                 "52f8ec3eb85d95ea"
+            ]
+        ]
+    },
+    {
+        "id": "get_laser_price_q",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Query Laser Price",
+        "func": "const mat = flow.get(\"mat_laser\");\nmsg.topic = `SELECT prix FROM materiaux WHERE nom = '${mat}';`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1950,
+        "y": 800,
+        "wires": [
+            [
+                "mysql_laser_price"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_laser_price",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "Get Laser Price",
+        "x": 2170,
+        "y": 800,
+        "wires": [
+            [
+                "extract_laser_price"
+            ]
+        ]
+    },
+    {
+        "id": "extract_laser_price",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Extract Laser Price",
+        "func": "if (msg.payload && msg.payload.length) {\n  msg.payload = msg.payload[0].prix;\n  flow.set('prix_u', msg.payload);\n} else {\n  msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 2390,
+        "y": 800,
+        "wires": [
+            [
+                "03ddbfa7f18488b5"
             ]
         ]
     },
