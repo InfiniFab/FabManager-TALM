@@ -4619,8 +4619,7 @@
         "mode": "link",
         "links": [
             "8b089876db0dfe6e",
-            "988ee3a15f32b724",
-            "7b99c56d07e6134d"
+            "988ee3a15f32b724"
         ],
         "x": 1025,
         "y": 960,
@@ -9065,7 +9064,7 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": 0.1,
+        "onceDelay": "1",
         "topic": "",
         "x": 80,
         "y": 300,
