@@ -7144,8 +7144,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2700,
-        "y": 740,
+        "x": 2710,
+        "y": 700,
         "wires": [
             [
                 "c321c5ee6106d86e"
@@ -7282,42 +7282,6 @@
         ]
     },
     {
-        "id": "7cebf610dd800332",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "function 17",
-        "func": "let prix_kg;\n\nswitch (flow.get(\"filament\")) {\n  case 'PLA':\n    prix_kg=19.9;\n    break;\n  case 'PLA flex':\n    prix_kg=50;\n    break;\n  case 'PLA transparent':\n    prix_kg=40;\n    break; \n  case 'PLA bois':\n    prix_kg = 51.8;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nconst prix = prix_kg*parseInt(msg.payload)/1000;\nflow.set('prix_3d',prix);\nmsg.payload=prix;\nmsg.prix_kg=prix_kg;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2730,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "32b9e3674ec9b089",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "function 18",
-        "func": "\nswitch (msg.payload) {\n  case 'PMMA 3mm':\n    msg.payload=7.8;\n    break;\n  case 'PMMA 5mm':\n    msg.payload=12.59;\n    break;\n  case 'CP 3mm':\n    msg.payload=3;\n    break;\n  case 'CP 5mm':\n    msg.payload=3.3;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2390,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "c321c5ee6106d86e",
         "type": "function",
         "z": "test_tab_001",
@@ -7329,8 +7293,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2890,
-        "y": 740,
+        "x": 2900,
+        "y": 700,
         "wires": [
             [
                 "111842c30eb7a261"
@@ -7987,8 +7951,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "msg",
-        "x": 2490,
-        "y": 740,
+        "x": 2500,
+        "y": 700,
         "wires": [
             [
                 "64b9e5cd34a9104e"
@@ -8127,8 +8091,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 3050,
-        "y": 740,
+        "x": 3060,
+        "y": 700,
         "wires": []
     },
     {
