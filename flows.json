@@ -7293,12 +7293,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1780,
-        "y": 500,
+        "x": 2130,
+        "y": 380,
         "wires": [
-            [
-                "52f8ec3eb85d95ea"
-            ]
+            []
         ]
     },
     {
@@ -7770,7 +7768,7 @@
         "wires": [
             [
                 "c1e83eddd612a882",
-                "46496866b346d64c"
+                "get_filament_price_q"
             ]
         ]
     },
@@ -8088,8 +8086,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 1930,
-        "y": 500,
+        "x": 2510,
+        "y": 480,
         "wires": []
     },
     {
@@ -8955,6 +8953,52 @@
         "wires": [
             [
                 "d01e60f5f0af1df5"
+            ]
+        ]
+    },
+    {
+        "id": "get_filament_price_q",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Query Filament Price",
+        "func": "// Construit la requête SQL selon le filament sélectionné\nconst fil = flow.get(\"filament\");\nmsg.topic = `SELECT prix FROM materiaux WHERE nom = '${fil}';`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1820,
+        "y": 480,
+        "wires": [
+            [
+                "mysql_filament_price"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_filament_price",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "Get Filament Price",
+        "x": 2040,
+        "y": 480,
+        "wires": [
+            [
+                "extract_filament_price"
+            ]
+        ]
+    },
+    {
+        "id": "extract_filament_price",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Extract Filament Price",
+        "func": "// msg.payload is an array of rows from MariaDB\nif (msg.payload && msg.payload.length) {\n  msg.payload = msg.payload[0].prix;\n  flow.set('prix_kg', msg.payload);\n} else {\n  msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 2260,
+        "y": 480,
+        "wires": [
+            [
+                "52f8ec3eb85d95ea"
             ]
         ]
     },
