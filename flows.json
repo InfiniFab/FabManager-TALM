@@ -8989,7 +8989,11 @@
         "name": "Query Laser Price",
         "func": "const mat = flow.get(\"mat_laser\");\nmsg.topic = `SELECT prix FROM materiaux WHERE nom = '${mat}';`;\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 1950,
         "y": 800,
         "wires": [
