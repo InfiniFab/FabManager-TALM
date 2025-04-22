@@ -9245,11 +9245,19 @@
                 "type": "number",
                 "required": true,
                 "rows": null
+            },
+            {
+                "label": "Type",
+                "value": "type",
+                "type": "checkbox",
+                "required": false,
+                "rows": null
             }
         ],
         "formValue": {
             "nom": "",
-            "prix": ""
+            "prix": "",
+            "type": false
         },
         "payload": "",
         "submit": "ajouter",
@@ -9271,7 +9279,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "insert material",
-        "func": "// msg.payload = { nom: <string>, prix: <number> }\nconst { nom, prix } = msg.payload;\nmsg.topic = `INSERT INTO materiaux (nom, prix) VALUES ('${nom}', ${prix});`;\nreturn msg;\n",
+        "func": "const { nom, prix, type } = msg.payload;\nmsg.topic = `INSERT INTO materiaux (nom, prix, type) VALUES ('${nom}', ${prix}, '${type}');`;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -9414,7 +9422,8 @@
         "wires": [
             [
                 "b524787c77625f65",
-                "51bf9bee690c6e95"
+                "51bf9bee690c6e95",
+                "1291df5c625f5011"
             ]
         ]
     },
@@ -9468,6 +9477,29 @@
         "wires": [
             [
                 "881eaa8fc460d970"
+            ]
+        ]
+    },
+    {
+        "id": "1291df5c625f5011",
+        "type": "ui_template",
+        "z": "fd7dc8247b3e3472",
+        "group": "admin_group",
+        "name": "",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<form>\n    <label for=\"nom\">Nom :</label>\n    <input type=\"text\" id=\"nom\" ng-model=\"nom\" required><br><br>\n\n    <label for=\"prix\">Prix (€) :</label>\n    <input type=\"number\" id=\"prix\" ng-model=\"prix\" required><br><br>\n\n    <label for=\"type\">Type :</label>\n    <select id=\"type\" ng-model=\"type\" required>\n    <option value=\"impression 3d\">Impression 3D</option>\n    <option value=\"découpeuse laser\">Découpeuse Laser</option>\n    <option value=\"découpeuse vinyle\">Découpeuse Vinyle</option>\n  </select><br><br>\n\n    <button type=\"submit\" ng-click=\"submitForm()\">Ajouter</button>\n</form>\n\n<script>\n    (function(scope) {\n    scope.submitForm = function() {\n      scope.send({\n        payload: {\n          nom: scope.nom,\n          prix: scope.prix,\n          type: scope.type\n        }\n      });\n      // Réinitialiser les champs après soumission\n      scope.nom = \"\";\n      scope.prix = null;\n      scope.type = \"\";\n    };\n  })(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "59ebe8306adc0e78"
             ]
         ]
     }
