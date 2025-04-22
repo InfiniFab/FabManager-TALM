@@ -9203,7 +9203,8 @@
         "wires": [
             [
                 "51bf9bee690c6e95",
-                "b524787c77625f65"
+                "b524787c77625f65",
+                "182e2805887e908f"
             ]
         ]
     },
@@ -9269,9 +9270,7 @@
         "x": 400,
         "y": 240,
         "wires": [
-            [
-                "59ebe8306adc0e78"
-            ]
+            []
         ]
     },
     {
@@ -9423,7 +9422,7 @@
             [
                 "b524787c77625f65",
                 "51bf9bee690c6e95",
-                "1291df5c625f5011"
+                "182e2805887e908f"
             ]
         ]
     },
@@ -9495,11 +9494,45 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 400,
+        "x": 500,
         "y": 140,
         "wires": [
             [
                 "59ebe8306adc0e78"
+            ]
+        ]
+    },
+    {
+        "id": "182e2805887e908f",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "clean and select the payload",
+        "func": "msg.topic = \"SELECT id, nom FROM type\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "102265dde937b16e"
+            ]
+        ]
+    },
+    {
+        "id": "102265dde937b16e",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "Get Types",
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "1291df5c625f5011"
             ]
         ]
     }
