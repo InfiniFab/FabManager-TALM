@@ -7763,8 +7763,8 @@
             }
         ],
         "payload": "",
-        "topic": "options",
-        "topicType": "msg",
+        "topic": "",
+        "topicType": "str",
         "className": "",
         "x": 1600,
         "y": 500,
@@ -7797,8 +7797,8 @@
             }
         ],
         "payload": "",
-        "topic": "options",
-        "topicType": "msg",
+        "topic": "",
+        "topicType": "str",
         "className": "",
         "x": 1600,
         "y": 740,
@@ -9125,9 +9125,11 @@
         "name": "Group Materials By Type",
         "func": "// msg.payload = [{nom, type_nom}, …]\nlet groups = {};\nmsg.payload.forEach(m => {\n    if (!groups[m.type_nom]) groups[m.type_nom] = [];\n    groups[m.type_nom].push({ label: m.nom, value: m.nom });\n});\nlet msgs = [];\nfor (let type in groups) {\n    msgs.push({ topic: type, payload: groups[type] });\n}\nreturn msgs;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 1300,
         "y": 1460,
         "wires": [
@@ -9211,7 +9213,7 @@
                 "tot": "msg"
             }
         ],
-        "x": 1700,
+        "x": 1690,
         "y": 1500,
         "wires": [
             [
