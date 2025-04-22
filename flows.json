@@ -3671,7 +3671,9 @@
         "x": 300,
         "y": 240,
         "wires": [
-            []
+            [
+                "16d49f4f.2f72e1"
+            ]
         ]
     },
     {
@@ -3879,7 +3881,7 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "TABLE",
-        "func": "let topic = \"CREATE TABLE IF NOT EXISTS `materiaux` ( \";\ntopic += \"`id` INT NOT NULL AUTO_INCREMENT, \";\ntopic += \"`nom` VARCHAR(255) UNIQUE NOT NULL, \";\ntopic += \"`prix` FLOAT NOT NULL, \";\ntopic += \"PRIMARY KEY (`id`)\";\ntopic += \") COLLATE='latin1_swedish_ci';\";\nmsg.topic = topic;\n\nreturn msg;\n",
+        "func": "let topic = \"\";\n\n// Création de la table `type`\ntopic += \"CREATE TABLE IF NOT EXISTS `type` (\";\ntopic += \"`id` INT NOT NULL AUTO_INCREMENT, \";\ntopic += \"`nom` VARCHAR(255) UNIQUE NOT NULL, \";\ntopic += \"PRIMARY KEY (`id`)\";\ntopic += \") COLLATE='latin1_swedish_ci';\";\n\n// Ajout de la colonne `type_id` dans la table `materiaux` si elle n'existe pas\ntopic += \"ALTER TABLE `materiaux` \";\ntopic += \"ADD COLUMN `type_id` INT NOT NULL, \";\ntopic += \"ADD CONSTRAINT `fk_type` FOREIGN KEY (`type_id`) REFERENCES `type`(`id`) \";\ntopic += \"ON DELETE SET NULL ON UPDATE CASCADE;\";\n\nmsg.topic = topic;\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
