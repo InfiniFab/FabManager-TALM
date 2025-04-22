@@ -9061,106 +9061,89 @@
         ]
     },
     {
-        "id": "inject_materiaux_3d",
+        "id": "inject_start",
         "type": "inject",
         "z": "test_tab_001",
-        "name": "Inject matériaux impression 3D",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
+        "name": "Get Materials",
+        "props": [],
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "[\"PLA\",\"PLA flex\",\"PLA transparent\",\"PLA bois\",\"PETG\"]",
-        "payloadType": "json",
-        "x": 650,
-        "y": 1480,
+        "x": 570,
+        "y": 1460,
         "wires": [
             [
-                "function_gen_options"
+                "d3634a1cf3867678"
             ]
         ]
     },
     {
-        "id": "function_gen_options",
+        "id": "function_split_materials",
         "type": "function",
         "z": "test_tab_001",
-        "name": "Génère msg.options",
-        "func": "let list = msg.payload;\nmsg.options = list.map(e => ({ label: e, value: e }));\nreturn msg;",
+        "name": "Split by Type",
+        "func": "// Résultat brut de MariaDB dans msg.payload\nconst all = msg.payload;\n\n// On trie par type (ex : impression 3D, découpe laser, etc.)\nconst types = {};\n\nall.forEach(mat => {\n    if (!types[mat.type]) types[mat.type] = [];\n    types[mat.type].push({ label: mat.nom, value: mat.nom });\n});\n\n// On génère un message par type\nconst outputs = [];\nfor (let type in types) {\n    outputs.push({\n        topic: type,\n        payload: types[type],\n        options: types[type] // comme tu fais dans ton flow\n    });\n}\n\nreturn [outputs];",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 900,
-        "y": 1480,
+        "x": 1150,
+        "y": 1460,
         "wires": [
             [
-                "mat_change_payload"
+                "debug_out"
             ]
         ]
     },
     {
-        "id": "mat_change_payload",
-        "type": "change",
+        "id": "debug_out",
+        "type": "debug",
         "z": "test_tab_001",
-        "name": "msg.payload ← msg.options",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "options",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1160,
-        "y": 1480,
-        "wires": [
-            [
-                "mat_dropdown",
-                "071db0f4a2418b79",
-                "2a5f57fbedbd386c"
-            ]
-        ]
+        "name": "Résultat par type",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 1460,
+        "wires": []
     },
     {
-        "id": "mat_dropdown",
-        "type": "ui_dropdown",
+        "id": "d3634a1cf3867678",
+        "type": "mysql",
         "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
         "name": "",
-        "label": "Matériau (3D)",
-        "tooltip": "",
-        "place": "Choisir un matériau",
-        "group": "3f0df9d3616d3899",
-        "order": 4,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "",
-        "topicType": "str",
-        "className": "",
-        "x": 1400,
-        "y": 1480,
+        "x": 940,
+        "y": 1460,
+        "wires": [
+            [
+                "function_split_materials"
+            ]
+        ]
+    },
+    {
+        "id": "73b962f6d5dbbf43",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "function 17",
+        "func": "msg.topic = \"SELECT * FROM materiaux\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1460,
         "wires": [
             []
         ]
@@ -9301,7 +9284,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "insert material",
-        "func": "const { nom, prix, type } = msg.payload;\n\nif (!nom || !prix || !type) {\n    node.error(\"Champs manquants\", msg);\n    return null;\n}\n\nmsg.topic = `INSERT INTO materiaux (nom, prix, type_id) VALUES (${JSON.stringify(nom)}, ${prix}, ${type});`;\nreturn msg;\n",
+        "func": "const { nom, prix, type } = msg.payload;\n\nif (!nom || !prix || !type) {\n    node.error(\"Champs manquants\", msg);\n    return null;\n}\n\nmsg.topic = `INSERT INTO materiaux (nom, prix, type_id) VALUES (${JSON.stringify(nom)}, ${prix}, ${type});`;\nmsg\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
