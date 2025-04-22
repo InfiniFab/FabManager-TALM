@@ -3791,9 +3791,7 @@
         "x": 300,
         "y": 420,
         "wires": [
-            [
-                "86051971.03c5c8"
-            ]
+            []
         ]
     },
     {
@@ -4647,7 +4645,9 @@
         "x": 290,
         "y": 540,
         "wires": [
-            []
+            [
+                "7489d2a7ec02842c"
+            ]
         ]
     },
     {
@@ -4655,7 +4655,7 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "ALTER",
-        "func": "msg.topic = \"ALTER TABLE `materiaux` \" +\n    \"ADD COLUMN `type_id` INT;\";\nreturn msg;\n",
+        "func": "msg.topic = \"ALTER TABLE `materiaux` \" +\n    \"MODIFY COLUMN `type_id` INT NOT NULL;\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
