@@ -9144,7 +9144,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "SELECT",
-        "func": "msg.topic = `\n  SELECT \n    m.nom  AS nom,\n    t.nom  AS type\n  FROM materiaux m\n  JOIN type       t ON m.type = t.id\n  WHERE m.prix <> -1\n`;\nreturn msg;",
+        "func": "msg.topic = `\n  SELECT m.nom  AS nom,t.nom  AS type FROM materiaux m JOIN type t ON m.type = t.id WHERE m.prix <> -1`;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
