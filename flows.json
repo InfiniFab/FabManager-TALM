@@ -3671,9 +3671,7 @@
         "x": 300,
         "y": 240,
         "wires": [
-            [
-                "16d49f4f.2f72e1"
-            ]
+            []
         ]
     },
     {
@@ -3717,7 +3715,9 @@
         "x": 300,
         "y": 300,
         "wires": [
-            []
+            [
+                "9e50c24de70392cb"
+            ]
         ]
     },
     {
@@ -4598,10 +4598,10 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "INTO",
-        "func": "topic = INSERT INTO materiaux(nom, prix) VALUES\n    ('PLA', 19.9),\n    ('PLA flex', 50.0),\n    ('PLA transparent', 40.0),\n    ('PLA bois', 51.8);\n\nmsg.topic = topic;\nreturn msg;\n",
+        "func": "topic = INSERT INTO type(nom) VALUES\n    ('impression 3d'),\n    ('découpeuse laser'),\n    ('découpeuse vinyle'),\n\nmsg.topic = topic;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
-        "noerr": 13,
+        "noerr": 9,
         "initialize": "",
         "finalize": "",
         "libs": [],
