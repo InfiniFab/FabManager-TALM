@@ -9114,8 +9114,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1380,
-        "y": 1460,
+        "x": 1390,
+        "y": 1400,
         "wires": []
     },
     {
@@ -9128,7 +9128,8 @@
         "y": 1460,
         "wires": [
             [
-                "function_split_materials"
+                "function_split_materials",
+                "ba91c3a5feb6c4f6"
             ]
         ]
     },
@@ -9148,9 +9149,42 @@
         "y": 1460,
         "wires": [
             [
-                "d3634a1cf3867678"
+                "d3634a1cf3867678",
+                "d449ed7060472ae4"
             ]
         ]
+    },
+    {
+        "id": "d449ed7060472ae4",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "ba91c3a5feb6c4f6",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 1340,
+        "wires": []
     },
     {
         "id": "mysql_get_mat",
@@ -9571,7 +9605,7 @@
         "type": "debug",
         "z": "fd7dc8247b3e3472",
         "name": "debug 1",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
