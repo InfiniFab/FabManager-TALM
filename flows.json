@@ -7755,13 +7755,7 @@
         "height": 1,
         "passthru": true,
         "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
+        "options": [],
         "payload": "",
         "topic": "",
         "topicType": "str",
@@ -7789,13 +7783,7 @@
         "height": 1,
         "passthru": true,
         "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
+        "options": [],
         "payload": "",
         "topic": "",
         "topicType": "str",
