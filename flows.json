@@ -3750,9 +3750,7 @@
         "x": 300,
         "y": 360,
         "wires": [
-            [
-                "8094763.a62db88"
-            ]
+            []
         ]
     },
     {
@@ -3980,7 +3978,7 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "UPDATE",
-        "func": "msg.topic = \"UPDATE `materiaux` SET `type_id` = \" +\n    \"(SELECT `id` FROM `type` WHERE `nom` = 'impression 3d') \" +\n    \"WHERE `type` = 'impression 3d';\";\nreturn msg;\n",
+        "func": "msg.topic = \"UPDATE `materiaux` SET `type_id` = \" +\n    \"(SELECT `id` FROM `type` WHERE `nom` = 'découpeuse laser') \" +\n    \"WHERE `type` = 'découpeuse laser';\";\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -4649,9 +4647,7 @@
         "x": 290,
         "y": 540,
         "wires": [
-            [
-                "7489d2a7ec02842c"
-            ]
+            []
         ]
     },
     {
