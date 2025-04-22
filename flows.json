@@ -4628,6 +4628,86 @@
         "wires": []
     },
     {
+        "id": "85decf59bf92eb67",
+        "type": "inject",
+        "z": "b527c2c14fc2357e",
+        "name": "ALTER",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 540,
+        "wires": [
+            [
+                "7489d2a7ec02842c"
+            ]
+        ]
+    },
+    {
+        "id": "7489d2a7ec02842c",
+        "type": "function",
+        "z": "b527c2c14fc2357e",
+        "name": "ALTER",
+        "func": "msg.topic = \"ALTER TABLE `materiaux` \" +\n    \"ADD COLUMN `type_id` INT;\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 540,
+        "wires": [
+            [
+                "2daf2b63e11143ea"
+            ]
+        ]
+    },
+    {
+        "id": "08d88e993194d32b",
+        "type": "debug",
+        "z": "b527c2c14fc2357e",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[0]",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2daf2b63e11143ea",
+        "type": "mysql",
+        "z": "b527c2c14fc2357e",
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 660,
+        "y": 540,
+        "wires": [
+            [
+                "08d88e993194d32b"
+            ]
+        ]
+    },
+    {
         "id": "87ff094e498a9ea3",
         "type": "inject",
         "z": "f2c08f5a386b30e6",
