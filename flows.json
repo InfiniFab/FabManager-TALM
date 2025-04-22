@@ -9226,7 +9226,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "insert material",
-        "func": "const { nom, prix, type } = msg.payload;\nmsg.topic = `INSERT INTO materiaux (nom, prix, type_id) VALUES ('${nom}', ${prix}, ${type});`;\nreturn msg;\n",
+        "func": "const { nom, prix, type } = msg.payload;\n\nif (!nom || !prix || !type) {\n    node.error(\"Champs manquants\", msg);\n    return null;\n}\n\nmsg.topic = `INSERT INTO materiaux (nom, prix, type_id) VALUES (${JSON.stringify(nom)}, ${prix}, ${type});`;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
