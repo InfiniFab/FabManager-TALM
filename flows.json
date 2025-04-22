@@ -9096,7 +9096,7 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Get Materials",
-        "x": 690,
+        "x": 730,
         "y": 340,
         "wires": [
             [
@@ -9119,7 +9119,7 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 900,
+        "x": 940,
         "y": 340,
         "wires": [
             [
@@ -9139,7 +9139,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1490,
+        "x": 1530,
         "y": 400,
         "wires": [
             [
@@ -9159,7 +9159,7 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 1680,
+        "x": 1720,
         "y": 420,
         "wires": [
             [
@@ -9179,7 +9179,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1690,
+        "x": 1730,
         "y": 460,
         "wires": [
             [
@@ -9198,11 +9198,10 @@
         "once": true,
         "onceDelay": "1",
         "topic": "",
-        "x": 80,
+        "x": 120,
         "y": 300,
         "wires": [
             [
-                "51bf9bee690c6e95",
                 "b524787c77625f65",
                 "182e2805887e908f"
             ]
@@ -9214,63 +9213,12 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
-        "x": 1880,
+        "x": 1920,
         "y": 320,
         "wires": [
             [
                 "01cffed8b793e2af"
             ]
-        ]
-    },
-    {
-        "id": "51bf9bee690c6e95",
-        "type": "ui_form",
-        "z": "fd7dc8247b3e3472",
-        "name": "ajout matériaux",
-        "label": "",
-        "group": "admin_group",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "options": [
-            {
-                "label": "Nom",
-                "value": "nom",
-                "type": "text",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Prix (€)",
-                "value": "prix",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Type",
-                "value": "type",
-                "type": "checkbox",
-                "required": false,
-                "rows": null
-            }
-        ],
-        "formValue": {
-            "nom": "",
-            "prix": "",
-            "type": false
-        },
-        "payload": "",
-        "submit": "ajouter",
-        "cancel": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "splitLayout": "",
-        "className": "",
-        "x": 400,
-        "y": 240,
-        "wires": [
-            []
         ]
     },
     {
@@ -9285,8 +9233,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 240,
+        "x": 940,
+        "y": 120,
         "wires": [
             [
                 "173426d140a750af"
@@ -9299,8 +9247,8 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "insert mat",
-        "x": 920,
-        "y": 240,
+        "x": 1120,
+        "y": 120,
         "wires": [
             [
                 "b524787c77625f65"
@@ -9319,7 +9267,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1080,
+        "x": 1120,
         "y": 340,
         "wires": [
             [
@@ -9354,7 +9302,7 @@
         "checkall": "false",
         "repair": false,
         "outputs": 3,
-        "x": 1280,
+        "x": 1320,
         "y": 340,
         "wires": [
             [
@@ -9380,7 +9328,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1450,
+        "x": 1490,
         "y": 280,
         "wires": [
             [
@@ -9400,7 +9348,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1470,
+        "x": 1510,
         "y": 340,
         "wires": [
             [
@@ -9416,12 +9364,11 @@
         "links": [
             "881eaa8fc460d970"
         ],
-        "x": 115,
+        "x": 155,
         "y": 440,
         "wires": [
             [
                 "b524787c77625f65",
-                "51bf9bee690c6e95",
                 "182e2805887e908f"
             ]
         ]
@@ -9438,7 +9385,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
+        "x": 520,
         "y": 340,
         "wires": [
             [
@@ -9455,7 +9402,7 @@
         "links": [
             "9fd9ac4efdb80ea2"
         ],
-        "x": 1905,
+        "x": 1945,
         "y": 200,
         "wires": []
     },
@@ -9471,7 +9418,7 @@
         "septopics": true,
         "property": "payload",
         "topi": "topic",
-        "x": 1930,
+        "x": 1970,
         "y": 260,
         "wires": [
             [
@@ -9494,8 +9441,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 500,
-        "y": 140,
+        "x": 780,
+        "y": 120,
         "wires": [
             [
                 "59ebe8306adc0e78"
@@ -9514,8 +9461,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 140,
-        "y": 140,
+        "x": 420,
+        "y": 120,
         "wires": [
             [
                 "102265dde937b16e"
@@ -9528,8 +9475,8 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Get Types",
-        "x": 350,
-        "y": 140,
+        "x": 630,
+        "y": 120,
         "wires": [
             [
                 "1291df5c625f5011"
