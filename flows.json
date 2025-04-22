@@ -9233,7 +9233,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 940,
+        "x": 1120,
         "y": 120,
         "wires": [
             [
@@ -9247,7 +9247,7 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "insert mat",
-        "x": 1120,
+        "x": 1300,
         "y": 120,
         "wires": [
             [
@@ -9445,7 +9445,7 @@
         "y": 120,
         "wires": [
             [
-                "59ebe8306adc0e78"
+                "e6e4f420912434a2"
             ]
         ]
     },
@@ -9480,6 +9480,26 @@
         "wires": [
             [
                 "1291df5c625f5011"
+            ]
+        ]
+    },
+    {
+        "id": "e6e4f420912434a2",
+        "type": "rbe",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 930,
+        "y": 120,
+        "wires": [
+            [
+                "59ebe8306adc0e78"
             ]
         ]
     }
