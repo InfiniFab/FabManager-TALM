@@ -7755,7 +7755,13 @@
         "height": 1,
         "passthru": true,
         "multiple": false,
-        "options": [],
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
         "payload": "",
         "topic": "",
         "topicType": "str",
@@ -7783,7 +7789,13 @@
         "height": 1,
         "passthru": true,
         "multiple": false,
-        "options": [],
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
         "payload": "",
         "topic": "",
         "topicType": "str",
@@ -9049,183 +9061,109 @@
         ]
     },
     {
-        "id": "inject_load_materials",
+        "id": "inject_materiaux_3d",
         "type": "inject",
         "z": "test_tab_001",
-        "name": "Load Materials",
+        "name": "Inject matériaux impression 3D",
         "props": [
             {
-                "p": "topic",
-                "vt": "str"
+                "p": "payload"
             }
         ],
         "repeat": "",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 700,
-        "y": 1460,
+        "payload": "[\"PLA\",\"PLA flex\",\"PLA transparent\",\"PLA bois\",\"PETG\"]",
+        "payloadType": "json",
+        "x": 650,
+        "y": 1480,
         "wires": [
             [
-                "fn_select_materials"
+                "function_gen_options"
             ]
         ]
     },
     {
-        "id": "fn_select_materials",
+        "id": "function_gen_options",
         "type": "function",
         "z": "test_tab_001",
-        "name": "Select All Materials",
-        "func": "// Récupère nom et type de tous les matériaux\nmsg.topic = \"SELECT m.nom, t.nom AS type_nom FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 900,
-        "y": 1460,
-        "wires": [
-            [
-                "de50d29e5126fd75"
-            ]
-        ]
-    },
-    {
-        "id": "de50d29e5126fd75",
-        "type": "mysql",
-        "z": "test_tab_001",
-        "mydb": "f3318311c7abaf8f",
-        "name": "Get All Materials",
-        "x": 1100,
-        "y": 1460,
-        "wires": [
-            [
-                "fn_group_by_type"
-            ]
-        ]
-    },
-    {
-        "id": "fn_group_by_type",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "Group Materials By Type",
-        "func": "// msg.payload = [{nom, type_nom}, …]\nlet groups = {};\nmsg.payload.forEach(m => {\n    if (!groups[m.type_nom]) groups[m.type_nom] = [];\n    groups[m.type_nom].push({ label: m.nom, value: m.nom });\n});\nlet msgs = [];\nfor (let type in groups) {\n    msgs.push({ topic: type, payload: groups[type] });\n}\nreturn msgs;",
+        "name": "Génère msg.options",
+        "func": "let list = msg.payload;\nmsg.options = list.map(e => ({ label: e, value: e }));\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1300,
-        "y": 1460,
+        "x": 900,
+        "y": 1480,
         "wires": [
             [
-                "switch_by_type"
+                "mat_change_payload"
             ]
         ]
     },
     {
-        "id": "switch_by_type",
-        "type": "switch",
-        "z": "test_tab_001",
-        "name": "Route By Type",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "impression 3d",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "découpeuse laser",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "découpeuse vinyle",
-                "vt": "str"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 3,
-        "x": 1500,
-        "y": 1460,
-        "wires": [
-            [
-                "change_filament"
-            ],
-            [
-                "change_laser"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "change_filament",
+        "id": "mat_change_payload",
         "type": "change",
         "z": "test_tab_001",
-        "name": "Set options Filament",
+        "name": "msg.payload ← msg.options",
         "rules": [
             {
                 "t": "set",
-                "p": "options",
+                "p": "payload",
                 "pt": "msg",
-                "to": "payload",
+                "to": "options",
                 "tot": "msg"
             }
         ],
-        "x": 1700,
-        "y": 1420,
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 1480,
         "wires": [
             [
+                "mat_dropdown",
                 "071db0f4a2418b79",
-                "78607bf563083a03"
-            ]
-        ]
-    },
-    {
-        "id": "change_laser",
-        "type": "change",
-        "z": "test_tab_001",
-        "name": "Set options Laser",
-        "rules": [
-            {
-                "t": "set",
-                "p": "options",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "x": 1690,
-        "y": 1500,
-        "wires": [
-            [
                 "2a5f57fbedbd386c"
             ]
         ]
     },
     {
-        "id": "78607bf563083a03",
-        "type": "debug",
+        "id": "mat_dropdown",
+        "type": "ui_dropdown",
         "z": "test_tab_001",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1980,
-        "y": 1400,
-        "wires": []
+        "name": "",
+        "label": "Matériau (3D)",
+        "tooltip": "",
+        "place": "Choisir un matériau",
+        "group": "3f0df9d3616d3899",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 1400,
+        "y": 1480,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "mysql_get_mat",
