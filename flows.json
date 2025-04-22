@@ -9143,15 +9143,15 @@
         "id": "73b962f6d5dbbf43",
         "type": "function",
         "z": "test_tab_001",
-        "name": "function 17",
-        "func": "msg.topic = \"SELECT * FROM materiaux\";\n\nreturn msg;",
+        "name": "SELECT",
+        "func": "msg.topic = `\n  SELECT \n    m.nom  AS nom,\n    t.nom  AS type\n  FROM materiaux m\n  JOIN type       t ON m.type = t.id\n  WHERE m.prix <> -1\n`;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
+        "x": 760,
         "y": 1460,
         "wires": [
             [
