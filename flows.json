@@ -9113,7 +9113,7 @@
         "order": 1,
         "width": 12,
         "height": 10,
-        "format": "<table>\n  <tr>\n    <th>Nom</th>\n    <th>Prix (€)</th>\n    <th>Supprimer</th>\n    <th>Désactiver</th>\n  </tr>\n  <tr ng-repeat=\"m in msg.payload\">\n    <td>{{m.nom}}</td>\n    <td><input type=\"number\" ng-model=\"m.prix\"></td>\n    <td>\n      <md-button class=\"md-warn\" ng-click=\"send({ deleteId: m.id })\">\n        Supprimer\n      </md-button>\n    </td>\n    <td>\n      <md-button class=\"md-accent\" ng-click=\"send({ disableId: m.id })\">\n        Désactiver\n      </md-button>\n    </td>\n  </tr>\n</table>\n<md-button class=\"md-raised md-primary\" ng-click=\"send({ action:'save', payload: msg.payload })\">\n  Enregistrer tous\n</md-button>",
+        "format": "<table>\n  <tr>\n    <th>Nom</th>\n    <th>Prix (€)</th>\n    <th>Type</th>\n    <th>Supprimer</th>\n    <th>Désactiver</th>\n  </tr>\n  <tr ng-repeat=\"m in msg.payload\">\n    <td>{{m.nom}}</td>\n    <td><input type=\"number\" ng-model=\"m.prix\"></td>\n    <td>{{m.type}}</td> \n    <td>\n      <md-button class=\"md-warn\" ng-click=\"send({ deleteId: m.id })\">\n        Supprimer\n      </md-button>\n    </td>\n    <td>\n      <md-button class=\"md-accent\" ng-click=\"send({ disableId: m.id })\">\n        Désactiver\n      </md-button>\n    </td>\n  </tr>\n</table>\n<md-button class=\"md-raised md-primary\" ng-click=\"send({ action:'save', payload: msg.payload })\">\n  Enregistrer tous\n</md-button>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
