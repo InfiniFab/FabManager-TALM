@@ -9308,7 +9308,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1120,
+        "x": 1100,
         "y": 120,
         "wires": [
             [
@@ -9322,11 +9322,12 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "insert mat",
-        "x": 1300,
+        "x": 1340,
         "y": 120,
         "wires": [
             [
-                "b524787c77625f65"
+                "b524787c77625f65",
+                "1933470c2f1e1311"
             ]
         ]
     },
@@ -9577,5 +9578,22 @@
                 "59ebe8306adc0e78"
             ]
         ]
+    },
+    {
+        "id": "1933470c2f1e1311",
+        "type": "debug",
+        "z": "fd7dc8247b3e3472",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1640,
+        "y": 100,
+        "wires": []
     }
 ]
