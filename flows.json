@@ -9378,7 +9378,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "clean and select the payload",
-        "func": "msg.payload = null;  // évite les doubles envois\nmsg.topic = \"SELECT id, nom, prix FROM materiaux\";\nmsg.action = null;\nreturn msg;\n",
+        "func": "msg.payload = null;  // évite les doubles envois\nmsg.topic = `\nSELECT m.id, m.nom, m.prix, t.nom AS type\nFROM materiaux m\nJOIN type t ON m.type_id = t.id\n`;\nmsg.action = null;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
