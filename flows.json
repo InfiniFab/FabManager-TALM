@@ -7166,7 +7166,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1820,
+        "x": 1860,
         "y": 740,
         "wires": [
             [
@@ -9195,7 +9195,8 @@
         "y": 1420,
         "wires": [
             [
-                "071db0f4a2418b79"
+                "071db0f4a2418b79",
+                "78607bf563083a03"
             ]
         ]
     },
@@ -9220,6 +9221,23 @@
                 "2a5f57fbedbd386c"
             ]
         ]
+    },
+    {
+        "id": "78607bf563083a03",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1980,
+        "y": 1400,
+        "wires": []
     },
     {
         "id": "mysql_get_mat",
