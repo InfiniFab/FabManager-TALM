@@ -4655,7 +4655,7 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "ALTER",
-        "func": "msg.topic = \"ALTER TABLE `materiaux` \" +\n    \"MODIFY COLUMN `type_id` INT NOT NULL;\";\nreturn msg;\n",
+        "func": "msg.topic = \"ALTER TABLE `materiaux` \" +\n    \"ADD CONSTRAINT `fk_materiaux_type` \" +\n    \"FOREIGN KEY (`type_id`) REFERENCES `type`(`id`);\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
