@@ -7763,8 +7763,8 @@
             }
         ],
         "payload": "",
-        "topic": "",
-        "topicType": "str",
+        "topic": "options",
+        "topicType": "msg",
         "className": "",
         "x": 1600,
         "y": 500,
@@ -7797,8 +7797,8 @@
             }
         ],
         "payload": "",
-        "topic": "",
-        "topicType": "str",
+        "topic": "options",
+        "topicType": "msg",
         "className": "",
         "x": 1600,
         "y": 740,
