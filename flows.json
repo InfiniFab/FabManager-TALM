@@ -9736,7 +9736,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "annulation",
-        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    \n    return [msg, null];\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, msg]; \n}\n",
+        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"   \n    return [msg, null];\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    msg.topic =\"\";\n    msg.payload =\"\";\n    return [null, msg]; \n}\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -9750,8 +9750,7 @@
                 "mysql_update_mat"
             ],
             [
-                "b524787c77625f65",
-                "182e2805887e908f"
+                "01cffed8b793e2af"
             ]
         ]
     },
