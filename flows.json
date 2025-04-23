@@ -9382,7 +9382,7 @@
         "z": "fd7dc8247b3e3472",
         "mydb": "f3318311c7abaf8f",
         "name": "Update Material",
-        "x": 2020,
+        "x": 2540,
         "y": 320,
         "wires": [
             [
@@ -9502,7 +9502,7 @@
         "wires": [
             [
                 "b2e5edca242d6f0c",
-                "mysql_update_mat"
+                "01d970add0f976b0"
             ]
         ]
     },
@@ -9572,7 +9572,7 @@
         "links": [
             "9fd9ac4efdb80ea2"
         ],
-        "x": 2005,
+        "x": 2525,
         "y": 240,
         "wires": []
     },
@@ -9588,7 +9588,7 @@
         "septopics": true,
         "property": "payload",
         "topi": "topic",
-        "x": 2010,
+        "x": 2530,
         "y": 280,
         "wires": [
             [
@@ -9723,5 +9723,68 @@
         "x": 1480,
         "y": 160,
         "wires": []
+    },
+    {
+        "id": "button_delete",
+        "type": "ui_button",
+        "z": "fd7dc8247b3e3472",
+        "name": "Supprimer",
+        "group": "group_id",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Supprimer",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 690,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "delete_action",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Action de suppression",
+        "func": "// Code pour supprimer l'élément\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1620,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "01d970add0f976b0",
+        "type": "ui_are_you_sure",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "group": "admin_group",
+        "iconColor": "#ffcc00",
+        "textColor": "#ffffff",
+        "backgroundColor": "#000000",
+        "icon": "fa fa-exclamation-triangle",
+        "title": "Are You Sure?",
+        "description": "Are you sure you want to perform this action?",
+        "timeoutSec": 10,
+        "x": 1780,
+        "y": 280,
+        "wires": [
+            [
+                "mysql_update_mat"
+            ],
+            []
+        ]
     }
 ]
