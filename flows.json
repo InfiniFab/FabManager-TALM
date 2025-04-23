@@ -959,186 +959,6 @@
         "height": 1
     },
     {
-        "id": "8ade024df7b5ce57",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 4,
-        "width": 4,
-        "height": 1
-    },
-    {
-        "id": "fca7d718feea1e7a",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 6,
-        "width": 7,
-        "height": 1
-    },
-    {
-        "id": "0f998eeec086a906",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 8,
-        "width": 7,
-        "height": 1
-    },
-    {
-        "id": "d3a357f31736a992",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 9,
-        "width": 7,
-        "height": 1
-    },
-    {
-        "id": "6a481422aa56fd99",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 10,
-        "width": 4,
-        "height": 1
-    },
-    {
-        "id": "93a8f827caa70f37",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 14,
-        "width": 5,
-        "height": 1
-    },
-    {
-        "id": "5d6d24cb9e5ddb83",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 16,
-        "width": 20,
-        "height": 1
-    },
-    {
-        "id": "ce248a7e475b9300",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 19,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "a25768e5c6fd00f3",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 22,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "af5610e1488679c5",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 23,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "ec1e8a363f2ca1a7",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 25,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "120458095fa05d9e",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 27,
-        "width": 9,
-        "height": 1
-    },
-    {
-        "id": "3267d80cc66b8c0c",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 28,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "77b40a495776e183",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 30,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "8c6ff3fa71eae194",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 32,
-        "width": 9,
-        "height": 1
-    },
-    {
-        "id": "0e0f8bbb55e02404",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 33,
-        "width": 20,
-        "height": 1
-    },
-    {
-        "id": "561d2ad2cc2a3890",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 35,
-        "width": 11,
-        "height": 1
-    },
-    {
-        "id": "b3a90db55b5caf6d",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 36,
-        "width": 20,
-        "height": 1
-    },
-    {
         "id": "admin_tab",
         "type": "ui_tab",
         "name": "Admin Matériaux",
@@ -1164,6 +984,216 @@
         "width": 6,
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "tab_commands",
+        "type": "ui_tab",
+        "name": "Commandes",
+        "icon": "dashboard",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "group_commands",
+        "type": "ui_group",
+        "name": "Nouvelles Commandes",
+        "tab": "tab_commands",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "aec5d9e9eea485de",
+        "type": "ui_group",
+        "name": "test new insert",
+        "tab": "0a675065a55c6a8b",
+        "order": 4,
+        "disp": true,
+        "width": 50,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "712226db96b4bd3b",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 4,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "fd28d3e5fbeab7c0",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 6,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "fd08b64e66ad7d3d",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 8,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "6db778b5ab9b6a2c",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 9,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "80b685c8e63ad27c",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 10,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "6e23e328151c9b20",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 14,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "dd32c8e6862a20e7",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 16,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "6c066e0556aac306",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 19,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "fd7564e39cc4c4fb",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 22,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "6d1a5ef25e66063b",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 23,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "99df651312a8d772",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 25,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "faa47a09ea8dc9e1",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 27,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "94d32cf4ef0a0551",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 28,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "117d6719911a761a",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 30,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "62736dd42dc1bf50",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 32,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "e11640e89b2e3fbd",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 33,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "146365e0b0b8bd8a",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 35,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "f172efad20e04277",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 36,
+        "width": 20,
+        "height": 1
     },
     {
         "id": "b4846b2d55a7522e",
@@ -9258,6 +9288,414 @@
                 "73b962f6d5dbbf43"
             ]
         ]
+    },
+    {
+        "id": "init_materials",
+        "type": "inject",
+        "z": "test_tab_001",
+        "name": "Load Materials",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 320,
+        "y": 2000,
+        "wires": [
+            [
+                "select_materials"
+            ]
+        ]
+    },
+    {
+        "id": "select_materials",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "SQL: load materials",
+        "func": "msg.topic = \"SELECT m.nom AS nom, t.nom AS type, m.prix AS prix FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540,
+        "y": 2000,
+        "wires": [
+            [
+                "mysql_load_materials"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_load_materials",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "MariaDB",
+        "x": 780,
+        "y": 2000,
+        "wires": [
+            [
+                "process_materials"
+            ]
+        ]
+    },
+    {
+        "id": "process_materials",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Process materials",
+        "func": "// Stocke le tableau complet\nflow.set('materials', msg.payload);\n// Extrait la liste unique des types\nconst types = [...new Set(msg.payload.map(m => m.type))];\nmsg.options = types;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 2000,
+        "wires": [
+            [
+                "dropdown_type"
+            ]
+        ]
+    },
+    {
+        "id": "dropdown_type",
+        "type": "ui_dropdown",
+        "z": "test_tab_001",
+        "name": "Type",
+        "label": "Type de matériel",
+        "tooltip": "",
+        "place": "",
+        "group": "aec5d9e9eea485de",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 470,
+        "y": 2080,
+        "wires": [
+            [
+                "filter_materials",
+                "set_unit"
+            ]
+        ]
+    },
+    {
+        "id": "filter_materials",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Filter materials",
+        "func": "flow.set('selectedType', msg.payload);\nconst all = flow.get('materials') || [];\nconst list = all.filter(m => m.type === msg.payload).map(m => m.nom);\nmsg.options = list;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 2080,
+        "wires": [
+            [
+                "dropdown_material"
+            ]
+        ]
+    },
+    {
+        "id": "set_unit",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Set unit",
+        "func": "const type = msg.payload;\nlet u = 'unité';\nswitch(type.toLowerCase()){\n  case 'impression 3d': u = 'kg'; break;\n  case 'fil brodeuse': u = '1000 points'; break;\n}\nflow.set('unitType', u);\nmsg.payload = u;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 2140,
+        "wires": [
+            [
+                "text_unit"
+            ]
+        ]
+    },
+    {
+        "id": "dropdown_material",
+        "type": "ui_dropdown",
+        "z": "test_tab_001",
+        "name": "Matériau",
+        "label": "Matériau",
+        "tooltip": "",
+        "place": "",
+        "group": "aec5d9e9eea485de",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 1080,
+        "y": 2080,
+        "wires": [
+            [
+                "query_price"
+            ]
+        ]
+    },
+    {
+        "id": "query_price",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Query price",
+        "func": "flow.set('selectedMaterial', msg.payload);\nmsg.topic = `SELECT prix FROM materiaux WHERE nom='${msg.payload}';`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1360,
+        "y": 2080,
+        "wires": [
+            [
+                "mysql_price"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_price",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "MariaDB",
+        "x": 1590,
+        "y": 2080,
+        "wires": [
+            [
+                "extract_price"
+            ]
+        ]
+    },
+    {
+        "id": "extract_price",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Extract price",
+        "func": "let p = 0;\nif(Array.isArray(msg.payload) && msg.payload.length) p = msg.payload[0].prix;\nflow.set('priceU', p);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1840,
+        "y": 2080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "text_unit",
+        "type": "ui_text",
+        "z": "test_tab_001",
+        "group": "aec5d9e9eea485de",
+        "order": 3,
+        "width": 4,
+        "height": 1,
+        "name": "Unité",
+        "label": "Unité",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1080,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "input_qty",
+        "type": "ui_text_input",
+        "z": "test_tab_001",
+        "name": "Quantité",
+        "label": "Quantité",
+        "tooltip": "",
+        "group": "aec5d9e9eea485de",
+        "order": 4,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": "",
+        "topic": "",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 480,
+        "y": 2200,
+        "wires": [
+            [
+                "set_quantity"
+            ]
+        ]
+    },
+    {
+        "id": "set_quantity",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Set qty",
+        "func": "const q = parseFloat(msg.payload)||0;\nflow.set('qty', q);\nmsg.payload = q;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740,
+        "y": 2200,
+        "wires": [
+            [
+                "calculate_price"
+            ]
+        ]
+    },
+    {
+        "id": "calculate_price",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Calc price",
+        "func": "const qty = flow.get('qty')||0;\nconst pu = flow.get('priceU')||0;\nconst total = qty * pu;\nflow.set('totalPrice', total);\nmsg.payload = total;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1000,
+        "y": 2200,
+        "wires": [
+            [
+                "text_price"
+            ]
+        ]
+    },
+    {
+        "id": "text_price",
+        "type": "ui_text",
+        "z": "test_tab_001",
+        "group": "aec5d9e9eea485de",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Prix total",
+        "label": "Prix calculé",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1260,
+        "y": 2200,
+        "wires": []
+    },
+    {
+        "id": "add_command",
+        "type": "ui_button",
+        "z": "test_tab_001",
+        "name": "Add Cmd",
+        "group": "aec5d9e9eea485de",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "+ Ajouter commande",
+        "tooltip": "",
+        "color": "#fff",
+        "bgcolor": "#337ab7",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 480,
+        "y": 2260,
+        "wires": [
+            [
+                "add_command_fn"
+            ]
+        ]
+    },
+    {
+        "id": "add_command_fn",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Add Command Fn",
+        "func": "let cmds = flow.get('commands')||[];\ncmds.push({\n  type: flow.get('selectedType'),\n  materiau: flow.get('selectedMaterial'),\n  quantite: flow.get('qty'),\n  unite: flow.get('unitType'),\n  prix: flow.get('totalPrice')\n});\nflow.set('commands', cmds);\nmsg.payload = cmds;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740,
+        "y": 2260,
+        "wires": [
+            [
+                "table_commands"
+            ]
+        ]
+    },
+    {
+        "id": "table_commands",
+        "type": "ui_table",
+        "z": "test_tab_001",
+        "group": "aec5d9e9eea485de",
+        "name": "Tableau Cmds",
+        "order": 7,
+        "width": 12,
+        "height": 6,
+        "columns": [
+            {
+                "field": "type",
+                "title": "Type",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "materiau",
+                "title": "Matériau",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "quantite",
+                "title": "Quantité",
+                "width": "",
+                "align": "right",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "unite",
+                "title": "Unité",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "prix",
+                "title": "Prix",
+                "width": "",
+                "align": "right",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1040,
+        "y": 2320,
+        "wires": []
     },
     {
         "id": "mysql_get_mat",
