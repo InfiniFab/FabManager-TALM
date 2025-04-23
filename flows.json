@@ -3056,7 +3056,7 @@
         "order": 1,
         "width": 9,
         "height": 12,
-        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n      {{el.nom}}<span ng-if=\"el.nom\">{{el.classe}}</span>\n    </md-button>\n  </div>\n</div>\n",
+        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n<strong>{{el.nom}}</strong><span ng-if=\"el.classe\"> ({{el.classe}})</span>    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": true,
