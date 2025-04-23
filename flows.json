@@ -7454,11 +7454,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 530,
+        "x": 300,
         "y": 540,
         "wires": [
             [
-                "1dfb885551b2b1a4"
+                "05aa5e84c6cd01aa"
             ]
         ]
     },
@@ -7487,7 +7487,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "INSERT",
-        "func": "//if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\n//if (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\nlet classe =msg.annee;\nlet nom = msg.eleve;\nlet fabrication=\"\";\nlet prix =0;\nif (msg.impr3d_bool)fabrication = '3d :'+ msg.filament +\" : \" + msg.filament_gr + \"gr\";\nif(msg.laser_bool)fabrication = fabrication +' // las :'  + msg.mat_laser +\" : \"+ msg.mat_laser_qte;\nlet prix_3d = flow.get('prix_3d');\nlet prix_laser = flow.get('prix_laser');\n\nlet bdd_bool_test = flow.get(\"bdd_bool_test\");\nlet table_name =\"usage_lab_test\";\nif (bdd_bool_test){\n    table_name=\"usage_lab\";\n}\nelse{\n    table_name=\"usage_lab_test\";\n}\n\nlet remarques = flow.get('remarques');\n\n\nif (msg.impr3d_bool)prix += parseFloat(prix_3d);\nif(msg.laser_bool)prix += parseFloat(prix_laser);\n//let prix = \"sousou\";\nlet reglement;\nif (flow.get('reglement_bool')){\n    reglement = 'true';\n}\nelse{\n    reglement = 'false';\n}\n\nlet cao;\nif (flow.get('cao_bool')){\n    cao = 'true';\n}\nelse{\n    cao = 'false';\n}\n\nlet date = new Date();\ndate = date.getDate() + \"/\" + (date.getMonth() + 1) + \"/\" + date.getFullYear() + \"  \" + \n      date.getHours() + \":\" + date.getMinutes() + \":\" + date.getSeconds();\n//let reglement = \"reglement\";\n\n//let Cao = flow.get('cao_bool');\n//let Cao = \"cao\";\n\nlet topic;\n//let Cao = msg.cao_bool;\n\n\ntopic = \"INSERT INTO `nodered`.`\";\ntopic = topic + table_name+\"` (classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES ('\";\ntopic = topic + classe +\"', '\";\ntopic = topic + nom + \"', '\";\ntopic = topic + fabrication + \"', '\";\ntopic = topic + prix + \"', \";\ntopic = topic + reglement + \", \";\ntopic = topic + cao + \", '\";\ntopic = topic + remarques + \"', '\";\ntopic = topic + date + \"'); \";\n\nmsg.topic = topic;\nreturn msg;",
+        "func": "// Élève & table\nlet classe = msg.annee;\nlet nom    = msg.eleve;\nlet table  = flow.get('bdd_bool_test')\n             ? 'usage_lab'\n             : 'usage_lab_test';\n\n// Fabrication\nlet fabrication = flow.get('fabrication') || '';\n\n// Somme des prix\nconst p3 = parseFloat(flow.get('prix_3d')     || 0);\nconst pl = parseFloat(flow.get('prix_laser')  || 0);\nconst pv = parseFloat(flow.get('prix_vinyle') || 0);\nconst pf = parseFloat(flow.get('prix_fil')    || 0);\nconst pt = parseFloat(flow.get('prix_thermo') || 0);\nconst prix = p3 + pl + pv + pf + pt;\n\n// Réglements & options\nlet reglement = flow.get('reglement_bool') ? 1 : 0;\nlet cao       = flow.get('cao_bool')        ? 1 : 0;\nlet remarques = flow.get('remarques') || '';\n\n// Date au format SQL\nlet d = new Date();\nlet date = d.toISOString().slice(0, 19).replace('T', ' ');\n\n// Construction de la requête\nmsg.topic = \n  `INSERT INTO \\`nodered\\`.\\`${table}\\` ` +\n  `(classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES (` +\n  `'${classe}',` +\n  `'${nom}',` +\n  `'${fabrication}',` +\n  `${prix},` +\n  `${reglement},` +\n  `${cao},` +\n  `'${remarques}',` +\n  `'${date}'` +\n  `);`;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -7743,7 +7743,7 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 340,
+        "x": 110,
         "y": 540,
         "wires": [
             [
@@ -9623,7 +9623,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Calc price",
-        "func": "// Node: Calc price\nconst qty  = parseFloat(flow.get('qty') || 0);\nconst pu   = parseFloat(flow.get('priceU') || 0);\nconst type = (flow.get('selectedType') || '').toLowerCase();\n\nlet total = 0;\nif (type === 'impression 3d') {\n  // prix au kilo, saisie en grammes\n  total = (qty / 1000) * pu;\n}\nelse if (type === 'fil brodeuse') {\n  // prix pour 1000 points, saisie en points\n  total = (qty / 1000) * pu;\n}\nelse {\n  // découpe laser, vinyle, thermoformeuse → 1 unité = 1 unité\n  total = qty * pu;\n}\n\nflow.set('totalPrice', total);\nmsg.payload = total+\"€\";\nreturn msg;\n",
+        "func": "// Récupère qty, prix unitaire et type\nconst qty  = parseFloat(flow.get('qty') || 0);\nconst pu   = parseFloat(flow.get('priceU') || 0);\nconst type = (flow.get('selectedType') || '').toLowerCase();\n\n// Reset de tous les prix\nflow.set('prix_3d', 0);\nflow.set('prix_laser', 0);\nflow.set('prix_vinyle', 0);\nflow.set('prix_fil', 0);\nflow.set('prix_thermo', 0);\n\nlet total = 0;\nswitch(type) {\n  case 'impression 3d':\n    total = (qty / 1000) * pu;         // saisie en g, prix au kg\n    flow.set('prix_3d', total);\n    break;\n  case 'découpeuse laser':\n    total = qty * pu;                  // 1:1\n    flow.set('prix_laser', total);\n    break;\n  case 'découpeuse vinyle':\n    total = qty * pu;                  // 1:1\n    flow.set('prix_vinyle', total);\n    break;\n  case 'fil brodeuse':\n    total = (qty / 1000) * pu;         // saisie en points, prix /1000 pts\n    flow.set('prix_fil', total);\n    break;\n  case 'plaque thermoformeuse':\n    total = qty * pu;                  // 1:1\n    flow.set('prix_thermo', total);\n    break;\n}\n\n// Stockage du total et sortie\nflow.set('totalPrice', total);\nmsg.payload = total;\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -9699,7 +9699,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
+        "x": 730,
         "y": 2260,
         "wires": [
             [
@@ -9773,6 +9773,26 @@
         "x": 1020,
         "y": 2260,
         "wires": []
+    },
+    {
+        "id": "05aa5e84c6cd01aa",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Set fabrication",
+        "func": "let fabrication = '';\n\n// 3D\nif (msg.impr3d_bool) {\n  fabrication += '3d:' + msg.filament + ' : ' + msg.filament_gr + 'gr';\n}\n// Laser\nif (msg.laser_bool) {\n  fabrication += (fabrication ? ' // ' : '') +\n                 'las:' + msg.mat_laser + ' : ' + msg.mat_laser_qte;\n}\n// Vinyle\nif (msg.vinyle_bool) {\n  fabrication += (fabrication ? ' // ' : '') +\n                 'vinyle:' + msg.mat_vinyle + ' : ' + msg.mat_vinyle_qte;\n}\n// Fil brodeuse\nif (msg.brodeuse_bool) {\n  fabrication += (fabrication ? ' // ' : '') +\n                 'fil:' + msg.mat_fil + ' : ' + msg.mat_fil_qte;\n}\n// Thermoformeuse\nif (msg.thermo_bool) {\n  fabrication += (fabrication ? ' // ' : '') +\n                 'thermo:' + msg.mat_thermo + ' : ' + msg.mat_thermo_qte;\n}\n\nflow.set('fabrication', fabrication);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "1dfb885551b2b1a4"
+            ]
+        ]
     },
     {
         "id": "mysql_get_mat",
