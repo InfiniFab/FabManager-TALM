@@ -9365,7 +9365,8 @@
         "y": 2000,
         "wires": [
             [
-                "select_materials"
+                "select_materials",
+                "table_commands"
             ]
         ]
     },
