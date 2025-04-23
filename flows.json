@@ -9714,7 +9714,7 @@
         "position": "prompt",
         "displayTime": "3",
         "highlight": "",
-        "sendall": true,
+        "sendall": false,
         "outputs": 1,
         "ok": "ok",
         "cancel": "annuler",
@@ -9749,7 +9749,8 @@
                 "mysql_update_mat"
             ],
             [
-                "b524787c77625f65"
+                "b524787c77625f65",
+                "182e2805887e908f"
             ]
         ]
     }
