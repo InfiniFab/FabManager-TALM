@@ -7304,6 +7304,69 @@
                 "pt": "msg",
                 "to": "prix_3d",
                 "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "vinyle_bool",
+                "pt": "msg",
+                "to": "vinyle_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_vinyle",
+                "pt": "msg",
+                "to": "mat_vinyle",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_vinyle_qte",
+                "pt": "msg",
+                "to": "mat_vinyle_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "brodeuse_bool",
+                "pt": "msg",
+                "to": "brodeuse_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_fil",
+                "pt": "msg",
+                "to": "mat_fil",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_fil_qte",
+                "pt": "msg",
+                "to": "mat_fil_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "thermo_bool",
+                "pt": "msg",
+                "to": "thermo_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_thermo",
+                "pt": "msg",
+                "to": "mat_thermo",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_thermo_qte",
+                "pt": "msg",
+                "to": "mat_thermo_qte",
+                "tot": "flow"
             }
         ],
         "action": "",
