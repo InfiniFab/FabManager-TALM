@@ -4615,7 +4615,8 @@
         "mode": "link",
         "links": [
             "8b089876db0dfe6e",
-            "988ee3a15f32b724"
+            "988ee3a15f32b724",
+            "297777897f41f07a"
         ],
         "x": 1025,
         "y": 960,
@@ -7666,7 +7667,7 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 230,
+        "x": 210,
         "y": 100,
         "wires": [
             [
@@ -8589,7 +8590,8 @@
             "650b0b8a2f98d748",
             "a8b3e924368ccee2",
             "fcaf2034175db8e0",
-            "a397d83f41122d5c"
+            "a397d83f41122d5c",
+            "99f11a67b4d97e96"
         ],
         "x": 1325,
         "y": 600,
@@ -9084,7 +9086,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Split by Type",
-        "func": "// On suppose que msg.payload est un tableau de matériaux { nom, type, ... }\nconst all = msg.payload;\n\n// On trie les matériaux selon leur type\nconst impression3D = [];\nconst decoupeLaser = [];\nconst vinyle = [];\n\n//commentaires?\nall.forEach(mat => {\n    const item = mat.nom;\n    switch ((mat.type || \"\").toLowerCase()) {\n        case \"impression 3d\":\n            impression3D.push(item);\n            break;\n        case \"découpeuse laser\":\n            decoupeLaser.push(item);\n            break;\n        case \"découpeuse vinyle\":\n            vinyle.push(item);\n            break;\n    }\n});\n\n// On crée les messages de sortie, chacun avec payload + options + topic si tu veux\n    const msg1 = {\n        topic: \"impression 3D\",\n        payload: impression3D,\n        options: impression3D\n    };\n    const msg2 = {\n        topic: \"découpe laser\",\n        payload: decoupeLaser,\n        options: decoupeLaser\n    };\n    const msg3 = {\n        topic: \"découpeuse vinyle\",\n        payload: vinyle,\n        options: vinyle\n    };\n\n    return [msg1, msg2, msg3];\n",
+        "func": "// On suppose que msg.payload est un tableau de matériaux { nom, type, ... }\nconst all = msg.payload;\n\n// On trie les matériaux selon leur type\nconst impression3D = [];\nconst decoupeLaser = [];\nconst vinyle = [];\n\n//commentaires?\nall.forEach(mat => {\n    const item = mat.nom;\n    switch ((mat.type || \"\").toLowerCase()) {\n        case \"impression 3d\":\n            impression3D.push(item);\n            break;\n        case \"découpeuse laser\":\n            decoupeLaser.push(item);\n            break;\n        case \"découpeuse vinyle\":\n            vinyle.push(item);\n            break;\n            default:\n        // Si un type inattendu apparaît, on peut le logguer pour diagnostic\n        node.warn(`Type inconnu pour « ${mat.nom} »: “${mat.type}”`);\n    }\n});\n\n// On crée les messages de sortie, chacun avec payload + options + topic si tu veux\n    const msg1 = {\n        topic: \"impression 3D\",\n        payload: impression3D,\n        options: impression3D\n    };\n    const msg2 = {\n        topic: \"découpe laser\",\n        payload: decoupeLaser,\n        options: decoupeLaser\n    };\n    const msg3 = {\n        topic: \"découpeuse vinyle\",\n        payload: vinyle,\n        options: vinyle\n    };\n\n    return [msg1, msg2, msg3];\n",
         "outputs": 3,
         "timeout": "",
         "noerr": 0,
@@ -9227,6 +9229,22 @@
         "x": 1390,
         "y": 1540,
         "wires": []
+    },
+    {
+        "id": "99f11a67b4d97e96",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 29",
+        "links": [
+            "4ed9c31def9b04b0"
+        ],
+        "x": 615,
+        "y": 1380,
+        "wires": [
+            [
+                "73b962f6d5dbbf43"
+            ]
+        ]
     },
     {
         "id": "mysql_get_mat",
@@ -9503,8 +9521,8 @@
         "links": [
             "881eaa8fc460d970"
         ],
-        "x": 245,
-        "y": 260,
+        "x": 115,
+        "y": 140,
         "wires": [
             [
                 "b524787c77625f65",
@@ -9658,5 +9676,22 @@
         "x": 1640,
         "y": 100,
         "wires": []
+    },
+    {
+        "id": "297777897f41f07a",
+        "type": "link in",
+        "z": "fd7dc8247b3e3472",
+        "name": "link in reset",
+        "links": [
+            "e4e5be2af9511b04"
+        ],
+        "x": 115,
+        "y": 180,
+        "wires": [
+            [
+                "182e2805887e908f",
+                "b524787c77625f65"
+            ]
+        ]
     }
 ]
