@@ -1155,6 +1155,17 @@
         "width": 14
     },
     {
+        "id": "432ef441be1cca6f",
+        "type": "ui_group",
+        "name": "ajout materiaux",
+        "tab": "admin_tab",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "b4846b2d55a7522e",
         "type": "debug",
         "z": "63c575ee660634f9",
@@ -9589,7 +9600,7 @@
         "id": "1291df5c625f5011",
         "type": "ui_template",
         "z": "fd7dc8247b3e3472",
-        "group": "admin_group",
+        "group": "432ef441be1cca6f",
         "name": "new mat",
         "order": 2,
         "width": 0,
