@@ -9569,7 +9569,7 @@
         "width": 4,
         "height": 1,
         "name": "Unité",
-        "label": "/",
+        "label": "",
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
