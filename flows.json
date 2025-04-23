@@ -9736,7 +9736,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "annulation",
-        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    \n    return [msg, null];\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, null]; \n}\n",
+        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    \n    return [msg, null];\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, msg]; \n}\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
