@@ -3715,7 +3715,9 @@
         "x": 300,
         "y": 300,
         "wires": [
-            []
+            [
+                "9e50c24de70392cb"
+            ]
         ]
     },
     {
@@ -4592,7 +4594,7 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "INTO",
-        "func": "msg.topic = \"INSERT INTO `type` (`nom`) VALUES \" +\n    \"('impression 3d'),\" +\n    \"('découpeuse laser'),\" +\n    \"('découpeuse vinyle');\";\nreturn msg;\n",
+        "func": "msg.topic = \"INSERT INTO `type` (`nom`) VALUES \" +\n    \"('fil brodeuse'),\" +\n    \"('plaque thermoformeuse'),\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
