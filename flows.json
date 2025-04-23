@@ -8219,8 +8219,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 220,
-        "y": 1240,
+        "x": 190,
+        "y": 1780,
         "wires": [
             [
                 "function_SELECT"
@@ -8239,8 +8239,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 1240,
+        "x": 520,
+        "y": 1780,
         "wires": [
             [
                 "mysql_last_students"
@@ -8253,8 +8253,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "",
-        "x": 850,
-        "y": 1240,
+        "x": 820,
+        "y": 1780,
         "wires": [
             [
                 "function_format"
@@ -8266,15 +8266,15 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Format Last Students",
-        "func": "// On suppose que msg.payload contient le tableau de résultats SQL\n// On mappe pour ne retenir que { nom, classe }\nmsg.lastStudents = msg.payload.map(el => { \n    return { classe: el.classe, nom: el.nom};\n});\n\n// Transmet le tableau pour le ui_template\nmsg.payload = msg.lastStudents;\nreturn msg;",
+        "func": "// On suppose que msg.payload contient le tableau de résultats SQL\n// On mappe pour ne retenir que { nom, classe }\nmsg.lastStudents = msg.payload.map(el => { \n    return { nom: el.nom, classe: el.classe };\n});\n\n// Transmet le tableau pour le ui_template\nmsg.payload = msg.lastStudents;\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 1240,
+        "x": 1020,
+        "y": 1780,
         "wires": [
             [
                 "ui_template_buttons"
@@ -8290,14 +8290,14 @@
         "order": 1,
         "width": 10,
         "height": 19,
-        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n      {{el.classe}} <span ng-if=\"el.classe\">{{el.nom}}</span>\n    </md-button>\n  </div>\n</div>\n",
+        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n      {{el.nom}}<span ng-if=\"el.nom\">{{el.classe}}</span>\n    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1330,
-        "y": 1240,
+        "x": 1300,
+        "y": 1780,
         "wires": [
             [
                 "function_set_selected"
@@ -8316,8 +8316,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1570,
-        "y": 1240,
+        "x": 1540,
+        "y": 1780,
         "wires": [
             [
                 "197f22faecc6c2e8"
@@ -8336,8 +8336,8 @@
         "links": [
             "1b3b44f86ae626c6"
         ],
-        "x": 1705,
-        "y": 1220,
+        "x": 1675,
+        "y": 1760,
         "wires": []
     },
     {
@@ -8425,8 +8425,8 @@
         "links": [
             "d817f2a7d4e644b2"
         ],
-        "x": 1865,
-        "y": 1280,
+        "x": 1835,
+        "y": 1820,
         "wires": []
     },
     {
@@ -8446,8 +8446,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1760,
-        "y": 1280,
+        "x": 1730,
+        "y": 1820,
         "wires": [
             [
                 "2c55ac2da9fe2ae4"
@@ -8715,8 +8715,8 @@
             "24c0b79966777b30",
             "325f948297a7aafc"
         ],
-        "x": 365,
-        "y": 1200,
+        "x": 335,
+        "y": 1740,
         "wires": [
             [
                 "function_SELECT"
@@ -8781,8 +8781,8 @@
         "z": "test_tab_001",
         "name": "vers les classe/noms",
         "info": "",
-        "x": 1860,
-        "y": 1220,
+        "x": 1830,
+        "y": 1760,
         "wires": []
     },
     {
@@ -8791,8 +8791,8 @@
         "z": "test_tab_001",
         "name": "Boutons last student",
         "info": "",
-        "x": 200,
-        "y": 1200,
+        "x": 170,
+        "y": 1740,
         "wires": []
     },
     {
