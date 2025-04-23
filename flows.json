@@ -9624,7 +9624,11 @@
         "name": "Add Command Fn",
         "func": "let cmds = flow.get('commands')||[];\ncmds.push({\n  type: flow.get('selectedType'),\n  materiau: flow.get('selectedMaterial'),\n  quantite: flow.get('qty'),\n  unite: flow.get('unitType'),\n  prix: flow.get('totalPrice')\n});\nflow.set('commands', cmds);\nmsg.payload = cmds;\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 740,
         "y": 2260,
         "wires": [
@@ -9696,8 +9700,8 @@
         ],
         "outputs": 0,
         "cts": false,
-        "x": 1040,
-        "y": 2320,
+        "x": 1020,
+        "y": 2260,
         "wires": []
     },
     {
