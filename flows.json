@@ -4594,7 +4594,7 @@
         "type": "function",
         "z": "b527c2c14fc2357e",
         "name": "INTO",
-        "func": "msg.topic = \"INSERT INTO `type` (`nom`) VALUES \" +\n    \"('fil brodeuse'),\" +\n    \"('plaque thermoformeuse'),\";\nreturn msg;\n",
+        "func": "msg.topic = \"INSERT INTO `type` (`nom`) VALUES \" +\n    \"('fil brodeuse'),\" +\n    \"('plaque thermoformeuse');\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
