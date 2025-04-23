@@ -986,19 +986,10 @@
         "className": ""
     },
     {
-        "id": "tab_commands",
-        "type": "ui_tab",
-        "name": "Commandes",
-        "icon": "dashboard",
-        "order": 6,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "group_commands",
         "type": "ui_group",
         "name": "Nouvelles Commandes",
-        "tab": "tab_commands",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "12",
@@ -9406,7 +9397,11 @@
         "name": "Set unit",
         "func": "const type = msg.payload;\nlet u = 'unité';\nswitch(type.toLowerCase()){\n  case 'impression 3d': u = 'kg'; break;\n  case 'fil brodeuse': u = '1000 points'; break;\n}\nflow.set('unitType', u);\nmsg.payload = u;\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 760,
         "y": 2140,
         "wires": [
@@ -9495,7 +9490,7 @@
         "width": 4,
         "height": 1,
         "name": "Unité",
-        "label": "Unité",
+        "label": "/",
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
