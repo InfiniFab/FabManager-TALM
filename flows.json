@@ -9490,7 +9490,7 @@
         "type": "function",
         "z": "fd7dc8247b3e3472",
         "name": "delete",
-        "func": "// msg.deleteId contient l’id à supprimer\nmsg.topic = \"DELETE FROM materiaux WHERE id = \" + msg.deleteId;\nreturn msg;\n",
+        "func": "// msg.deleteId contient l’id à supprimer\nmsg.topic = \"DELETE FROM materiaux WHERE id = \" + msg.deleteId;\nmsg.payload = \"Voulez vous vraiment supprimmer ce matériau de la base ?\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
