@@ -7191,173 +7191,6 @@
         ]
     },
     {
-        "id": "e80a4727e8a6c53f",
-        "type": "change",
-        "z": "test_tab_001",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "annee",
-                "pt": "msg",
-                "to": "annee",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "eleve",
-                "pt": "msg",
-                "to": "eleve",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "impr3d_bool",
-                "pt": "msg",
-                "to": "impr3d_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "filament",
-                "pt": "msg",
-                "to": "filament",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "filament_gr",
-                "pt": "msg",
-                "to": "filament_gr",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "laser_bool",
-                "pt": "msg",
-                "to": "laser_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_laser",
-                "pt": "msg",
-                "to": "mat_laser",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_laser_qte",
-                "pt": "msg",
-                "to": "mat_laser_qte",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "reglement_bool",
-                "pt": "msg",
-                "to": "reglement_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "cao_bool",
-                "pt": "msg",
-                "to": "cao_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "prix_laser",
-                "pt": "msg",
-                "to": "prix_laser",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "prix_3d",
-                "pt": "msg",
-                "to": "prix_3d",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "vinyle_bool",
-                "pt": "msg",
-                "to": "vinyle_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_vinyle",
-                "pt": "msg",
-                "to": "mat_vinyle",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_vinyle_qte",
-                "pt": "msg",
-                "to": "mat_vinyle_qte",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "brodeuse_bool",
-                "pt": "msg",
-                "to": "brodeuse_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_fil",
-                "pt": "msg",
-                "to": "mat_fil",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_fil_qte",
-                "pt": "msg",
-                "to": "mat_fil_qte",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "thermo_bool",
-                "pt": "msg",
-                "to": "thermo_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_thermo",
-                "pt": "msg",
-                "to": "mat_thermo",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_thermo_qte",
-                "pt": "msg",
-                "to": "mat_thermo_qte",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 310,
-        "y": 540,
-        "wires": [
-            [
-                "05aa5e84c6cd01aa"
-            ]
-        ]
-    },
-    {
         "id": "1dfb885551b2b1a4",
         "type": "function",
         "z": "test_tab_001",
@@ -7516,34 +7349,6 @@
             [
                 "8f38ca494de7d3a1",
                 "325f948297a7aafc"
-            ]
-        ]
-    },
-    {
-        "id": "75974a99e67738c9",
-        "type": "ui_button",
-        "z": "test_tab_001",
-        "name": "",
-        "group": "3f0df9d3616d3899",
-        "order": 37,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Valider",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 110,
-        "y": 540,
-        "wires": [
-            [
-                "e80a4727e8a6c53f"
             ]
         ]
     },
@@ -8205,7 +8010,8 @@
             "d8119e8aed5474d4",
             "509ae19297125fe7",
             "2978f52ce4b522f9",
-            "b7bcafa44fc470f3"
+            "b7bcafa44fc470f3",
+            "5ca6cd59594b9681"
         ],
         "x": 1325,
         "y": 600,
@@ -8569,7 +8375,7 @@
         "label": "Type de matériel",
         "tooltip": "",
         "place": "",
-        "group": "aec5d9e9eea485de",
+        "group": "3f0df9d3616d3899",
         "order": 3,
         "width": 8,
         "height": 1,
@@ -8633,7 +8439,7 @@
         "label": "Matériau",
         "tooltip": "",
         "place": "",
-        "group": "aec5d9e9eea485de",
+        "group": "3f0df9d3616d3899",
         "order": 5,
         "width": 8,
         "height": 1,
@@ -8700,7 +8506,7 @@
         "id": "text_unit",
         "type": "ui_text",
         "z": "test_tab_001",
-        "group": "aec5d9e9eea485de",
+        "group": "3f0df9d3616d3899",
         "order": 8,
         "width": 2,
         "height": 1,
@@ -8724,7 +8530,7 @@
         "name": "Quantité",
         "label": "Quantité",
         "tooltip": "",
-        "group": "aec5d9e9eea485de",
+        "group": "3f0df9d3616d3899",
         "order": 7,
         "width": 8,
         "height": 1,
@@ -8735,7 +8541,7 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "str",
-        "x": 1530,
+        "x": 1800,
         "y": 900,
         "wires": [
             [
@@ -8755,7 +8561,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1800,
+        "x": 2070,
         "y": 900,
         "wires": [
             [
@@ -8775,7 +8581,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2060,
+        "x": 2330,
         "y": 900,
         "wires": [
             [
@@ -8787,7 +8593,7 @@
         "id": "text_price",
         "type": "ui_text",
         "z": "test_tab_001",
-        "group": "aec5d9e9eea485de",
+        "group": "3f0df9d3616d3899",
         "order": 10,
         "width": 8,
         "height": 1,
@@ -8800,27 +8606,9 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 2310,
+        "x": 2580,
         "y": 900,
         "wires": []
-    },
-    {
-        "id": "05aa5e84c6cd01aa",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "Set fabrication",
-        "func": "// Récupère les flags et valeurs depuis le contexte de flow\nconst impr3d   = flow.get('impr3d_bool');\nconst laser    = flow.get('laser_bool');\nconst vinyle   = flow.get('vinyle_bool');\nconst brodeuse = flow.get('brodeuse_bool');\nconst thermo   = flow.get('thermo_bool');\n\nconst fil    = flow.get('filament')       || '';\nconst fil_g  = flow.get('filament_gr')    || 0;\nconst matL   = flow.get('mat_laser')      || '';\nconst qtyL   = flow.get('mat_laser_qte')  || 0;\nconst matV   = flow.get('mat_vinyle')     || '';\nconst qtyV   = flow.get('mat_vinyle_qte') || 0;\nconst matF   = flow.get('mat_fil')        || '';\nconst qtyF   = flow.get('mat_fil_qte')    || 0;\nconst matT   = flow.get('mat_thermo')     || '';\nconst qtyT   = flow.get('mat_thermo_qte') || 0;\n\n// Construit la chaîne\nlet fabrication = '';\nif (impr3d)   fabrication += `3d:${fil} : ${fil_g}gr`;\nif (laser)    fabrication += (fabrication?' // ':'') + `las:${matL} : ${qtyL}`;\nif (vinyle)   fabrication += (fabrication?' // ':'') + `vinyle:${matV} : ${qtyV}`;\nif (brodeuse) fabrication += (fabrication?' // ':'') + `fil:${matF} : ${qtyF}`;\nif (thermo)   fabrication += (fabrication?' // ':'') + `thermo:${matT} : ${qtyT}`;\n\n// Stocke et renvoie\nflow.set('fabrication', fabrication);\nmsg.fabrication = fabrication;\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 550,
-        "y": 540,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "385ae025df0520e3",
@@ -8845,7 +8633,8 @@
         "y": 980,
         "wires": [
             [
-                "bb79787c894cdc0b"
+                "bb79787c894cdc0b",
+                "input_qty"
             ]
         ]
     },
@@ -9103,15 +8892,21 @@
         "type": "ui_button",
         "z": "test_tab_001",
         "name": "Valider",
-        "group": "aec5d9e9eea485de",
+        "group": "3f0df9d3616d3899",
         "order": 11,
         "width": 4,
         "height": 1,
         "passthru": false,
         "label": "Valider",
+        "tooltip": "",
         "color": "#ffffff",
         "bgcolor": "#28a745",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
         "topic": "",
+        "topicType": "str",
         "x": 130,
         "y": 480,
         "wires": [
@@ -9293,6 +9088,22 @@
         ],
         "x": 1425,
         "y": 640,
+        "wires": [
+            [
+                "select_materials"
+            ]
+        ]
+    },
+    {
+        "id": "5ca6cd59594b9681",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 6",
+        "links": [
+            "4ed9c31def9b04b0"
+        ],
+        "x": 1425,
+        "y": 600,
         "wires": [
             [
                 "select_materials"
