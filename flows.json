@@ -8507,8 +8507,8 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 320,
-        "y": 2000,
+        "x": 1370,
+        "y": 700,
         "wires": [
             [
                 "select_materials"
@@ -8523,8 +8523,8 @@
         "func": "msg.topic = \"SELECT m.nom AS nom, t.nom AS type, m.prix AS prix FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1;\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 540,
-        "y": 2000,
+        "x": 1590,
+        "y": 700,
         "wires": [
             [
                 "mysql_load_materials"
@@ -8537,8 +8537,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "MariaDB",
-        "x": 780,
-        "y": 2000,
+        "x": 1830,
+        "y": 700,
         "wires": [
             [
                 "process_materials"
@@ -8553,8 +8553,8 @@
         "func": "// Stocke le tableau complet\nflow.set('materials', msg.payload);\n// Extrait la liste unique des types\nconst types = [...new Set(msg.payload.map(m => m.type))];\nmsg.options = types;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1060,
-        "y": 2000,
+        "x": 2110,
+        "y": 700,
         "wires": [
             [
                 "dropdown_type"
@@ -8580,8 +8580,8 @@
         "topic": "",
         "topicType": "str",
         "className": "",
-        "x": 480,
-        "y": 2080,
+        "x": 1530,
+        "y": 780,
         "wires": [
             [
                 "filter_materials",
@@ -8597,8 +8597,8 @@
         "func": "flow.set('selectedType', msg.payload);\nconst all = flow.get('materials') || [];\nconst list = all.filter(m => m.type === msg.payload).map(m => m.nom);\nmsg.options = list;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 760,
-        "y": 2080,
+        "x": 1810,
+        "y": 780,
         "wires": [
             [
                 "dropdown_material"
@@ -8617,8 +8617,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 2140,
+        "x": 1820,
+        "y": 840,
         "wires": [
             [
                 "text_unit"
@@ -8644,8 +8644,8 @@
         "topic": "",
         "topicType": "str",
         "className": "",
-        "x": 1090,
-        "y": 2080,
+        "x": 2140,
+        "y": 780,
         "wires": [
             [
                 "query_price"
@@ -8660,8 +8660,8 @@
         "func": "flow.set('selectedMaterial', msg.payload);\nmsg.topic = `SELECT prix FROM materiaux WHERE nom='${msg.payload}';`;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1360,
-        "y": 2080,
+        "x": 2410,
+        "y": 780,
         "wires": [
             [
                 "mysql_price"
@@ -8674,8 +8674,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "MariaDB",
-        "x": 1590,
-        "y": 2080,
+        "x": 2640,
+        "y": 780,
         "wires": [
             [
                 "extract_price"
@@ -8690,8 +8690,8 @@
         "func": "let p = 0;\nif(Array.isArray(msg.payload) && msg.payload.length) p = msg.payload[0].prix;\nflow.set('priceU', p);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1850,
-        "y": 2080,
+        "x": 2900,
+        "y": 780,
         "wires": [
             []
         ]
@@ -8713,8 +8713,8 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 1080,
-        "y": 2140,
+        "x": 2130,
+        "y": 840,
         "wires": []
     },
     {
@@ -8735,8 +8735,8 @@
         "sendOnBlur": true,
         "className": "",
         "topicType": "str",
-        "x": 480,
-        "y": 2200,
+        "x": 1530,
+        "y": 900,
         "wires": [
             [
                 "set_quantity"
@@ -8755,8 +8755,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 2200,
+        "x": 1800,
+        "y": 900,
         "wires": [
             [
                 "calculate_price"
@@ -8775,8 +8775,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1010,
-        "y": 2200,
+        "x": 2060,
+        "y": 900,
         "wires": [
             [
                 "text_price"
@@ -8800,123 +8800,8 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 1260,
-        "y": 2200,
-        "wires": []
-    },
-    {
-        "id": "add_command",
-        "type": "ui_button",
-        "z": "test_tab_001",
-        "name": "Add Cmd",
-        "group": "aec5d9e9eea485de",
-        "order": 13,
-        "width": 8,
-        "height": 1,
-        "passthru": false,
-        "label": "+ Ajouter commande",
-        "tooltip": "",
-        "color": "#fff",
-        "bgcolor": "#337ab7",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "",
-        "topicType": "str",
-        "x": 500,
-        "y": 2440,
-        "wires": [
-            [
-                "add_command_fn"
-            ]
-        ]
-    },
-    {
-        "id": "add_command_fn",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "Add Command Fn",
-        "func": "let cmds = flow.get('commands')||[];\ncmds.push({\n  type: flow.get('selectedType'),\n  materiau: flow.get('selectedMaterial'),\n  quantite: flow.get('qty'),\n  unite: flow.get('unitType'),\n  prix: flow.get('totalPrice')\n});\nflow.set('commands', cmds);\nmsg.payload = cmds;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 750,
-        "y": 2440,
-        "wires": [
-            [
-                "table_commands"
-            ]
-        ]
-    },
-    {
-        "id": "table_commands",
-        "type": "ui_table",
-        "z": "test_tab_001",
-        "group": "aec5d9e9eea485de",
-        "name": "Tableau Cmds",
-        "order": 2,
-        "width": 8,
-        "height": 8,
-        "columns": [
-            {
-                "field": "type",
-                "title": "Type",
-                "width": "",
-                "align": "left",
-                "formatter": "plaintext",
-                "formatterParams": {
-                    "target": "_blank"
-                }
-            },
-            {
-                "field": "materiau",
-                "title": "Matériau",
-                "width": "",
-                "align": "left",
-                "formatter": "plaintext",
-                "formatterParams": {
-                    "target": "_blank"
-                }
-            },
-            {
-                "field": "quantite",
-                "title": "Quantité",
-                "width": "",
-                "align": "right",
-                "formatter": "plaintext",
-                "formatterParams": {
-                    "target": "_blank"
-                }
-            },
-            {
-                "field": "unite",
-                "title": "Unité",
-                "width": "",
-                "align": "left",
-                "formatter": "plaintext",
-                "formatterParams": {
-                    "target": "_blank"
-                }
-            },
-            {
-                "field": "prix",
-                "title": "Prix",
-                "width": "",
-                "align": "right",
-                "formatter": "plaintext",
-                "formatterParams": {
-                    "target": "_blank"
-                }
-            }
-        ],
-        "outputs": 0,
-        "cts": false,
-        "x": 1040,
-        "y": 2440,
+        "x": 2310,
+        "y": 900,
         "wires": []
     },
     {
