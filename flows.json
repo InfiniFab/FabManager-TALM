@@ -7362,7 +7362,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "INSERT",
-        "func": "// Élève & table\nlet classe = msg.annee;\nlet nom    = msg.eleve;\nlet table  = flow.get('bdd_bool_test')\n             ? 'usage_lab'\n             : 'usage_lab_test';\n\n// Fabrication\nlet fabrication = flow.get('fabrication') || '';\n\n// Somme des prix\nconst p3 = parseFloat(flow.get('prix_3d')     || 0);\nconst pl = parseFloat(flow.get('prix_laser')  || 0);\nconst pv = parseFloat(flow.get('prix_vinyle') || 0);\nconst pf = parseFloat(flow.get('prix_fil')    || 0);\nconst pt = parseFloat(flow.get('prix_thermo') || 0);\nconst prix = p3 + pl + pv + pf + pt;\n\n// Réglements & options\nlet reglement = flow.get('reglement_bool') ? 1 : 0;\nlet cao       = flow.get('cao_bool')        ? 1 : 0;\nlet remarques = flow.get('remarques') || '';\n\n// Date au format SQL\nlet d = new Date();\nlet date = d.toISOString().slice(0, 19).replace('T', ' ');\n\n// Construction de la requête\nmsg.topic = \n  `INSERT INTO \\`nodered\\`.\\`${table}\\` ` +\n  `(classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES (` +\n  `'${classe}',` +\n  `'${nom}',` +\n  `'${fabrication}',` +\n  `${prix},` +\n  `${reglement},` +\n  `${cao},` +\n  `'${remarques}',` +\n  `'${date}'` +\n  `);`;\n\nreturn msg;\n",
+        "func": "// Élève & table\nlet classe = flow.annee;\nlet nom    = flow.eleve;\nlet table  = flow.get('bdd_bool_test') ? 'usage_lab' : 'usage_lab_test';\n\n// Fabrication\nlet fabrication = flow.fabrication || '';\n\n// Prix\nlet prix = parseFloat(msg.prix) || 0;\n\n// Réglements & options\nlet reglement = flow.reglement ? 1 : 0;\nlet cao       = flow.cao ? 1 : 0;\nlet remarques = flow.remarques || '';\n\n// Date au format SQL\nlet d = new Date();\nlet date = d.toISOString().slice(0, 19).replace('T', ' ');\n\n// Construction de la requête\nmsg.topic = \n  `INSERT INTO \\`nodered\\`.\\`${table}\\` ` +\n  `(classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES (` +\n  `'${classe}',` +\n  `'${nom}',` +\n  `'${fabrication}',` +\n  `${prix},` +\n  `${reglement},` +\n  `${cao},` +\n  `'${remarques}',` +\n  `'${date}'` +\n  `);`;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -9868,6 +9868,74 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "btn_validate",
+        "type": "ui_button",
+        "z": "test_tab_001",
+        "name": "Valider",
+        "group": "aec5d9e9eea485de",
+        "order": 11,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "Valider",
+        "color": "#ffffff",
+        "bgcolor": "#28a745",
+        "topic": "",
+        "x": 490,
+        "y": 2580,
+        "wires": [
+            [
+                "fn_build_insert"
+            ]
+        ]
+    },
+    {
+        "id": "fn_build_insert",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Build INSERT simple",
+        "func": "// Élève & table\nlet classe = msg.annee;\nlet nom    = msg.eleve;\nlet table  = flow.get('bdd_bool_test')\n             ? 'usage_lab'\n             : 'usage_lab_test';\n\n// Fabrication & prix\nlet fabrication = flow.get('fabrication') || '';\nlet prix        = parseFloat(flow.get('totalPrice')) || 0;\n\n// Réglements & options\nlet reglement = flow.get('reglement_bool') ? 1 : 0;\nlet cao       = flow.get('cao_bool')        ? 1 : 0;\nlet remarques = flow.get('remarques') || '';\n\n// Date SQL\nlet d = new Date();\nlet date = d.toISOString().slice(0, 19).replace('T', ' ');\n\n// Construction de la requête\nmsg.topic = \n  `INSERT INTO \\`nodered\\`.\\`${table}\\` ` +\n  `(classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES (` +\n  `'${classe}',` +\n  `'${nom}',` +\n  `'${fabrication}',` +\n  `${prix},` +\n  `${reglement},` +\n  `${cao},` +\n  `'${remarques}',` +\n  `'${date}'` +\n  `);`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 2580,
+        "wires": [
+            [
+                "mysql_simple_insert"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_simple_insert",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "MariaDB Insert",
+        "x": 1050,
+        "y": 2580,
+        "wires": [
+            [
+                "debug_simple_insert"
+            ]
+        ]
+    },
+    {
+        "id": "debug_simple_insert",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "Résultat Insert",
+        "active": true,
+        "tosidebar": true,
+        "complete": "true",
+        "x": 1290,
+        "y": 2580,
+        "wires": []
     },
     {
         "id": "mysql_get_mat",
