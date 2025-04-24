@@ -9884,11 +9884,11 @@
         "color": "#ffffff",
         "bgcolor": "#28a745",
         "topic": "",
-        "x": 250,
-        "y": 400,
+        "x": 130,
+        "y": 480,
         "wires": [
             [
-                "05aa5e84c6cd01aa"
+                "eb6afc562732de7c"
             ]
         ]
     },
@@ -9908,6 +9908,199 @@
         "x": 1040,
         "y": 400,
         "wires": []
+    },
+    {
+        "id": "eb6afc562732de7c",
+        "type": "change",
+        "z": "test_tab_001",
+        "name": "Prepare INSERT data",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annee",
+                "pt": "msg",
+                "to": "annee",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "eleve",
+                "pt": "msg",
+                "to": "eleve",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "impr3d_bool",
+                "pt": "msg",
+                "to": "impr3d_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "filament",
+                "pt": "msg",
+                "to": "filament",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "filament_gr",
+                "pt": "msg",
+                "to": "filament_gr",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "laser_bool",
+                "pt": "msg",
+                "to": "laser_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_laser",
+                "pt": "msg",
+                "to": "mat_laser",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_laser_qte",
+                "pt": "msg",
+                "to": "mat_laser_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "vinyle_bool",
+                "pt": "msg",
+                "to": "vinyle_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_vinyle",
+                "pt": "msg",
+                "to": "mat_vinyle",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_vinyle_qte",
+                "pt": "msg",
+                "to": "mat_vinyle_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "brodeuse_bool",
+                "pt": "msg",
+                "to": "brodeuse_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_fil",
+                "pt": "msg",
+                "to": "mat_fil",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_fil_qte",
+                "pt": "msg",
+                "to": "mat_fil_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "thermo_bool",
+                "pt": "msg",
+                "to": "thermo_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_thermo",
+                "pt": "msg",
+                "to": "mat_thermo",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_thermo_qte",
+                "pt": "msg",
+                "to": "mat_thermo_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "fabrication",
+                "pt": "msg",
+                "to": "fabrication",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "totalPrice",
+                "pt": "msg",
+                "to": "totalPrice",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "reglement_bool",
+                "pt": "msg",
+                "to": "reglement_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "cao_bool",
+                "pt": "msg",
+                "to": "cao_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "remarques",
+                "pt": "msg",
+                "to": "remarques",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "23ddd74fb12583d9"
+            ]
+        ]
+    },
+    {
+        "id": "23ddd74fb12583d9",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Set fabrication",
+        "func": "// Construit la chaîne fabrication=[type:mat:qtt]\nlet parts = [];\nif (msg.impr3d_bool)    parts.push(`3d:${msg.filament}:${msg.filament_gr}gr`);\nif (msg.laser_bool)     parts.push(`laser:${msg.mat_laser}:${msg.mat_laser_qte}`);\nif (msg.vinyle_bool)    parts.push(`vinyle:${msg.mat_vinyle}:${msg.mat_vinyle_qte}`);\nif (msg.brodeuse_bool)  parts.push(`fil:${msg.mat_fil}:${msg.mat_fil_qte}`);\nif (msg.thermo_bool)    parts.push(`thermo:${msg.mat_thermo}:${msg.mat_thermo_qte}`);\n// jointure\nlet fabrication = parts.join(' // ');\n// expose pour l'INSERT\nmsg.fabrication = fabrication;\nflow.set('fabrication', fabrication);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "1dfb885551b2b1a4"
+            ]
+        ]
     },
     {
         "id": "mysql_get_mat",
