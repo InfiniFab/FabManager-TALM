@@ -3412,7 +3412,7 @@
         "position": "prompt",
         "displayTime": "3",
         "highlight": "",
-        "sendall": false,
+        "sendall": true,
         "outputs": 1,
         "ok": "ok",
         "cancel": "annuler",
@@ -8116,7 +8116,7 @@
         "position": "prompt",
         "displayTime": "3",
         "highlight": "",
-        "sendall": false,
+        "sendall": true,
         "outputs": 1,
         "ok": "ok",
         "cancel": "annuler",
@@ -8471,7 +8471,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2010,
+        "x": 2030,
         "y": 140,
         "wires": [
             [
