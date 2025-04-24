@@ -8935,9 +8935,7 @@
         "x": 550,
         "y": 540,
         "wires": [
-            [
-                "1dfb885551b2b1a4"
-            ]
+            []
         ]
     },
     {
@@ -10079,7 +10077,8 @@
         "y": 480,
         "wires": [
             [
-                "23ddd74fb12583d9"
+                "23ddd74fb12583d9",
+                "b9253f8cee5d1628"
             ]
         ]
     },
@@ -10098,9 +10097,42 @@
         "y": 480,
         "wires": [
             [
-                "1dfb885551b2b1a4"
+                "1dfb885551b2b1a4",
+                "7bae7bc6cf0bce08"
             ]
         ]
+    },
+    {
+        "id": "7bae7bc6cf0bce08",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b9253f8cee5d1628",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 360,
+        "wires": []
     },
     {
         "id": "mysql_get_mat",
