@@ -8511,8 +8511,7 @@
         "y": 2000,
         "wires": [
             [
-                "select_materials",
-                "table_commands"
+                "select_materials"
             ]
         ]
     },
@@ -10087,8 +10086,9 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "Set fabrication",
-        "func": "// Construit la chaîne fabrication=[type:mat:qtt]\nlet parts = [];\nif (msg.impr3d_bool)    parts.push(`3d:${msg.filament}:${msg.filament_gr}gr`);\nif (msg.laser_bool)     parts.push(`laser:${msg.mat_laser}:${msg.mat_laser_qte}`);\nif (msg.vinyle_bool)    parts.push(`vinyle:${msg.mat_vinyle}:${msg.mat_vinyle_qte}`);\nif (msg.brodeuse_bool)  parts.push(`fil:${msg.mat_fil}:${msg.mat_fil_qte}`);\nif (msg.thermo_bool)    parts.push(`thermo:${msg.mat_thermo}:${msg.mat_thermo_qte}`);\n// jointure\nlet fabrication = parts.join(' // ');\n// expose pour l'INSERT\nmsg.fabrication = fabrication;\nflow.set('fabrication', fabrication);\nreturn msg;",
+        "func": "// Function “Set fabrication” remplaçant ton code existant\nconst type = msg.selectedType      || '';  // ex. \"découpeuse laser\"\nconst mat  = msg.selectedMaterial  || '';  // ex. \"PMMA 3mm\"\nconst qty  = msg.qty               || 0;   // ex. 2\nconst unit = msg.unitType          || 'unité'; // ex. \"unité\"\n\n// Construit directement la chaîne\nmsg.fabrication = `${type}:${mat}:${qty}${unit}`;\n\n// (Optionnel) garde en contexte\nflow.set('fabrication', msg.fabrication);\n\nreturn msg;\n",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
