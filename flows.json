@@ -9510,29 +9510,6 @@
         "wires": []
     },
     {
-        "id": "button_delete",
-        "type": "ui_button",
-        "z": "fd7dc8247b3e3472",
-        "name": "Supprimer",
-        "group": "group_id",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Supprimer",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "",
-        "x": 690,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "delete_action",
         "type": "function",
         "z": "fd7dc8247b3e3472",
