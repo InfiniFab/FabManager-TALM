@@ -8824,8 +8824,8 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 480,
-        "y": 2260,
+        "x": 500,
+        "y": 2440,
         "wires": [
             [
                 "add_command_fn"
@@ -8844,8 +8844,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
-        "y": 2260,
+        "x": 750,
+        "y": 2440,
         "wires": [
             [
                 "table_commands"
@@ -8915,8 +8915,8 @@
         ],
         "outputs": 0,
         "cts": false,
-        "x": 1020,
-        "y": 2260,
+        "x": 1040,
+        "y": 2440,
         "wires": []
     },
     {
