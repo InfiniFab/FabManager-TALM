@@ -10152,7 +10152,7 @@
         "wires": [
             [
                 "b2e5edca242d6f0c",
-                "confirm_action"
+                "mysql_update_mat"
             ]
         ]
     },
@@ -10414,96 +10414,5 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "confirm_action",
-        "type": "ui_toast",
-        "z": "fd7dc8247b3e3472",
-        "position": "prompt",
-        "displayTime": "0",
-        "highlight": "",
-        "sendall": false,
-        "outputs": 1,
-        "ok": "OK",
-        "cancel": "Annuler",
-        "raw": false,
-        "className": "",
-        "topic": "",
-        "name": "Confirmation",
-        "x": 1290,
-        "y": 780,
-        "wires": [
-            [
-                "handle_response"
-            ]
-        ]
-    },
-    {
-        "id": "handle_response",
-        "type": "switch",
-        "z": "fd7dc8247b3e3472",
-        "name": "Gérer la réponse",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "OK",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "Annuler",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1490,
-        "y": 780,
-        "wires": [
-            [
-                "action_confirmed",
-                "mysql_update_mat"
-            ],
-            [
-                "action_cancelled"
-            ]
-        ]
-    },
-    {
-        "id": "action_confirmed",
-        "type": "debug",
-        "z": "fd7dc8247b3e3472",
-        "name": "Action Confirmée",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1690,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "action_cancelled",
-        "type": "debug",
-        "z": "fd7dc8247b3e3472",
-        "name": "Action Annulée",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1690,
-        "y": 800,
-        "wires": []
     }
 ]
