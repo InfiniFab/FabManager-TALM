@@ -8,14 +8,6 @@
         "env": []
     },
     {
-        "id": "29fd68d1903a9d50",
-        "type": "tab",
-        "label": "Enregistrement utilisations",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "b527c2c14fc2357e",
         "type": "tab",
         "label": "Flux de base de donnée",
@@ -35,6 +27,14 @@
         "id": "004fd76ebe3d4b43",
         "type": "tab",
         "label": "Affichage photos",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "29fd68d1903a9d50",
+        "type": "tab",
+        "label": "Enregistrement utilisations",
         "disabled": false,
         "info": "",
         "env": []
@@ -1609,2092 +1609,6 @@
                 "2e2052b9b5575038",
                 "38179c84c47c6883",
                 "aadf218da852bb0b"
-            ]
-        ]
-    },
-    {
-        "id": "d5d56893c001fa7a",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "function 1",
-        "func": "//msg.payload = msg.payload[0][\"Nom de naissance\"];\nconst annee=[];\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (!annee.includes(msg.payload[i][\"Promotion\"])) {\n        annee.push(msg.payload[i][\"Promotion\"]);\n    }\n    \n    \n}\nannee.sort();\nmsg.payload=annee;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 120,
-        "wires": [
-            [
-                "24944d2f6bd7b73a"
-            ]
-        ]
-    },
-    {
-        "id": "24944d2f6bd7b73a",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "options",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 790,
-        "y": 120,
-        "wires": [
-            [
-                "8871ae607e4f9f4a"
-            ]
-        ]
-    },
-    {
-        "id": "3c0392d64287068b",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "function 2",
-        "func": "//msg.payload = msg.payload[0][\"Nom de naissance\"];\n\nconst list_eleve=[];\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if(msg.payload[i][\"Promotion\"]==msg.annee){\n        list_eleve.push(msg.payload[i][\"Nom et Prénom d'usage\"]);\n    }\n   \n    \n}\nlist_eleve.sort();\nmsg.payload=list_eleve;\n\nif (list_eleve.length === 1) {\n    // Définir automatiquement l'élève dans le flow\n    flow.set('eleve', list_eleve[0]);\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 790,
-        "y": 300,
-        "wires": [
-            [
-                "2e53ec9c1ec81f4b"
-            ]
-        ]
-    },
-    {
-        "id": "3e47a5bdef4676f0",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "annee",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1170,
-        "y": 120,
-        "wires": [
-            [
-                "e09d929765e1dbe4"
-            ]
-        ]
-    },
-    {
-        "id": "6ccf513b14533288",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "annee",
-                "pt": "msg",
-                "to": "annee",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 610,
-        "y": 300,
-        "wires": [
-            [
-                "3c0392d64287068b"
-            ]
-        ]
-    },
-    {
-        "id": "2e53ec9c1ec81f4b",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "options",
-                "pt": "msg",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 990,
-        "y": 300,
-        "wires": [
-            [
-                "0acdb9d043158a67"
-            ]
-        ]
-    },
-    {
-        "id": "2376d8a3bfe6c63c",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "impr3d_bool",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1900,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "0e4953af2ba43c1d",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "laser_bool",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1900,
-        "y": 700,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "07be0a3666918d07",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "reglement_bool",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1860,
-        "y": 900,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "25652091b5049f7d",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "cao_bool",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1810,
-        "y": 1020,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2e2ec6aa05671e95",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filament",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1900,
-        "y": 560,
-        "wires": [
-            [
-                "cf8d049a052c5c4f"
-            ]
-        ]
-    },
-    {
-        "id": "26ace20f8482afd1",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "mat_laser",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1880,
-        "y": 800,
-        "wires": [
-            [
-                "6eed9d5a57ee0f30"
-            ]
-        ]
-    },
-    {
-        "id": "3bef16889592706a",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "filament_gr",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2360,
-        "y": 600,
-        "wires": [
-            [
-                "e73a7640d2e6e5af"
-            ]
-        ]
-    },
-    {
-        "id": "533b2151254ad309",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "mat_laser_qte",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2560,
-        "y": 700,
-        "wires": [
-            [
-                "e0280bff06030d09"
-            ]
-        ]
-    },
-    {
-        "id": "932550833181df8e",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "eleve",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1340,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "997b241844d124af",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "annee",
-                "pt": "msg",
-                "to": "annee",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "eleve",
-                "pt": "msg",
-                "to": "eleve",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "impr3d_bool",
-                "pt": "msg",
-                "to": "impr3d_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "filament",
-                "pt": "msg",
-                "to": "filament",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "filament_gr",
-                "pt": "msg",
-                "to": "filament_gr",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "laser_bool",
-                "pt": "msg",
-                "to": "laser_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_laser",
-                "pt": "msg",
-                "to": "mat_laser",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "mat_laser_qte",
-                "pt": "msg",
-                "to": "mat_laser_qte",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "reglement_bool",
-                "pt": "msg",
-                "to": "reglement_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "cao_bool",
-                "pt": "msg",
-                "to": "cao_bool",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "prix_laser",
-                "pt": "msg",
-                "to": "prix_laser",
-                "tot": "flow"
-            },
-            {
-                "t": "set",
-                "p": "prix_3d",
-                "pt": "msg",
-                "to": "prix_3d",
-                "tot": "flow"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 610,
-        "y": 560,
-        "wires": [
-            [
-                "973a4689c5e96df6"
-            ]
-        ]
-    },
-    {
-        "id": "c378e65b5480ba42",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "function 3",
-        "func": "\nswitch (msg.payload) {\n  case 'PLA':\n    msg.payload=19.9;\n    break;\n  case 'PLA flex':\n    msg.payload=50;\n    break;\n  case 'PLA transparent':\n    msg.payload=40;\n    break;\n  case 'PLA bois':\n    msg.payload=51.8;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1860,
-        "y": 520,
-        "wires": [
-            [
-                "68d85b237798ba64"
-            ]
-        ]
-    },
-    {
-        "id": "e73a7640d2e6e5af",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "function 4",
-        "func": "let prix_kg;\n\nswitch (flow.get(\"filament\")) {\n  case 'PLA':\n    prix_kg=19.9;\n    break;\n  case 'PLA flex':\n    prix_kg=50;\n    break;\n  case 'PLA transparent':\n    prix_kg=40;\n    break; \n  case 'PLA bois':\n    prix_kg = 51.8;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nconst prix = prix_kg*parseInt(msg.payload)/1000;\nflow.set('prix_3d',prix);\nmsg.payload=prix;\nmsg.prix_kg=prix_kg;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2540,
-        "y": 600,
-        "wires": [
-            [
-                "e8a1a5d57ba0b28c"
-            ]
-        ]
-    },
-    {
-        "id": "50699363d98dffab",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "function 5",
-        "func": "\nswitch (msg.payload) {\n  case 'PMMA 3mm':\n    msg.payload=7.8;\n    break;\n  case 'PMMA 5mm':\n    msg.payload=12.59;\n    break;\n  case 'CP 3mm':\n    msg.payload=3;\n    break;\n  case 'CP 5mm':\n    msg.payload=3.3;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1860,
-        "y": 760,
-        "wires": [
-            [
-                "c9b200a30066b2b3"
-            ]
-        ]
-    },
-    {
-        "id": "e0280bff06030d09",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "function 6",
-        "func": "let prix_u;\n\nswitch (flow.get(\"mat_laser\")) {\n  case 'PMMA 3mm':\n    prix_u=7.8;\n    break;\n  case 'PMMA 5mm':\n    prix_u=12.59;\n    break;\n  case 'CP 3mm':\n    prix_u=3;\n    break;\n  case 'CP 5mm':\n    prix_u=3.3;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nconst prix = prix_u*parseInt(msg.payload);\nflow.set('prix_laser',prix);\nmsg.payload=prix;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2750,
-        "y": 700,
-        "wires": [
-            [
-                "74f8a0f549ef499d"
-            ]
-        ]
-    },
-    {
-        "id": "973a4689c5e96df6",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "INSERT",
-        "func": "//if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\n//if (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\nlet classe =msg.annee;\nlet nom = msg.eleve;\nlet fabrication=\"\";\nlet prix =0;\nif (msg.impr3d_bool)fabrication = '3d :'+ msg.filament +\" : \" + msg.filament_gr + \"gr\";\nif(msg.laser_bool)fabrication = fabrication +' // las :'  + msg.mat_laser +\" : \"+ msg.mat_laser_qte;\nlet prix_3d = flow.get('prix_3d');\nlet prix_laser = flow.get('prix_laser');\n\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name =\"usage_lab_test\";\nif (bdd_bool){\n    table_name=\"usage_lab\";\n}\nelse{\n    table_name=\"usage_lab_test\";\n}\n\nlet remarques = flow.get('remarques');\n\n\nif (msg.impr3d_bool)prix += parseFloat(prix_3d);\nif(msg.laser_bool)prix += parseFloat(prix_laser);\n//let prix = \"sousou\";\nlet reglement;\nif (flow.get('reglement_bool')){\n    reglement = 'true';\n}\nelse{\n    reglement = 'false';\n}\n\nlet cao;\nif (flow.get('cao_bool')){\n    cao = 'true';\n}\nelse{\n    cao = 'false';\n}\n\nlet date = new Date();\ndate = date.getDate() + \"/\" + (date.getMonth() + 1) + \"/\" + date.getFullYear() + \"  \" + \n      date.getHours() + \":\" + date.getMinutes() + \":\" + date.getSeconds();\n//let reglement = \"reglement\";\n\n//let Cao = flow.get('cao_bool');\n//let Cao = \"cao\";\n\nlet topic;\n//let Cao = msg.cao_bool;\n\n\ntopic = \"INSERT INTO `nodered`.`\";\ntopic = topic + table_name+\"` (classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES ('\";\ntopic = topic + classe +\"', '\";\ntopic = topic + nom + \"', '\";\ntopic = topic + fabrication + \"', '\";\ntopic = topic + prix + \"', \";\ntopic = topic + reglement + \", \";\ntopic = topic + cao + \", '\";\ntopic = topic + remarques + \"', '\";\ntopic = topic + date + \"'); \";\n\nmsg.topic = topic;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 830,
-        "y": 560,
-        "wires": [
-            [
-                "fadf0bb2e9e0c0f4"
-            ]
-        ]
-    },
-    {
-        "id": "a8b7adc480aebfce",
-        "type": "inject",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 600,
-        "y": 600,
-        "wires": [
-            [
-                "973a4689c5e96df6"
-            ]
-        ]
-    },
-    {
-        "id": "a65ffd02b3431baa",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "resetSearch",
-                "pt": "msg",
-                "to": "true",
-                "tot": "bool"
-            },
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "false",
-                "tot": "bool"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1130,
-        "y": 620,
-        "wires": [
-            [
-                "152245ee3d7378f8",
-                "b7332f435e93a713"
-            ]
-        ]
-    },
-    {
-        "id": "426591a9da4ed6a0",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "0",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1680,
-        "y": 620,
-        "wires": [
-            [
-                "cf8d049a052c5c4f",
-                "6eed9d5a57ee0f30"
-            ]
-        ]
-    },
-    {
-        "id": "41de7195f1a80562",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "bdd_bool",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 840,
-        "wires": [
-            [
-                "31ea119bae7f8b25"
-            ]
-        ]
-    },
-    {
-        "id": "49581d7c289bb4d7",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "remarques",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 2090,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f170788fc69e8239",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1680,
-        "y": 860,
-        "wires": [
-            [
-                "452c5481fe1f7229"
-            ]
-        ]
-    },
-    {
-        "id": "983c4cf463cca2ed",
-        "type": "inject",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.5",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1080,
-        "y": 560,
-        "wires": [
-            [
-                "a65ffd02b3431baa"
-            ]
-        ]
-    },
-    {
-        "id": "69370acad750e19d",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "SELECT bdd",
-        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `nodered`.`\";\ntopic = topic + table_name + \"` ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 960,
-        "y": 840,
-        "wires": [
-            [
-                "bdf2f7724f74c1d8",
-                "b8e335ce47c42682"
-            ]
-        ]
-    },
-    {
-        "id": "c0bdde4033a864f7",
-        "type": "ui_button",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "group": "cb7e38a87943e192",
-        "order": 35,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Valider",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 420,
-        "y": 560,
-        "wires": [
-            [
-                "997b241844d124af"
-            ]
-        ]
-    },
-    {
-        "id": "7f901eb74e679cf7",
-        "type": "ui_button",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "group": "cb7e38a87943e192",
-        "order": 1,
-        "width": 1,
-        "height": 1,
-        "passthru": false,
-        "label": "reset",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 150,
-        "y": 120,
-        "wires": [
-            [
-                "7037bcd8fb5d9e48",
-                "9e9583c3f62a7964"
-            ]
-        ]
-    },
-    {
-        "id": "8871ae607e4f9f4a",
-        "type": "ui_dropdown",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Année / Classe",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "cb7e38a87943e192",
-        "order": 2,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "options",
-        "topicType": "msg",
-        "className": "",
-        "x": 980,
-        "y": 120,
-        "wires": [
-            [
-                "3e47a5bdef4676f0"
-            ]
-        ]
-    },
-    {
-        "id": "0acdb9d043158a67",
-        "type": "ui_dropdown",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Eleve",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "cb7e38a87943e192",
-        "order": 4,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 1170,
-        "y": 300,
-        "wires": [
-            [
-                "932550833181df8e"
-            ]
-        ]
-    },
-    {
-        "id": "678aca008d4854bb",
-        "type": "ui_dropdown",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Type Filament",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "cb7e38a87943e192",
-        "order": 13,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "PLA",
-                "type": "str"
-            },
-            {
-                "label": "",
-                "value": "PLA flex",
-                "type": "str"
-            },
-            {
-                "label": "",
-                "value": "PLA transparent",
-                "type": "str"
-            },
-            {
-                "label": "",
-                "value": "PLA bois",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 1680,
-        "y": 520,
-        "wires": [
-            [
-                "2e2ec6aa05671e95",
-                "c378e65b5480ba42"
-            ]
-        ]
-    },
-    {
-        "id": "1b02a10bc337909a",
-        "type": "ui_dropdown",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Materiel Laser",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "cb7e38a87943e192",
-        "order": 15,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "CP 3mm",
-                "type": "str"
-            },
-            {
-                "label": "",
-                "value": "CP 5mm",
-                "type": "str"
-            },
-            {
-                "label": "",
-                "value": "PMMA 3mm",
-                "type": "str"
-            },
-            {
-                "label": "",
-                "value": "PMMA 5mm",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 1680,
-        "y": 760,
-        "wires": [
-            [
-                "26ace20f8482afd1",
-                "50699363d98dffab"
-            ]
-        ]
-    },
-    {
-        "id": "594499c599089076",
-        "type": "ui_switch",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Impression 3D",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 9,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1680,
-        "y": 460,
-        "wires": [
-            [
-                "2376d8a3bfe6c63c"
-            ]
-        ]
-    },
-    {
-        "id": "f9c102dd4a0c3fd8",
-        "type": "ui_switch",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Découpeuse laser",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 11,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1690,
-        "y": 700,
-        "wires": [
-            [
-                "0e4953af2ba43c1d"
-            ]
-        ]
-    },
-    {
-        "id": "5ceefe8e718f7e69",
-        "type": "ui_switch",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "CAO",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 23,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1640,
-        "y": 1020,
-        "wires": [
-            [
-                "25652091b5049f7d"
-            ]
-        ]
-    },
-    {
-        "id": "ec3885aec0c022a8",
-        "type": "ui_switch",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "reglement",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 17,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1650,
-        "y": 900,
-        "wires": [
-            [
-                "07be0a3666918d07"
-            ]
-        ]
-    },
-    {
-        "id": "51099519bf0a2d99",
-        "type": "ui_switch",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "BDD_Prod",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 6,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 200,
-        "y": 840,
-        "wires": [
-            [
-                "41de7195f1a80562"
-            ]
-        ]
-    },
-    {
-        "id": "6eed9d5a57ee0f30",
-        "type": "ui_text_input",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Quantité (unité)",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 20,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "mode": "number",
-        "delay": 300,
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 2350,
-        "y": 700,
-        "wires": [
-            [
-                "533b2151254ad309"
-            ]
-        ]
-    },
-    {
-        "id": "cf8d049a052c5c4f",
-        "type": "ui_text_input",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Quantité (en gr)",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 18,
-        "width": 6,
-        "height": 1,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 2160,
-        "y": 600,
-        "wires": [
-            [
-                "3bef16889592706a"
-            ]
-        ]
-    },
-    {
-        "id": "452c5481fe1f7229",
-        "type": "ui_text_input",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "label": "Remarques",
-        "tooltip": "",
-        "group": "cb7e38a87943e192",
-        "order": 33,
-        "width": 9,
-        "height": 1,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 1880,
-        "y": 860,
-        "wires": [
-            [
-                "49581d7c289bb4d7"
-            ]
-        ]
-    },
-    {
-        "id": "68d85b237798ba64",
-        "type": "ui_text",
-        "z": "29fd68d1903a9d50",
-        "group": "cb7e38a87943e192",
-        "order": 28,
-        "width": 4,
-        "height": 1,
-        "name": "",
-        "label": "€/kg",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2010,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "e8a1a5d57ba0b28c",
-        "type": "ui_text",
-        "z": "29fd68d1903a9d50",
-        "group": "cb7e38a87943e192",
-        "order": 24,
-        "width": 4,
-        "height": 1,
-        "name": "",
-        "label": "Prix Impression",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2700,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "c9b200a30066b2b3",
-        "type": "ui_text",
-        "z": "29fd68d1903a9d50",
-        "group": "cb7e38a87943e192",
-        "order": 30,
-        "width": 4,
-        "height": 1,
-        "name": "",
-        "label": "€/unité",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2000,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "74f8a0f549ef499d",
-        "type": "ui_text",
-        "z": "29fd68d1903a9d50",
-        "group": "cb7e38a87943e192",
-        "order": 26,
-        "width": 4,
-        "height": 1,
-        "name": "",
-        "label": "Prix materiaux",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2910,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "fadf0bb2e9e0c0f4",
-        "type": "mysql",
-        "z": "29fd68d1903a9d50",
-        "mydb": "f3318311c7abaf8f",
-        "name": "mariadb",
-        "x": 870,
-        "y": 620,
-        "wires": [
-            [
-                "a65ffd02b3431baa",
-                "ca7b212ce650a93b"
-            ]
-        ]
-    },
-    {
-        "id": "bdf2f7724f74c1d8",
-        "type": "mysql",
-        "z": "29fd68d1903a9d50",
-        "mydb": "f3318311c7abaf8f",
-        "name": "",
-        "x": 1170,
-        "y": 840,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fbd2ae8a08a0955b",
-        "type": "inject",
-        "z": "29fd68d1903a9d50",
-        "name": "Get Last Students",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 300,
-        "y": 1260,
-        "wires": [
-            [
-                "7d77f3496ccae3f4"
-            ]
-        ]
-    },
-    {
-        "id": "7d77f3496ccae3f4",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "SELECT LAST STUDENTS",
-        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = (bdd_bool) ? \"usage_lab\" : \"usage_lab_test\";\n\n// Construction de la requête SQL\nlet topic = \"SELECT nom, classe, MAX(date) AS derniere_utilisation FROM `nodered`.`\" + table_name + \"` GROUP BY nom, classe ORDER BY derniere_utilisation DESC LIMIT 10;\";\n\nmsg.topic = topic;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 630,
-        "y": 1260,
-        "wires": [
-            [
-                "4961f3b1e70806ba"
-            ]
-        ]
-    },
-    {
-        "id": "4961f3b1e70806ba",
-        "type": "mysql",
-        "z": "29fd68d1903a9d50",
-        "mydb": "f3318311c7abaf8f",
-        "name": "",
-        "x": 930,
-        "y": 1260,
-        "wires": [
-            [
-                "2dc44dc327ed30f7"
-            ]
-        ]
-    },
-    {
-        "id": "2dc44dc327ed30f7",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "Format Last Students",
-        "func": "// On suppose que msg.payload contient le tableau de résultats SQL\n// On mappe pour ne retenir que { nom, classe }\nmsg.lastStudents = msg.payload.map(el => { \n    return { nom: el.nom, classe: el.classe};\n});\n\n// Transmet le tableau pour le ui_template\nmsg.payload = msg.lastStudents;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1130,
-        "y": 1260,
-        "wires": [
-            [
-                "1070eb032143f650"
-            ]
-        ]
-    },
-    {
-        "id": "1070eb032143f650",
-        "type": "ui_template",
-        "z": "29fd68d1903a9d50",
-        "group": "19c4dceaef537425",
-        "name": "Last Students Buttons",
-        "order": 1,
-        "width": 9,
-        "height": 12,
-        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n<strong>{{el.nom}}</strong><span ng-if=\"el.classe\"> ({{el.classe}})</span>    </md-button>\n  </div>\n</div>\n",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 1410,
-        "y": 1260,
-        "wires": [
-            [
-                "328ddb487178336a"
-            ]
-        ]
-    },
-    {
-        "id": "328ddb487178336a",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "Set Selected Student",
-        "func": "\nmsg.options= msg.payload.classe;\n\nlet msg1 = Object.assign({}, msg);\nlet msg2 = msg;\n\nmsg2.options =msg.payload.nom;\n\nreturn [msg1,msg2];\n",
-        "outputs": 2,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1650,
-        "y": 1260,
-        "wires": [
-            [
-                "1be07f2c07c4cc22"
-            ],
-            [
-                "4d4658a71438abca"
-            ]
-        ]
-    },
-    {
-        "id": "1be07f2c07c4cc22",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 10",
-        "mode": "link",
-        "links": [
-            "58cfd45f40e11b5e"
-        ],
-        "x": 1785,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "58cfd45f40e11b5e",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 15",
-        "links": [
-            "1be07f2c07c4cc22"
-        ],
-        "x": 675,
-        "y": 220,
-        "wires": [
-            [
-                "7537410d4f0f6660"
-            ]
-        ]
-    },
-    {
-        "id": "3cbae164359e0115",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 16",
-        "links": [
-            "e09d929765e1dbe4",
-            "152245ee3d7378f8"
-        ],
-        "x": 255,
-        "y": 300,
-        "wires": [
-            [
-                "9e9583c3f62a7964"
-            ]
-        ]
-    },
-    {
-        "id": "e09d929765e1dbe4",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 11",
-        "mode": "link",
-        "links": [
-            "3cbae164359e0115"
-        ],
-        "x": 1365,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "152245ee3d7378f8",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 12",
-        "mode": "link",
-        "links": [
-            "3cbae164359e0115",
-            "fccd797ca51f23c8"
-        ],
-        "x": 1315,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "596d3c50a7a412fb",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 17",
-        "links": [
-            "8baa2d330f6754f5"
-        ],
-        "x": 915,
-        "y": 220,
-        "wires": [
-            [
-                "81dedbbdbd7429d7"
-            ]
-        ]
-    },
-    {
-        "id": "8baa2d330f6754f5",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 13",
-        "mode": "link",
-        "links": [
-            "596d3c50a7a412fb"
-        ],
-        "x": 1945,
-        "y": 1300,
-        "wires": []
-    },
-    {
-        "id": "4d4658a71438abca",
-        "type": "delay",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "50",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1840,
-        "y": 1300,
-        "wires": [
-            [
-                "8baa2d330f6754f5"
-            ]
-        ]
-    },
-    {
-        "id": "81dedbbdbd7429d7",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "options",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1030,
-        "y": 220,
-        "wires": [
-            [
-                "0acdb9d043158a67"
-            ]
-        ]
-    },
-    {
-        "id": "7537410d4f0f6660",
-        "type": "change",
-        "z": "29fd68d1903a9d50",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "options",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 790,
-        "y": 220,
-        "wires": [
-            [
-                "8871ae607e4f9f4a"
-            ]
-        ]
-    },
-    {
-        "id": "7037bcd8fb5d9e48",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "read eleves database",
-        "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 120,
-        "wires": [
-            [
-                "d5d56893c001fa7a"
-            ]
-        ]
-    },
-    {
-        "id": "9e9583c3f62a7964",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "read eleves database",
-        "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 300,
-        "wires": [
-            [
-                "6ccf513b14533288"
-            ]
-        ]
-    },
-    {
-        "id": "6d0773c717ca845c",
-        "type": "ui_toast",
-        "z": "29fd68d1903a9d50",
-        "position": "prompt",
-        "displayTime": "3",
-        "highlight": "",
-        "sendall": true,
-        "outputs": 1,
-        "ok": "ok",
-        "cancel": "annuler",
-        "raw": false,
-        "className": "",
-        "topic": "",
-        "name": "",
-        "x": 620,
-        "y": 900,
-        "wires": [
-            [
-                "cdbbbed29df15b71"
-            ]
-        ]
-    },
-    {
-        "id": "31ea119bae7f8b25",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "confirmation",
-        "func": "if (msg.payload === false) {\n    // On désactive sans confirmation\n    flow.set(\"bdd_bool\", false);\n    return [msg, null];\n} else {\n    // On demande confirmation\n    return [null, { payload: \"Activer la base de production ?\", originalMsg: msg }];\n}\n",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 620,
-        "y": 840,
-        "wires": [
-            [
-                "69370acad750e19d"
-            ],
-            [
-                "6d0773c717ca845c"
-            ]
-        ]
-    },
-    {
-        "id": "cdbbbed29df15b71",
-        "type": "function",
-        "z": "29fd68d1903a9d50",
-        "name": "annulation",
-        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    flow.set(\"bdd_bool\", true);\n    return [{ payload: true }, null]; // vers SELECT et on laisse le switch sur ON\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, { payload: false }]; // renvoie au switch pour le remettre à OFF\n}\n",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 780,
-        "y": 900,
-        "wires": [
-            [
-                "69370acad750e19d"
-            ],
-            [
-                "f9a1aadf02bea859"
-            ]
-        ]
-    },
-    {
-        "id": "b7332f435e93a713",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 14",
-        "mode": "link",
-        "links": [
-            "431ab8fcda0fe8e9",
-            "5c1ef2584056cc64",
-            "c1b339c0210496e4",
-            "0b9bc93b90a14799",
-            "dcd8849c92fcfacb",
-            "0dc4884394ab61dc",
-            "3591dd6c92cc5d37"
-        ],
-        "x": 1405,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "431ab8fcda0fe8e9",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 18",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 1555,
-        "y": 460,
-        "wires": [
-            [
-                "594499c599089076"
-            ]
-        ]
-    },
-    {
-        "id": "5c1ef2584056cc64",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 19",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 1555,
-        "y": 620,
-        "wires": [
-            [
-                "426591a9da4ed6a0"
-            ]
-        ]
-    },
-    {
-        "id": "c1b339c0210496e4",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 20",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 1555,
-        "y": 700,
-        "wires": [
-            [
-                "f9c102dd4a0c3fd8"
-            ]
-        ]
-    },
-    {
-        "id": "0b9bc93b90a14799",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 21",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 1555,
-        "y": 860,
-        "wires": [
-            [
-                "f170788fc69e8239"
-            ]
-        ]
-    },
-    {
-        "id": "dcd8849c92fcfacb",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 22",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 1555,
-        "y": 900,
-        "wires": [
-            [
-                "ec3885aec0c022a8"
-            ]
-        ]
-    },
-    {
-        "id": "0dc4884394ab61dc",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 23",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 1555,
-        "y": 1020,
-        "wires": [
-            [
-                "5ceefe8e718f7e69"
-            ]
-        ]
-    },
-    {
-        "id": "8f45dd4b94025bf8",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 24",
-        "links": [
-            "ca7b212ce650a93b",
-            "b8e335ce47c42682"
-        ],
-        "x": 445,
-        "y": 1220,
-        "wires": [
-            [
-                "7d77f3496ccae3f4"
-            ]
-        ]
-    },
-    {
-        "id": "ca7b212ce650a93b",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 15",
-        "mode": "link",
-        "links": [
-            "8f45dd4b94025bf8"
-        ],
-        "x": 975,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "b8e335ce47c42682",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 16",
-        "mode": "link",
-        "links": [
-            "8f45dd4b94025bf8"
-        ],
-        "x": 1075,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "3591dd6c92cc5d37",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 25",
-        "links": [
-            "b7332f435e93a713"
-        ],
-        "x": 845,
-        "y": 800,
-        "wires": [
-            [
-                "69370acad750e19d"
-            ]
-        ]
-    },
-    {
-        "id": "b0b9d4433b188e7b",
-        "type": "comment",
-        "z": "29fd68d1903a9d50",
-        "name": "vers boutons students",
-        "info": "",
-        "x": 990,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "8fd0436426ced61d",
-        "type": "comment",
-        "z": "29fd68d1903a9d50",
-        "name": "vers les classe/noms",
-        "info": "",
-        "x": 1940,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "64a9d8709b849a2d",
-        "type": "comment",
-        "z": "29fd68d1903a9d50",
-        "name": "Boutons last student",
-        "info": "",
-        "x": 280,
-        "y": 1220,
-        "wires": []
-    },
-    {
-        "id": "e0fa74f27db07e4b",
-        "type": "comment",
-        "z": "29fd68d1903a9d50",
-        "name": "Changement de base de donnée",
-        "info": "",
-        "x": 300,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "8f34b9d6162b7745",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 26",
-        "links": [
-            "f9a1aadf02bea859"
-        ],
-        "x": 125,
-        "y": 800,
-        "wires": [
-            [
-                "51099519bf0a2d99"
-            ]
-        ]
-    },
-    {
-        "id": "f9a1aadf02bea859",
-        "type": "link out",
-        "z": "29fd68d1903a9d50",
-        "name": "link out 17",
-        "mode": "link",
-        "links": [
-            "8f34b9d6162b7745"
-        ],
-        "x": 905,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "fccd797ca51f23c8",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in 27",
-        "links": [
-            "152245ee3d7378f8"
-        ],
-        "x": 265,
-        "y": 160,
-        "wires": [
-            [
-                "7037bcd8fb5d9e48"
-            ]
-        ]
-    },
-    {
-        "id": "8b089876db0dfe6e",
-        "type": "link in",
-        "z": "29fd68d1903a9d50",
-        "name": "link in reset",
-        "links": [
-            "e4e5be2af9511b04"
-        ],
-        "x": 55,
-        "y": 120,
-        "wires": [
-            [
-                "7f901eb74e679cf7"
             ]
         ]
     },
@@ -6917,6 +4831,2092 @@
         ]
     },
     {
+        "id": "d5d56893c001fa7a",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "function 1",
+        "func": "//msg.payload = msg.payload[0][\"Nom de naissance\"];\nconst annee=[];\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (!annee.includes(msg.payload[i][\"Promotion\"])) {\n        annee.push(msg.payload[i][\"Promotion\"]);\n    }\n    \n    \n}\nannee.sort();\nmsg.payload=annee;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 120,
+        "wires": [
+            [
+                "24944d2f6bd7b73a"
+            ]
+        ]
+    },
+    {
+        "id": "24944d2f6bd7b73a",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "options",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 120,
+        "wires": [
+            [
+                "8871ae607e4f9f4a"
+            ]
+        ]
+    },
+    {
+        "id": "3c0392d64287068b",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "function 2",
+        "func": "//msg.payload = msg.payload[0][\"Nom de naissance\"];\n\nconst list_eleve=[];\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if(msg.payload[i][\"Promotion\"]==msg.annee){\n        list_eleve.push(msg.payload[i][\"Nom et Prénom d'usage\"]);\n    }\n   \n    \n}\nlist_eleve.sort();\nmsg.payload=list_eleve;\n\nif (list_eleve.length === 1) {\n    // Définir automatiquement l'élève dans le flow\n    flow.set('eleve', list_eleve[0]);\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 300,
+        "wires": [
+            [
+                "2e53ec9c1ec81f4b"
+            ]
+        ]
+    },
+    {
+        "id": "3e47a5bdef4676f0",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annee",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1170,
+        "y": 120,
+        "wires": [
+            [
+                "e09d929765e1dbe4"
+            ]
+        ]
+    },
+    {
+        "id": "6ccf513b14533288",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annee",
+                "pt": "msg",
+                "to": "annee",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 300,
+        "wires": [
+            [
+                "3c0392d64287068b"
+            ]
+        ]
+    },
+    {
+        "id": "2e53ec9c1ec81f4b",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "options",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 300,
+        "wires": [
+            [
+                "0acdb9d043158a67"
+            ]
+        ]
+    },
+    {
+        "id": "2376d8a3bfe6c63c",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "impr3d_bool",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1900,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0e4953af2ba43c1d",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "laser_bool",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1900,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07be0a3666918d07",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reglement_bool",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1860,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "25652091b5049f7d",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cao_bool",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1810,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e2ec6aa05671e95",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filament",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1900,
+        "y": 560,
+        "wires": [
+            [
+                "cf8d049a052c5c4f"
+            ]
+        ]
+    },
+    {
+        "id": "26ace20f8482afd1",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mat_laser",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1880,
+        "y": 800,
+        "wires": [
+            [
+                "6eed9d5a57ee0f30"
+            ]
+        ]
+    },
+    {
+        "id": "3bef16889592706a",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filament_gr",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2360,
+        "y": 600,
+        "wires": [
+            [
+                "e73a7640d2e6e5af"
+            ]
+        ]
+    },
+    {
+        "id": "533b2151254ad309",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mat_laser_qte",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2560,
+        "y": 700,
+        "wires": [
+            [
+                "e0280bff06030d09"
+            ]
+        ]
+    },
+    {
+        "id": "932550833181df8e",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "eleve",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1340,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "997b241844d124af",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annee",
+                "pt": "msg",
+                "to": "annee",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "eleve",
+                "pt": "msg",
+                "to": "eleve",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "impr3d_bool",
+                "pt": "msg",
+                "to": "impr3d_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "filament",
+                "pt": "msg",
+                "to": "filament",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "filament_gr",
+                "pt": "msg",
+                "to": "filament_gr",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "laser_bool",
+                "pt": "msg",
+                "to": "laser_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_laser",
+                "pt": "msg",
+                "to": "mat_laser",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "mat_laser_qte",
+                "pt": "msg",
+                "to": "mat_laser_qte",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "reglement_bool",
+                "pt": "msg",
+                "to": "reglement_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "cao_bool",
+                "pt": "msg",
+                "to": "cao_bool",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "prix_laser",
+                "pt": "msg",
+                "to": "prix_laser",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "prix_3d",
+                "pt": "msg",
+                "to": "prix_3d",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 560,
+        "wires": [
+            [
+                "973a4689c5e96df6"
+            ]
+        ]
+    },
+    {
+        "id": "c378e65b5480ba42",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "function 3",
+        "func": "\nswitch (msg.payload) {\n  case 'PLA':\n    msg.payload=19.9;\n    break;\n  case 'PLA flex':\n    msg.payload=50;\n    break;\n  case 'PLA transparent':\n    msg.payload=40;\n    break;\n  case 'PLA bois':\n    msg.payload=51.8;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1860,
+        "y": 520,
+        "wires": [
+            [
+                "68d85b237798ba64"
+            ]
+        ]
+    },
+    {
+        "id": "e73a7640d2e6e5af",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "function 4",
+        "func": "let prix_kg;\n\nswitch (flow.get(\"filament\")) {\n  case 'PLA':\n    prix_kg=19.9;\n    break;\n  case 'PLA flex':\n    prix_kg=50;\n    break;\n  case 'PLA transparent':\n    prix_kg=40;\n    break; \n  case 'PLA bois':\n    prix_kg = 51.8;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nconst prix = prix_kg*parseInt(msg.payload)/1000;\nflow.set('prix_3d',prix);\nmsg.payload=prix;\nmsg.prix_kg=prix_kg;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2540,
+        "y": 600,
+        "wires": [
+            [
+                "e8a1a5d57ba0b28c"
+            ]
+        ]
+    },
+    {
+        "id": "50699363d98dffab",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "function 5",
+        "func": "\nswitch (msg.payload) {\n  case 'PMMA 3mm':\n    msg.payload=7.8;\n    break;\n  case 'PMMA 5mm':\n    msg.payload=12.59;\n    break;\n  case 'CP 3mm':\n    msg.payload=3;\n    break;\n  case 'CP 5mm':\n    msg.payload=3.3;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1860,
+        "y": 760,
+        "wires": [
+            [
+                "c9b200a30066b2b3"
+            ]
+        ]
+    },
+    {
+        "id": "e0280bff06030d09",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "function 6",
+        "func": "let prix_u;\n\nswitch (flow.get(\"mat_laser\")) {\n  case 'PMMA 3mm':\n    prix_u=7.8;\n    break;\n  case 'PMMA 5mm':\n    prix_u=12.59;\n    break;\n  case 'CP 3mm':\n    prix_u=3;\n    break;\n  case 'CP 5mm':\n    prix_u=3.3;\n    break;\n  default:\n    console.log(`type filament`);\n}\n\nconst prix = prix_u*parseInt(msg.payload);\nflow.set('prix_laser',prix);\nmsg.payload=prix;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2750,
+        "y": 700,
+        "wires": [
+            [
+                "74f8a0f549ef499d"
+            ]
+        ]
+    },
+    {
+        "id": "973a4689c5e96df6",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "INSERT",
+        "func": "//if (Math.random() < 0.5) { room = 503;}else{ room = 602; }\n//if (Math.random() < 0.5) { id = 9909;}else{ id = 1893; }\nlet classe =msg.annee;\nlet nom = msg.eleve;\nlet fabrication=\"\";\nlet prix =0;\nif (msg.impr3d_bool)fabrication = '3d :'+ msg.filament +\" : \" + msg.filament_gr + \"gr\";\nif(msg.laser_bool)fabrication = fabrication +' // las :'  + msg.mat_laser +\" : \"+ msg.mat_laser_qte;\nlet prix_3d = flow.get('prix_3d');\nlet prix_laser = flow.get('prix_laser');\n\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name =\"usage_lab_test\";\nif (bdd_bool){\n    table_name=\"usage_lab\";\n}\nelse{\n    table_name=\"usage_lab_test\";\n}\n\nlet remarques = flow.get('remarques');\n\n\nif (msg.impr3d_bool)prix += parseFloat(prix_3d);\nif(msg.laser_bool)prix += parseFloat(prix_laser);\n//let prix = \"sousou\";\nlet reglement;\nif (flow.get('reglement_bool')){\n    reglement = 'true';\n}\nelse{\n    reglement = 'false';\n}\n\nlet cao;\nif (flow.get('cao_bool')){\n    cao = 'true';\n}\nelse{\n    cao = 'false';\n}\n\nlet date = new Date();\ndate = date.getDate() + \"/\" + (date.getMonth() + 1) + \"/\" + date.getFullYear() + \"  \" + \n      date.getHours() + \":\" + date.getMinutes() + \":\" + date.getSeconds();\n//let reglement = \"reglement\";\n\n//let Cao = flow.get('cao_bool');\n//let Cao = \"cao\";\n\nlet topic;\n//let Cao = msg.cao_bool;\n\n\ntopic = \"INSERT INTO `nodered`.`\";\ntopic = topic + table_name+\"` (classe, nom, fabrication, prix, reglement, CAO, remarques, date_entr) VALUES ('\";\ntopic = topic + classe +\"', '\";\ntopic = topic + nom + \"', '\";\ntopic = topic + fabrication + \"', '\";\ntopic = topic + prix + \"', \";\ntopic = topic + reglement + \", \";\ntopic = topic + cao + \", '\";\ntopic = topic + remarques + \"', '\";\ntopic = topic + date + \"'); \";\n\nmsg.topic = topic;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 560,
+        "wires": [
+            [
+                "fadf0bb2e9e0c0f4"
+            ]
+        ]
+    },
+    {
+        "id": "a8b7adc480aebfce",
+        "type": "inject",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 600,
+        "y": 600,
+        "wires": [
+            [
+                "973a4689c5e96df6"
+            ]
+        ]
+    },
+    {
+        "id": "a65ffd02b3431baa",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "resetSearch",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 620,
+        "wires": [
+            [
+                "152245ee3d7378f8",
+                "b7332f435e93a713"
+            ]
+        ]
+    },
+    {
+        "id": "426591a9da4ed6a0",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1680,
+        "y": 620,
+        "wires": [
+            [
+                "cf8d049a052c5c4f",
+                "6eed9d5a57ee0f30"
+            ]
+        ]
+    },
+    {
+        "id": "41de7195f1a80562",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "bdd_bool",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 840,
+        "wires": [
+            [
+                "31ea119bae7f8b25"
+            ]
+        ]
+    },
+    {
+        "id": "49581d7c289bb4d7",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "remarques",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2090,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f170788fc69e8239",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1680,
+        "y": 860,
+        "wires": [
+            [
+                "452c5481fe1f7229"
+            ]
+        ]
+    },
+    {
+        "id": "983c4cf463cca2ed",
+        "type": "inject",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1080,
+        "y": 560,
+        "wires": [
+            [
+                "a65ffd02b3431baa"
+            ]
+        ]
+    },
+    {
+        "id": "69370acad750e19d",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "SELECT bdd",
+        "func": "let bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = \"usage_lab_test\";\n\nif (bdd_bool) {\n    table_name = \"usage_lab\";\n}\nelse {\n    table_name = \"usage_lab_test\";\n}\n\nlet topic = \"\";\ntopic = \"SELECT * FROM `nodered`.`\";\ntopic = topic + table_name + \"` ORDER BY no DESC;\";\n\n\nvar newMsg = {\n    \"topic\": topic\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 840,
+        "wires": [
+            [
+                "bdf2f7724f74c1d8",
+                "b8e335ce47c42682"
+            ]
+        ]
+    },
+    {
+        "id": "c0bdde4033a864f7",
+        "type": "ui_button",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "group": "cb7e38a87943e192",
+        "order": 35,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Valider",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 420,
+        "y": 560,
+        "wires": [
+            [
+                "997b241844d124af"
+            ]
+        ]
+    },
+    {
+        "id": "7f901eb74e679cf7",
+        "type": "ui_button",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "group": "cb7e38a87943e192",
+        "order": 1,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "reset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "7037bcd8fb5d9e48",
+                "9e9583c3f62a7964"
+            ]
+        ]
+    },
+    {
+        "id": "8871ae607e4f9f4a",
+        "type": "ui_dropdown",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Année / Classe",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "cb7e38a87943e192",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "options",
+        "topicType": "msg",
+        "className": "",
+        "x": 980,
+        "y": 120,
+        "wires": [
+            [
+                "3e47a5bdef4676f0"
+            ]
+        ]
+    },
+    {
+        "id": "0acdb9d043158a67",
+        "type": "ui_dropdown",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Eleve",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "cb7e38a87943e192",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 1170,
+        "y": 300,
+        "wires": [
+            [
+                "932550833181df8e"
+            ]
+        ]
+    },
+    {
+        "id": "678aca008d4854bb",
+        "type": "ui_dropdown",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Type Filament",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "cb7e38a87943e192",
+        "order": 13,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "PLA",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "PLA flex",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "PLA transparent",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "PLA bois",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 1680,
+        "y": 520,
+        "wires": [
+            [
+                "2e2ec6aa05671e95",
+                "c378e65b5480ba42"
+            ]
+        ]
+    },
+    {
+        "id": "1b02a10bc337909a",
+        "type": "ui_dropdown",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Materiel Laser",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "cb7e38a87943e192",
+        "order": 15,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "CP 3mm",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "CP 5mm",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "PMMA 3mm",
+                "type": "str"
+            },
+            {
+                "label": "",
+                "value": "PMMA 5mm",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 1680,
+        "y": 760,
+        "wires": [
+            [
+                "26ace20f8482afd1",
+                "50699363d98dffab"
+            ]
+        ]
+    },
+    {
+        "id": "594499c599089076",
+        "type": "ui_switch",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Impression 3D",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 9,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 1680,
+        "y": 460,
+        "wires": [
+            [
+                "2376d8a3bfe6c63c"
+            ]
+        ]
+    },
+    {
+        "id": "f9c102dd4a0c3fd8",
+        "type": "ui_switch",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Découpeuse laser",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 1690,
+        "y": 700,
+        "wires": [
+            [
+                "0e4953af2ba43c1d"
+            ]
+        ]
+    },
+    {
+        "id": "5ceefe8e718f7e69",
+        "type": "ui_switch",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "CAO",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 23,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 1640,
+        "y": 1020,
+        "wires": [
+            [
+                "25652091b5049f7d"
+            ]
+        ]
+    },
+    {
+        "id": "ec3885aec0c022a8",
+        "type": "ui_switch",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "reglement",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 17,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 1650,
+        "y": 900,
+        "wires": [
+            [
+                "07be0a3666918d07"
+            ]
+        ]
+    },
+    {
+        "id": "51099519bf0a2d99",
+        "type": "ui_switch",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "BDD_Prod",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 200,
+        "y": 840,
+        "wires": [
+            [
+                "41de7195f1a80562"
+            ]
+        ]
+    },
+    {
+        "id": "6eed9d5a57ee0f30",
+        "type": "ui_text_input",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Quantité (unité)",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 20,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 2350,
+        "y": 700,
+        "wires": [
+            [
+                "533b2151254ad309"
+            ]
+        ]
+    },
+    {
+        "id": "cf8d049a052c5c4f",
+        "type": "ui_text_input",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Quantité (en gr)",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 18,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 2160,
+        "y": 600,
+        "wires": [
+            [
+                "3bef16889592706a"
+            ]
+        ]
+    },
+    {
+        "id": "452c5481fe1f7229",
+        "type": "ui_text_input",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "label": "Remarques",
+        "tooltip": "",
+        "group": "cb7e38a87943e192",
+        "order": 33,
+        "width": 9,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 1880,
+        "y": 860,
+        "wires": [
+            [
+                "49581d7c289bb4d7"
+            ]
+        ]
+    },
+    {
+        "id": "68d85b237798ba64",
+        "type": "ui_text",
+        "z": "29fd68d1903a9d50",
+        "group": "cb7e38a87943e192",
+        "order": 28,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "€/kg",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2010,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "e8a1a5d57ba0b28c",
+        "type": "ui_text",
+        "z": "29fd68d1903a9d50",
+        "group": "cb7e38a87943e192",
+        "order": 24,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Prix Impression",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2700,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "c9b200a30066b2b3",
+        "type": "ui_text",
+        "z": "29fd68d1903a9d50",
+        "group": "cb7e38a87943e192",
+        "order": 30,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "€/unité",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2000,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "74f8a0f549ef499d",
+        "type": "ui_text",
+        "z": "29fd68d1903a9d50",
+        "group": "cb7e38a87943e192",
+        "order": 26,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Prix materiaux",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2910,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "fadf0bb2e9e0c0f4",
+        "type": "mysql",
+        "z": "29fd68d1903a9d50",
+        "mydb": "f3318311c7abaf8f",
+        "name": "mariadb",
+        "x": 870,
+        "y": 620,
+        "wires": [
+            [
+                "a65ffd02b3431baa",
+                "ca7b212ce650a93b"
+            ]
+        ]
+    },
+    {
+        "id": "bdf2f7724f74c1d8",
+        "type": "mysql",
+        "z": "29fd68d1903a9d50",
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 1170,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbd2ae8a08a0955b",
+        "type": "inject",
+        "z": "29fd68d1903a9d50",
+        "name": "Get Last Students",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 1260,
+        "wires": [
+            [
+                "7d77f3496ccae3f4"
+            ]
+        ]
+    },
+    {
+        "id": "7d77f3496ccae3f4",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "SELECT LAST STUDENTS",
+        "func": "// Récupération du booléen pour savoir quelle table utiliser\nlet bdd_bool = flow.get(\"bdd_bool\");\nlet table_name = (bdd_bool) ? \"usage_lab\" : \"usage_lab_test\";\n\n// Construction de la requête SQL\nlet topic = \"SELECT nom, classe, MAX(date) AS derniere_utilisation FROM `nodered`.`\" + table_name + \"` GROUP BY nom, classe ORDER BY derniere_utilisation DESC LIMIT 10;\";\n\nmsg.topic = topic;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 1260,
+        "wires": [
+            [
+                "4961f3b1e70806ba"
+            ]
+        ]
+    },
+    {
+        "id": "4961f3b1e70806ba",
+        "type": "mysql",
+        "z": "29fd68d1903a9d50",
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 930,
+        "y": 1260,
+        "wires": [
+            [
+                "2dc44dc327ed30f7"
+            ]
+        ]
+    },
+    {
+        "id": "2dc44dc327ed30f7",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "Format Last Students",
+        "func": "// On suppose que msg.payload contient le tableau de résultats SQL\n// On mappe pour ne retenir que { nom, classe }\nmsg.lastStudents = msg.payload.map(el => { \n    return { nom: el.nom, classe: el.classe};\n});\n\n// Transmet le tableau pour le ui_template\nmsg.payload = msg.lastStudents;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 1260,
+        "wires": [
+            [
+                "1070eb032143f650"
+            ]
+        ]
+    },
+    {
+        "id": "1070eb032143f650",
+        "type": "ui_template",
+        "z": "29fd68d1903a9d50",
+        "group": "19c4dceaef537425",
+        "name": "Last Students Buttons",
+        "order": 1,
+        "width": 9,
+        "height": 12,
+        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n<strong>{{el.nom}}</strong><span ng-if=\"el.classe\"> ({{el.classe}})</span>    </md-button>\n  </div>\n</div>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1410,
+        "y": 1260,
+        "wires": [
+            [
+                "328ddb487178336a"
+            ]
+        ]
+    },
+    {
+        "id": "328ddb487178336a",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "Set Selected Student",
+        "func": "\nmsg.options= msg.payload.classe;\n\nlet msg1 = Object.assign({}, msg);\nlet msg2 = msg;\n\nmsg2.options =msg.payload.nom;\n\nreturn [msg1,msg2];\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1650,
+        "y": 1260,
+        "wires": [
+            [
+                "1be07f2c07c4cc22"
+            ],
+            [
+                "4d4658a71438abca"
+            ]
+        ]
+    },
+    {
+        "id": "1be07f2c07c4cc22",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 10",
+        "mode": "link",
+        "links": [
+            "58cfd45f40e11b5e"
+        ],
+        "x": 1785,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "58cfd45f40e11b5e",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 15",
+        "links": [
+            "1be07f2c07c4cc22"
+        ],
+        "x": 675,
+        "y": 220,
+        "wires": [
+            [
+                "7537410d4f0f6660"
+            ]
+        ]
+    },
+    {
+        "id": "3cbae164359e0115",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 16",
+        "links": [
+            "e09d929765e1dbe4",
+            "152245ee3d7378f8"
+        ],
+        "x": 255,
+        "y": 300,
+        "wires": [
+            [
+                "9e9583c3f62a7964"
+            ]
+        ]
+    },
+    {
+        "id": "e09d929765e1dbe4",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 11",
+        "mode": "link",
+        "links": [
+            "3cbae164359e0115"
+        ],
+        "x": 1365,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "152245ee3d7378f8",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 12",
+        "mode": "link",
+        "links": [
+            "3cbae164359e0115",
+            "fccd797ca51f23c8"
+        ],
+        "x": 1315,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "596d3c50a7a412fb",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 17",
+        "links": [
+            "8baa2d330f6754f5"
+        ],
+        "x": 915,
+        "y": 220,
+        "wires": [
+            [
+                "81dedbbdbd7429d7"
+            ]
+        ]
+    },
+    {
+        "id": "8baa2d330f6754f5",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 13",
+        "mode": "link",
+        "links": [
+            "596d3c50a7a412fb"
+        ],
+        "x": 1945,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "4d4658a71438abca",
+        "type": "delay",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "50",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1840,
+        "y": 1300,
+        "wires": [
+            [
+                "8baa2d330f6754f5"
+            ]
+        ]
+    },
+    {
+        "id": "81dedbbdbd7429d7",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "options",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1030,
+        "y": 220,
+        "wires": [
+            [
+                "0acdb9d043158a67"
+            ]
+        ]
+    },
+    {
+        "id": "7537410d4f0f6660",
+        "type": "change",
+        "z": "29fd68d1903a9d50",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "options",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 220,
+        "wires": [
+            [
+                "8871ae607e4f9f4a"
+            ]
+        ]
+    },
+    {
+        "id": "7037bcd8fb5d9e48",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "read eleves database",
+        "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "d5d56893c001fa7a"
+            ]
+        ]
+    },
+    {
+        "id": "9e9583c3f62a7964",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "read eleves database",
+        "func": "msg.payload = global.get(\"elevesExcel\");\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 300,
+        "wires": [
+            [
+                "6ccf513b14533288"
+            ]
+        ]
+    },
+    {
+        "id": "6d0773c717ca845c",
+        "type": "ui_toast",
+        "z": "29fd68d1903a9d50",
+        "position": "prompt",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "ok",
+        "cancel": "annuler",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 620,
+        "y": 900,
+        "wires": [
+            [
+                "cdbbbed29df15b71"
+            ]
+        ]
+    },
+    {
+        "id": "31ea119bae7f8b25",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "confirmation",
+        "func": "if (msg.payload === false) {\n    // On désactive sans confirmation\n    flow.set(\"bdd_bool\", false);\n    return [msg, null];\n} else {\n    // On demande confirmation\n    return [null, { payload: \"Activer la base de production ?\", originalMsg: msg }];\n}\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 840,
+        "wires": [
+            [
+                "69370acad750e19d"
+            ],
+            [
+                "6d0773c717ca845c"
+            ]
+        ]
+    },
+    {
+        "id": "cdbbbed29df15b71",
+        "type": "function",
+        "z": "29fd68d1903a9d50",
+        "name": "annulation",
+        "func": "if (msg.payload === \"\") {\n    // L'utilisateur a cliqué sur \"OK\"\n    flow.set(\"bdd_bool\", true);\n    return [{ payload: true }, null]; // vers SELECT et on laisse le switch sur ON\n} else {\n    // L'utilisateur a cliqué sur \"Annuler\"\n    return [null, { payload: false }]; // renvoie au switch pour le remettre à OFF\n}\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 900,
+        "wires": [
+            [
+                "69370acad750e19d"
+            ],
+            [
+                "f9a1aadf02bea859"
+            ]
+        ]
+    },
+    {
+        "id": "b7332f435e93a713",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 14",
+        "mode": "link",
+        "links": [
+            "431ab8fcda0fe8e9",
+            "5c1ef2584056cc64",
+            "c1b339c0210496e4",
+            "0b9bc93b90a14799",
+            "dcd8849c92fcfacb",
+            "0dc4884394ab61dc",
+            "3591dd6c92cc5d37"
+        ],
+        "x": 1405,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "431ab8fcda0fe8e9",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 18",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 1555,
+        "y": 460,
+        "wires": [
+            [
+                "594499c599089076"
+            ]
+        ]
+    },
+    {
+        "id": "5c1ef2584056cc64",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 19",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 1555,
+        "y": 620,
+        "wires": [
+            [
+                "426591a9da4ed6a0"
+            ]
+        ]
+    },
+    {
+        "id": "c1b339c0210496e4",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 20",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 1555,
+        "y": 700,
+        "wires": [
+            [
+                "f9c102dd4a0c3fd8"
+            ]
+        ]
+    },
+    {
+        "id": "0b9bc93b90a14799",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 21",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 1555,
+        "y": 860,
+        "wires": [
+            [
+                "f170788fc69e8239"
+            ]
+        ]
+    },
+    {
+        "id": "dcd8849c92fcfacb",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 22",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 1555,
+        "y": 900,
+        "wires": [
+            [
+                "ec3885aec0c022a8"
+            ]
+        ]
+    },
+    {
+        "id": "0dc4884394ab61dc",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 23",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 1555,
+        "y": 1020,
+        "wires": [
+            [
+                "5ceefe8e718f7e69"
+            ]
+        ]
+    },
+    {
+        "id": "8f45dd4b94025bf8",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 24",
+        "links": [
+            "ca7b212ce650a93b",
+            "b8e335ce47c42682"
+        ],
+        "x": 445,
+        "y": 1220,
+        "wires": [
+            [
+                "7d77f3496ccae3f4"
+            ]
+        ]
+    },
+    {
+        "id": "ca7b212ce650a93b",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 15",
+        "mode": "link",
+        "links": [
+            "8f45dd4b94025bf8"
+        ],
+        "x": 975,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "b8e335ce47c42682",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 16",
+        "mode": "link",
+        "links": [
+            "8f45dd4b94025bf8"
+        ],
+        "x": 1075,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "3591dd6c92cc5d37",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 25",
+        "links": [
+            "b7332f435e93a713"
+        ],
+        "x": 845,
+        "y": 800,
+        "wires": [
+            [
+                "69370acad750e19d"
+            ]
+        ]
+    },
+    {
+        "id": "b0b9d4433b188e7b",
+        "type": "comment",
+        "z": "29fd68d1903a9d50",
+        "name": "vers boutons students",
+        "info": "",
+        "x": 990,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "8fd0436426ced61d",
+        "type": "comment",
+        "z": "29fd68d1903a9d50",
+        "name": "vers les classe/noms",
+        "info": "",
+        "x": 1940,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "64a9d8709b849a2d",
+        "type": "comment",
+        "z": "29fd68d1903a9d50",
+        "name": "Boutons last student",
+        "info": "",
+        "x": 280,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "e0fa74f27db07e4b",
+        "type": "comment",
+        "z": "29fd68d1903a9d50",
+        "name": "Changement de base de donnée",
+        "info": "",
+        "x": 300,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "8f34b9d6162b7745",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 26",
+        "links": [
+            "f9a1aadf02bea859"
+        ],
+        "x": 125,
+        "y": 800,
+        "wires": [
+            [
+                "51099519bf0a2d99"
+            ]
+        ]
+    },
+    {
+        "id": "f9a1aadf02bea859",
+        "type": "link out",
+        "z": "29fd68d1903a9d50",
+        "name": "link out 17",
+        "mode": "link",
+        "links": [
+            "8f34b9d6162b7745"
+        ],
+        "x": 905,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "fccd797ca51f23c8",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in 27",
+        "links": [
+            "152245ee3d7378f8"
+        ],
+        "x": 265,
+        "y": 160,
+        "wires": [
+            [
+                "7037bcd8fb5d9e48"
+            ]
+        ]
+    },
+    {
+        "id": "8b089876db0dfe6e",
+        "type": "link in",
+        "z": "29fd68d1903a9d50",
+        "name": "link in reset",
+        "links": [
+            "e4e5be2af9511b04"
+        ],
+        "x": 55,
+        "y": 120,
+        "wires": [
+            [
+                "7f901eb74e679cf7"
+            ]
+        ]
+    },
+    {
         "id": "aba1e7620377741b",
         "type": "function",
         "z": "test_tab_001",
@@ -8486,7 +8486,7 @@
         "height": 1,
         "passthru": true,
         "mode": "number",
-        "delay": "",
+        "delay": "300",
         "topic": "",
         "sendOnBlur": true,
         "className": "",
