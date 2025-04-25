@@ -7562,8 +7562,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 190,
-        "y": 1780,
+        "x": 130,
+        "y": 1360,
         "wires": [
             [
                 "function_SELECT"
@@ -7582,8 +7582,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
-        "y": 1780,
+        "x": 460,
+        "y": 1360,
         "wires": [
             [
                 "mysql_last_students"
@@ -7596,8 +7596,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "",
-        "x": 780,
-        "y": 1780,
+        "x": 720,
+        "y": 1360,
         "wires": [
             [
                 "function_format"
@@ -7616,8 +7616,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 1780,
+        "x": 960,
+        "y": 1360,
         "wires": [
             [
                 "ui_template_buttons"
@@ -7639,8 +7639,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1300,
-        "y": 1780,
+        "x": 1240,
+        "y": 1360,
         "wires": [
             [
                 "function_set_selected"
@@ -7659,8 +7659,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1540,
-        "y": 1780,
+        "x": 1480,
+        "y": 1360,
         "wires": [
             [
                 "197f22faecc6c2e8"
@@ -7679,8 +7679,8 @@
         "links": [
             "1b3b44f86ae626c6"
         ],
-        "x": 1675,
-        "y": 1760,
+        "x": 1615,
+        "y": 1340,
         "wires": []
     },
     {
@@ -7768,8 +7768,8 @@
         "links": [
             "d817f2a7d4e644b2"
         ],
-        "x": 1835,
-        "y": 1820,
+        "x": 1775,
+        "y": 1400,
         "wires": []
     },
     {
@@ -7789,8 +7789,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1730,
-        "y": 1820,
+        "x": 1670,
+        "y": 1400,
         "wires": [
             [
                 "2c55ac2da9fe2ae4"
@@ -8008,8 +8008,8 @@
             "24c0b79966777b30",
             "325f948297a7aafc"
         ],
-        "x": 335,
-        "y": 1740,
+        "x": 275,
+        "y": 1320,
         "wires": [
             [
                 "function_SELECT"
@@ -8074,8 +8074,8 @@
         "z": "test_tab_001",
         "name": "vers les classe/noms",
         "info": "",
-        "x": 1830,
-        "y": 1760,
+        "x": 1770,
+        "y": 1340,
         "wires": []
     },
     {
@@ -8084,8 +8084,8 @@
         "z": "test_tab_001",
         "name": "Boutons last student",
         "info": "",
-        "x": 170,
-        "y": 1740,
+        "x": 110,
+        "y": 1320,
         "wires": []
     },
     {
@@ -8495,7 +8495,7 @@
         "y": 900,
         "wires": [
             [
-                "set_quantity"
+                "8ce80f1343d4ebc8"
             ]
         ]
     },
@@ -8511,7 +8511,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2070,
+        "x": 2210,
         "y": 900,
         "wires": [
             [
@@ -8531,7 +8531,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2330,
+        "x": 2460,
         "y": 900,
         "wires": [
             [
@@ -8556,7 +8556,7 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 2580,
+        "x": 2700,
         "y": 900,
         "wires": []
     },
@@ -8654,188 +8654,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "function_split_materials",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "Split by Type",
-        "func": "// On suppose que msg.payload est un tableau de matériaux { nom, type, ... }\nconst all = msg.payload;\n\n// On trie les matériaux selon leur type\nconst impression3D = [];\nconst decoupeLaser = [];\nconst vinyle = [];\n\n//commentaires?\nall.forEach(mat => {\n    const item = mat.nom;\n    switch ((mat.type || \"\").toLowerCase()) {\n        case \"impression 3d\":\n            impression3D.push(item);\n            break;\n        case \"découpeuse laser\":\n            decoupeLaser.push(item);\n            break;\n        case \"découpeuse vinyle\":\n            vinyle.push(item);\n            break;\n            default:\n        // Si un type inattendu apparaît, on peut le logguer pour diagnostic\n        node.warn(`Type inconnu pour « ${mat.nom} »: “${mat.type}”`);\n    }\n});\n\n// On crée les messages de sortie, chacun avec payload + options + topic si tu veux\n    const msg1 = {\n        topic: \"impression 3D\",\n        payload: impression3D,\n        options: impression3D\n    };\n    const msg2 = {\n        topic: \"découpe laser\",\n        payload: decoupeLaser,\n        options: decoupeLaser\n    };\n    const msg3 = {\n        topic: \"découpeuse vinyle\",\n        payload: vinyle,\n        options: vinyle\n    };\n\n    return [msg1, msg2, msg3];\n",
-        "outputs": 3,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1148,
-        "y": 1462,
-        "wires": [
-            [
-                "debug_out"
-            ],
-            [
-                "ce3fc6b5fcb19ad7"
-            ],
-            [
-                "57fd410e71a4df88"
-            ]
-        ]
-    },
-    {
-        "id": "d3634a1cf3867678",
-        "type": "mysql",
-        "z": "test_tab_001",
-        "mydb": "f3318311c7abaf8f",
-        "name": "",
-        "x": 938,
-        "y": 1462,
-        "wires": [
-            [
-                "function_split_materials",
-                "ba91c3a5feb6c4f6"
-            ]
-        ]
-    },
-    {
-        "id": "debug_out",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "Résultat par type",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1388,
-        "y": 1402,
-        "wires": []
-    },
-    {
-        "id": "ce3fc6b5fcb19ad7",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "Résultat par type",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1408,
-        "y": 1462,
-        "wires": []
-    },
-    {
-        "id": "57fd410e71a4df88",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "Résultat par type",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1388,
-        "y": 1542,
-        "wires": []
-    },
-    {
-        "id": "73b962f6d5dbbf43",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "SELECT",
-        "func": "msg.topic = `\n  SELECT m.nom  AS nom, t.nom  AS type FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1`;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 758,
-        "y": 1462,
-        "wires": [
-            [
-                "d3634a1cf3867678",
-                "d449ed7060472ae4"
-            ]
-        ]
-    },
-    {
-        "id": "ba91c3a5feb6c4f6",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 4",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1158,
-        "y": 1342,
-        "wires": []
-    },
-    {
-        "id": "inject_start",
-        "type": "inject",
-        "z": "test_tab_001",
-        "name": "Get Materials",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 568,
-        "y": 1462,
-        "wires": [
-            [
-                "73b962f6d5dbbf43"
-            ]
-        ]
-    },
-    {
-        "id": "99f11a67b4d97e96",
-        "type": "link in",
-        "z": "test_tab_001",
-        "name": "link in 29",
-        "links": [
-            "4ed9c31def9b04b0"
-        ],
-        "x": 613,
-        "y": 1382,
-        "wires": [
-            [
-                "73b962f6d5dbbf43"
-            ]
-        ]
-    },
-    {
-        "id": "d449ed7060472ae4",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 818,
-        "y": 1342,
-        "wires": []
     },
     {
         "id": "btn_validate",
@@ -9057,6 +8875,26 @@
         "wires": [
             [
                 "select_materials"
+            ]
+        ]
+    },
+    {
+        "id": "8ce80f1343d4ebc8",
+        "type": "rbe",
+        "z": "test_tab_001",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 2010,
+        "y": 900,
+        "wires": [
+            [
+                "set_quantity"
             ]
         ]
     },
