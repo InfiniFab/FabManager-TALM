@@ -8263,8 +8263,7 @@
         "y": 700,
         "wires": [
             [
-                "dropdown_type",
-                "e77a4d98e79e1e8d"
+                "dropdown_type"
             ]
         ]
     },
@@ -8852,7 +8851,80 @@
         ]
     },
     {
-        "id": "e77a4d98e79e1e8d",
+        "id": "0ca6098c9dac4a16",
+        "type": "inject",
+        "z": "test_tab_001",
+        "name": "Load Materials",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 1760,
+        "y": 340,
+        "wires": [
+            [
+                "64805ee5ba3e9fe6"
+            ]
+        ]
+    },
+    {
+        "id": "64805ee5ba3e9fe6",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "SQL: load materials",
+        "func": "msg.topic = \"SELECT m.nom AS nom, t.nom AS type, m.prix AS prix FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1;\";\nreturn msg;",
+        "outputs": 1,
+        "x": 1990,
+        "y": 340,
+        "wires": [
+            [
+                "bb289b7f40ac5f84"
+            ]
+        ]
+    },
+    {
+        "id": "bb289b7f40ac5f84",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "MariaDB",
+        "x": 2160,
+        "y": 340,
+        "wires": [
+            [
+                "498a2c8513354ff9"
+            ]
+        ]
+    },
+    {
+        "id": "498a2c8513354ff9",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Process materials",
+        "func": "// Stocke et renvoie le tableau entier dans payload\nflow.set('materials', msg.payload);\nmsg.payload = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "x": 2350,
+        "y": 340,
+        "wires": [
+            [
+                "d8019bf8e7b325f4"
+            ]
+        ]
+    },
+    {
+        "id": "d8019bf8e7b325f4",
         "type": "ui_template",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
@@ -8860,22 +8932,22 @@
         "order": 14,
         "width": 18,
         "height": 5,
-        "format": "<div ng-init=\"stage='types';\">\n  <style>.mat-btn{margin:4px;}</style>\n  <div ng-if=\"stage==='types'\">\n    <p><strong>Choisis un type :</strong></p>\n    <md-button class=\"mat-btn md-raised md-primary\" ng-repeat=\"t in types\" ng-click=\"selectType(t)\">{{t}}</md-button>\n  </div>\n  <div ng-if=\"stage==='materials'\">\n    <p><md-button class=\"mat-btn\" ng-click=\"goBack()\">← Retour</md-button> <strong>{{selectedType}}</strong></p>\n    <md-button class=\"mat-btn md-raised\" ng-repeat=\"m in materials\" ng-click=\"selectMaterial(m)\">{{m}}</md-button>\n  </div>\n</div>\n<script>(function(scope){\n  scope.$watch('msg.options', function(arr){\n    scope.fullList = flow.get('materials')||[];\n    scope.types = Array.from(new Set(scope.fullList.map(x=>x.type)));\n  });\n  scope.selectType = function(t){\n    scope.selectedType = t;\n    scope.materials = scope.fullList.filter(x=>x.type===t).map(x=>x.nom);\n    scope.stage = 'materials';\n    scope.send({topic:'SELECTED_TYPE',payload:t});\n  };\n  scope.selectMaterial = function(m){\n    scope.send({topic:'SELECTED_MATERIAL',payload:m});\n  };\n  scope.goBack = function(){ scope.stage='types'; };\n})(scope);</script>",
+        "format": "<div ng-init=\"stage='types';\">\n  <style>.mat-btn{margin:4px;}</style>\n  <div ng-if=\"stage==='types'\">\n    <p><strong>Choisis un type :</strong></p>\n    <md-button class=\"mat-btn md-raised md-primary\" ng-repeat=\"t in types\" ng-click=\"selectType(t)\">{{t}}</md-button>\n  </div>\n  <div ng-if=\"stage==='materials'\">\n    <p><md-button class=\"mat-btn\" ng-click=\"goBack()\">← Retour</md-button> <strong>{{selectedType}}</strong></p>\n    <md-button class=\"mat-btn md-raised\" ng-repeat=\"m in materials\" ng-click=\"selectMaterial(m)\">{{m}}</md-button>\n  </div>\n</div>\n<script>(function(scope){\n  scope.$watch('msg.payload', function(list){\n    scope.fullList = list || [];\n    scope.types = Array.from(new Set(scope.fullList.map(x=>x.type)));\n  });\n  scope.selectType = function(t){\n    scope.selectedType = t;\n    scope.materials = scope.fullList.filter(x=>x.type===t).map(x=>x.nom);\n    scope.stage = 'materials';\n    scope.send({topic:'SELECTED_TYPE',payload:t});\n  };\n  scope.selectMaterial = function(m){\n    scope.send({topic:'SELECTED_MATERIAL',payload:m});\n  };\n  scope.goBack = function(){ scope.stage='types'; };\n})(scope);</script>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 2130,
-        "y": 560,
+        "x": 2610,
+        "y": 340,
         "wires": [
             [
-                "814b6da8a5fc60f9"
+                "967f84f22dee7c52"
             ]
         ]
     },
     {
-        "id": "814b6da8a5fc60f9",
+        "id": "967f84f22dee7c52",
         "type": "switch",
         "z": "test_tab_001",
         "name": "By topic",
@@ -8892,22 +8964,20 @@
                 "vt": "str"
             }
         ],
-        "checkall": "true",
-        "repair": false,
         "outputs": 2,
-        "x": 2370,
-        "y": 560,
+        "x": 2820,
+        "y": 340,
         "wires": [
             [
-                "4da13c6c6f7748de"
+                "ab77d32d9d066001"
             ],
             [
-                "f55c752c39a3c43d"
+                "771a7b17df6c3b31"
             ]
         ]
     },
     {
-        "id": "4da13c6c6f7748de",
+        "id": "ab77d32d9d066001",
         "type": "change",
         "z": "test_tab_001",
         "name": "Save type",
@@ -8920,16 +8990,16 @@
                 "tot": "msg"
             }
         ],
-        "x": 2530,
-        "y": 520,
+        "x": 3080,
+        "y": 320,
         "wires": [
             [
-                "764a597e3b3f4c84"
+                "fd045af145965de6"
             ]
         ]
     },
     {
-        "id": "f55c752c39a3c43d",
+        "id": "771a7b17df6c3b31",
         "type": "change",
         "z": "test_tab_001",
         "name": "Save material",
@@ -8942,89 +9012,90 @@
                 "tot": "msg"
             }
         ],
-        "x": 2530,
-        "y": 600,
+        "x": 3060,
+        "y": 360,
         "wires": [
             [
-                "0c4daac64c67155b"
+                "f5c9770b515ec335"
             ]
         ]
     },
     {
-        "id": "764a597e3b3f4c84",
+        "id": "fd045af145965de6",
         "type": "function",
         "z": "test_tab_001",
         "name": "Set unit",
-        "func": "// Node: Set unit\nconst type = (flow.get('selectedType')||'').toLowerCase();\nlet u='unité';\nswitch(type){case 'impression 3d':u='g';break;case 'fil brodeuse':u='points';break;}\nflow.set('unitType',u);\nmsg.payload=u;\nreturn msg;",
+        "func": "const t = (flow.get('selectedType')||'').toLowerCase();\nlet u='unité';\nif(t==='impression 3d') u='g';\nif(t==='fil brodeuse') u='points';\nflow.set('unitType',u);\nmsg.payload=u;\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
-        "x": 2790,
-        "y": 520,
+        "x": 3280,
+        "y": 320,
         "wires": [
             [
-                "1b3c79e21c0776b7"
+                "3db92ad7a6f49571"
             ]
         ]
     },
     {
-        "id": "0c4daac64c67155b",
+        "id": "f5c9770b515ec335",
         "type": "function",
         "z": "test_tab_001",
         "name": "Query price",
         "func": "flow.set('selectedMaterial',msg.payload);\nmsg.topic = `SELECT prix FROM materiaux WHERE nom='${msg.payload}';`;\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
-        "x": 2790,
-        "y": 600,
+        "x": 3270,
+        "y": 360,
         "wires": [
             [
-                "112d8fc0f6526bdb"
+                "70f5fbedfc3856e1"
             ]
         ]
     },
     {
-        "id": "112d8fc0f6526bdb",
+        "id": "70f5fbedfc3856e1",
         "type": "mysql",
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "MariaDB",
-        "x": 3010,
-        "y": 580,
+        "x": 3440,
+        "y": 360,
         "wires": [
             [
-                "0899dbc7ac1dae7b"
+                "b14bcd4e49d9be68"
             ]
         ]
     },
     {
-        "id": "0899dbc7ac1dae7b",
+        "id": "b14bcd4e49d9be68",
         "type": "function",
         "z": "test_tab_001",
         "name": "Extract price",
-        "func": "let p=0;\nif(Array.isArray(msg.payload)&&msg.payload.length)p=msg.payload[0].prix;\nflow.set('priceU',p);\nreturn msg;",
+        "func": "let p=0;\nif(Array.isArray(msg.payload)&&msg.payload.length) p=msg.payload[0].prix;\nflow.set('priceU',p);\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
-        "x": 3270,
-        "y": 580,
+        "x": 3610,
+        "y": 360,
         "wires": [
             []
         ]
     },
     {
-        "id": "1b3c79e21c0776b7",
+        "id": "3db92ad7a6f49571",
         "type": "ui_text",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
-        "order": 17,
+        "order": 15,
         "width": 2,
         "height": 1,
-        "name": "Unité",
+        "name": "",
         "label": "",
         "format": "{{msg.payload}}",
-        "layout": "row-left",
+        "layout": "",
         "className": "",
-        "x": 2970,
-        "y": 520,
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 3450,
+        "y": 320,
         "wires": []
     },
     {
