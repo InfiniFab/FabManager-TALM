@@ -1066,7 +1066,7 @@
         "height": 1
     },
     {
-        "id": "25be93d07efcbea6",
+        "id": "fb1169049884bdc4",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1076,7 +1076,7 @@
         "height": 1
     },
     {
-        "id": "99f51c126d07ad39",
+        "id": "af2f97959aed1d77",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1086,7 +1086,7 @@
         "height": 1
     },
     {
-        "id": "bbd772be4668542e",
+        "id": "34e4da394f177b25",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1096,7 +1096,7 @@
         "height": 1
     },
     {
-        "id": "bf33b054560963b0",
+        "id": "f4d9bb8cc1a41572",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1106,7 +1106,7 @@
         "height": 1
     },
     {
-        "id": "5470ab1450caa74e",
+        "id": "8e8a8f7c9a8e2443",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1116,7 +1116,7 @@
         "height": 1
     },
     {
-        "id": "25dae7135b56937e",
+        "id": "2f0a4110b6cf5192",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
@@ -1126,82 +1126,32 @@
         "height": 1
     },
     {
-        "id": "bdfc1272afb724f1",
+        "id": "e1fcd2df2463dd72",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
         "group": "3f0df9d3616d3899",
-        "order": 16,
-        "width": 8,
+        "order": 18,
+        "width": 3,
         "height": 1
     },
     {
-        "id": "779e5be6e73dcb01",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 17,
-        "width": 18,
-        "height": 1
-    },
-    {
-        "id": "6a56938b8113f012",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 19,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "a16be46b1fc5c639",
+        "id": "085f719491aa4acf",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
         "group": "3f0df9d3616d3899",
         "order": 21,
-        "width": 6,
+        "width": 7,
         "height": 1
     },
     {
-        "id": "a0301177f09744a0",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 22,
-        "width": 9,
-        "height": 1
-    },
-    {
-        "id": "b52cf4d4b80d1ba7",
+        "id": "0fa559cf3b59c0c8",
         "type": "ui_spacer",
         "z": "test_tab_001",
         "name": "spacer",
         "group": "3f0df9d3616d3899",
         "order": 24,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "cf3aea6c9ccae7f6",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 25,
-        "width": 18,
-        "height": 1
-    },
-    {
-        "id": "ba2da34e86221286",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 27,
         "width": 18,
         "height": 1
     },
@@ -7404,7 +7354,7 @@
         "label": "CAO",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 23,
+        "order": 22,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -7438,7 +7388,7 @@
         "label": "reglement",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 20,
+        "order": 19,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -8460,7 +8410,7 @@
         "type": "ui_text",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
-        "order": 15,
+        "order": 16,
         "width": 2,
         "height": 1,
         "name": "Unité",
@@ -8484,7 +8434,7 @@
         "label": "Quantité",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 14,
+        "order": 15,
         "width": 8,
         "height": 1,
         "passthru": true,
@@ -8547,7 +8497,7 @@
         "type": "ui_text",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
-        "order": 18,
+        "order": 20,
         "width": 8,
         "height": 1,
         "name": "Prix total",
@@ -8615,7 +8565,7 @@
         "label": "Remarques",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 26,
+        "order": 23,
         "width": 18,
         "height": 1,
         "passthru": true,
@@ -8664,7 +8614,7 @@
         "z": "test_tab_001",
         "name": "Valider",
         "group": "3f0df9d3616d3899",
-        "order": 28,
+        "order": 25,
         "width": 18,
         "height": 1,
         "passthru": false,
@@ -8907,9 +8857,9 @@
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
         "name": "Type→Matériaux Buttons",
-        "order": 11,
-        "width": 0,
-        "height": 0,
+        "order": 14,
+        "width": 18,
+        "height": 5,
         "format": "<div ng-init=\"stage='types';\">\n  <style>.mat-btn{margin:4px;}</style>\n  <div ng-if=\"stage==='types'\">\n    <p><strong>Choisis un type :</strong></p>\n    <md-button class=\"mat-btn md-raised md-primary\" ng-repeat=\"t in types\" ng-click=\"selectType(t)\">{{t}}</md-button>\n  </div>\n  <div ng-if=\"stage==='materials'\">\n    <p><md-button class=\"mat-btn\" ng-click=\"goBack()\">← Retour</md-button> <strong>{{selectedType}}</strong></p>\n    <md-button class=\"mat-btn md-raised\" ng-repeat=\"m in materials\" ng-click=\"selectMaterial(m)\">{{m}}</md-button>\n  </div>\n</div>\n<script>(function(scope){\n  scope.$watch('msg.options', function(arr){\n    scope.fullList = flow.get('materials')||[];\n    scope.types = Array.from(new Set(scope.fullList.map(x=>x.type)));\n  });\n  scope.selectType = function(t){\n    scope.selectedType = t;\n    scope.materials = scope.fullList.filter(x=>x.type===t).map(x=>x.nom);\n    scope.stage = 'materials';\n    scope.send({topic:'SELECTED_TYPE',payload:t});\n  };\n  scope.selectMaterial = function(m){\n    scope.send({topic:'SELECTED_MATERIAL',payload:m});\n  };\n  scope.goBack = function(){ scope.stage='types'; };\n})(scope);</script>",
         "storeOutMessages": true,
         "fwdInMessages": true,
@@ -9065,7 +9015,7 @@
         "type": "ui_text",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
-        "order": 15,
+        "order": 17,
         "width": 2,
         "height": 1,
         "name": "Unité",
