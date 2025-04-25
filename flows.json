@@ -8486,7 +8486,7 @@
         "height": 1,
         "passthru": true,
         "mode": "number",
-        "delay": "300",
+        "delay": "100",
         "topic": "",
         "sendOnBlur": true,
         "className": "",
