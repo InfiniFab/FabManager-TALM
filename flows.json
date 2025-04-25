@@ -8313,7 +8313,8 @@
         "y": 700,
         "wires": [
             [
-                "dropdown_type"
+                "dropdown_type",
+                "e77a4d98e79e1e8d"
             ]
         ]
     },
@@ -8901,71 +8902,6 @@
         ]
     },
     {
-        "id": "f10ed1e546dd194a",
-        "type": "inject",
-        "z": "test_tab_001",
-        "name": "Load Materials",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 1720,
-        "y": 420,
-        "wires": [
-            [
-                "86b60ca1fe5b35eb"
-            ]
-        ]
-    },
-    {
-        "id": "86b60ca1fe5b35eb",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "SQL: load materials",
-        "func": "msg.topic = \"SELECT m.nom AS nom, t.nom AS type, m.prix AS prix FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1;\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1940,
-        "y": 420,
-        "wires": [
-            [
-                "f644e27b56203412"
-            ]
-        ]
-    },
-    {
-        "id": "f644e27b56203412",
-        "type": "mysql",
-        "z": "test_tab_001",
-        "mydb": "f3318311c7abaf8f",
-        "name": "MariaDB",
-        "x": 2180,
-        "y": 420,
-        "wires": [
-            [
-                "99ece4fbfcbd7efb"
-            ]
-        ]
-    },
-    {
-        "id": "99ece4fbfcbd7efb",
-        "type": "function",
-        "z": "test_tab_001",
-        "name": "Process materials",
-        "func": "// Stocke le tableau complet\nflow.set('materials', msg.payload);\n// Extrait la liste unique des types\nconst types = [...new Set(msg.payload.map(m => m.type))];\nmsg.options = types;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 2460,
-        "y": 420,
-        "wires": [
-            [
-                "e77a4d98e79e1e8d"
-            ]
-        ]
-    },
-    {
         "id": "e77a4d98e79e1e8d",
         "type": "ui_template",
         "z": "test_tab_001",
@@ -9137,8 +9073,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
-        "x": 2500,
-        "y": 640,
+        "x": 2970,
+        "y": 520,
         "wires": []
     },
     {
