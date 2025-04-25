@@ -8919,7 +8919,7 @@
         "y": 340,
         "wires": [
             [
-                "d8019bf8e7b325f4"
+                "86e5dbb64e384d94"
             ]
         ]
     },
@@ -8941,9 +8941,7 @@
         "x": 2610,
         "y": 340,
         "wires": [
-            [
-                "967f84f22dee7c52"
-            ]
+            []
         ]
     },
     {
@@ -9097,6 +9095,28 @@
         "x": 3450,
         "y": 320,
         "wires": []
+    },
+    {
+        "id": "86e5dbb64e384d94",
+        "type": "ui_template",
+        "z": "test_tab_001",
+        "group": "3f0df9d3616d3899",
+        "name": "Type→Matériaux Buttons",
+        "order": 14,
+        "width": 18,
+        "height": 6,
+        "format": "<div>\n  <style>\n    .mat-btn { margin: 6px; }\n    .selected-type { background-color: red !important; color: white !important; }\n    .selected-mat  { background-color: green !important; color: white !important; }\n  </style>\n\n  <!-- ÉTAPE 1 : Choix du type -->\n  <div ng-if=\"stage==='types'\">\n    <p><strong>Choisis un type :</strong></p>\n    <md-button\n      class=\"mat-btn md-raised\"\n      ng-class=\"{'selected-type': t === selectedType}\"\n      ng-repeat=\"t in types\"\n      ng-click=\"selectType(t)\">\n      {{t}}\n    </md-button>\n  </div>\n\n  <!-- ÉTAPE 2 : Choix du matériau + bouton Retour -->\n  <div ng-if=\"stage==='materials'\">\n    <p>\n      <md-button class=\"mat-btn\" ng-click=\"goBack()\">← Retour</md-button>\n      <strong>{{selectedType}}</strong>\n    </p>\n    <md-button\n      class=\"mat-btn md-raised\"\n      ng-class=\"{'selected-mat': m === selectedMaterial}\"\n      ng-repeat=\"m in materials\"\n      ng-click=\"selectMaterial(m)\">\n      {{m}}\n    </md-button>\n  </div>\n</div>\n\n<script>\n(function(scope){\n  // Initialisation\n  scope.stage = 'types';\n  scope.selectedType = '';\n  scope.selectedMaterial = '';\n\n  // Dès réception de msg.payload (le tableau des matériaux)\n  scope.$watch('msg.payload', function(list) {\n    // Ne traiter que si c'est bien un array\n    if (!Array.isArray(list)) return;\n    scope.fullList = list;\n    scope.types = Array.from(new Set(list.map(x => x.type)));\n  });\n\n  // Sélection d'un type\n  scope.selectType = function(t) {\n    scope.selectedType = t;\n    scope.selectedMaterial = '';\n    scope.stage = 'materials';\n    scope.materials = scope.fullList\n      .filter(x => x.type === t)\n      .map(x => x.nom);\n    scope.send({ topic: 'SELECTED_TYPE', payload: t });\n  };\n\n  // Sélection d'un matériau\n  scope.selectMaterial = function(m) {\n    scope.selectedMaterial = m;\n    scope.send({ topic: 'SELECTED_MATERIAL', payload: m });\n  };\n\n  // Retour aux types\n  scope.goBack = function() {\n    scope.stage = 'types';\n  };\n\n  // Reset depuis flow (si besoin)\n  scope.$on('message', function(evt, msg) {\n    if (msg.topic === 'RESET_BUTTONS') {\n      scope.stage = 'types';\n      scope.selectedType = '';\n      scope.selectedMaterial = '';\n    }\n  });\n})(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2590,
+        "y": 240,
+        "wires": [
+            [
+                "967f84f22dee7c52"
+            ]
+        ]
     },
     {
         "id": "mysql_get_mat",
