@@ -2532,8 +2532,7 @@
         "mode": "link",
         "links": [
             "8b089876db0dfe6e",
-            "988ee3a15f32b724",
-            "297777897f41f07a"
+            "988ee3a15f32b724"
         ],
         "x": 1025,
         "y": 960,
@@ -7890,28 +7889,11 @@
         "name": "link out 6",
         "mode": "link",
         "links": [
-            "45808e08f5c9c452",
-            "a3cda35957f6bcc5",
-            "f83a04ef05ce76f6",
             "650b0b8a2f98d748",
             "a8b3e924368ccee2",
             "fcaf2034175db8e0",
             "a397d83f41122d5c",
-            "99f11a67b4d97e96",
-            "3f56635286a436a2",
-            "b1e691cb309cc99d",
-            "684976b537615b7a",
-            "4a1827f7ddae584f",
-            "cd4cf37bdcae12c3",
-            "b5480f959ed28971",
-            "7991b37803403a92",
-            "d8b6275718ada622",
-            "d8119e8aed5474d4",
-            "509ae19297125fe7",
-            "2978f52ce4b522f9",
-            "b7bcafa44fc470f3",
-            "5ca6cd59594b9681",
-            "a3a72a2aaa6c637e"
+            "5ca6cd59594b9681"
         ],
         "x": 1325,
         "y": 600,
@@ -8871,8 +8853,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 1760,
-        "y": 340,
+        "x": 1600,
+        "y": 640,
         "wires": [
             [
                 "64805ee5ba3e9fe6"
@@ -8886,8 +8868,8 @@
         "name": "SQL: load materials",
         "func": "msg.topic = \"SELECT m.nom AS nom, t.nom AS type, m.prix AS prix FROM materiaux m JOIN type t ON m.type_id = t.id WHERE m.prix <> -1;\";\nreturn msg;",
         "outputs": 1,
-        "x": 1990,
-        "y": 340,
+        "x": 1830,
+        "y": 640,
         "wires": [
             [
                 "bb289b7f40ac5f84"
@@ -8900,8 +8882,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "MariaDB",
-        "x": 2160,
-        "y": 340,
+        "x": 2000,
+        "y": 640,
         "wires": [
             [
                 "498a2c8513354ff9"
@@ -8915,8 +8897,8 @@
         "name": "Process materials",
         "func": "// Stocke et renvoie le tableau entier dans payload\nflow.set('materials', msg.payload);\nmsg.payload = msg.payload;\nreturn msg;",
         "outputs": 1,
-        "x": 2350,
-        "y": 340,
+        "x": 2190,
+        "y": 640,
         "wires": [
             [
                 "86e5dbb64e384d94"
@@ -8942,8 +8924,8 @@
             }
         ],
         "outputs": 2,
-        "x": 2820,
-        "y": 340,
+        "x": 2660,
+        "y": 640,
         "wires": [
             [
                 "ab77d32d9d066001"
@@ -8967,8 +8949,8 @@
                 "tot": "msg"
             }
         ],
-        "x": 3080,
-        "y": 320,
+        "x": 2920,
+        "y": 620,
         "wires": [
             [
                 "fd045af145965de6"
@@ -8989,8 +8971,8 @@
                 "tot": "msg"
             }
         ],
-        "x": 3060,
-        "y": 360,
+        "x": 2900,
+        "y": 660,
         "wires": [
             [
                 "f5c9770b515ec335"
@@ -9004,8 +8986,8 @@
         "name": "Set unit",
         "func": "const t = (flow.get('selectedType')||'').toLowerCase();\nlet u='unité';\nif(t==='impression 3d') u='g';\nif(t==='fil brodeuse') u='points';\nflow.set('unitType',u);\nmsg.payload=u;\nreturn msg;",
         "outputs": 1,
-        "x": 3280,
-        "y": 320,
+        "x": 3120,
+        "y": 620,
         "wires": [
             [
                 "3db92ad7a6f49571"
@@ -9019,8 +9001,8 @@
         "name": "Query price",
         "func": "flow.set('selectedMaterial',msg.payload);\nmsg.topic = `SELECT prix FROM materiaux WHERE nom='${msg.payload}';`;\nreturn msg;",
         "outputs": 1,
-        "x": 3270,
-        "y": 360,
+        "x": 3110,
+        "y": 660,
         "wires": [
             [
                 "70f5fbedfc3856e1"
@@ -9033,8 +9015,8 @@
         "z": "test_tab_001",
         "mydb": "f3318311c7abaf8f",
         "name": "MariaDB",
-        "x": 3440,
-        "y": 360,
+        "x": 3280,
+        "y": 660,
         "wires": [
             [
                 "b14bcd4e49d9be68"
@@ -9048,8 +9030,8 @@
         "name": "Extract price",
         "func": "let p=0;\nif(Array.isArray(msg.payload)&&msg.payload.length) p=msg.payload[0].prix;\nflow.set('priceU',p);\nreturn msg;",
         "outputs": 1,
-        "x": 3610,
-        "y": 360,
+        "x": 3450,
+        "y": 660,
         "wires": [
             []
         ]
@@ -9071,8 +9053,8 @@
         "font": "",
         "fontSize": "",
         "color": "#000000",
-        "x": 3450,
-        "y": 320,
+        "x": 3290,
+        "y": 620,
         "wires": []
     },
     {
@@ -9090,8 +9072,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 2610,
-        "y": 340,
+        "x": 2450,
+        "y": 640,
         "wires": [
             [
                 "967f84f22dee7c52"
