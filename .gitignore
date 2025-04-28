@@ -31,15 +31,3 @@ backups/
 Thumbs.db
 cd ~/.node-red
 
-# Supprimer de l'index Git tout ce qui est maintenant ignoré (pas du disque dur !)
-git rm -r --cached .
-
-# Réajouter tous les fichiers (en respectant le nouveau .gitignore)
-git add .
-
-# Faire un nouveau commit clair
-git commit -m "🔧 Nettoyage Git: meilleur .gitignore + update flows"
-
-# Pousser vers GitHub
-git push
-
