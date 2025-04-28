@@ -8804,7 +8804,8 @@
         "y": 640,
         "wires": [
             [
-                "select_materials"
+                "select_materials",
+                "64805ee5ba3e9fe6"
             ]
         ]
     },
@@ -8820,7 +8821,8 @@
         "y": 600,
         "wires": [
             [
-                "select_materials"
+                "select_materials",
+                "64805ee5ba3e9fe6"
             ]
         ]
     },
