@@ -7281,12 +7281,13 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 210,
+        "x": 170,
         "y": 100,
         "wires": [
             [
                 "daa38b2dd84333aa",
-                "9f9fabcb2e291cb0"
+                "9f9fabcb2e291cb0",
+                "dc3235467b43c400"
             ]
         ]
     },
@@ -9092,6 +9093,19 @@
         ]
     },
     {
+        "id": "dc3235467b43c400",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 19",
+        "mode": "link",
+        "links": [
+            "d419b63c1822edc8"
+        ],
+        "x": 295,
+        "y": 40,
+        "wires": []
+    },
+    {
         "id": "mysql_get_mat",
         "type": "mysql",
         "z": "fd7dc8247b3e3472",
@@ -9572,6 +9586,23 @@
             [
                 "b524787c77625f65",
                 "182e2805887e908f"
+            ]
+        ]
+    },
+    {
+        "id": "d419b63c1822edc8",
+        "type": "link in",
+        "z": "fd7dc8247b3e3472",
+        "name": "link in 7",
+        "links": [
+            "dc3235467b43c400"
+        ],
+        "x": 65,
+        "y": 180,
+        "wires": [
+            [
+                "182e2805887e908f",
+                "b524787c77625f65"
             ]
         ]
     }
