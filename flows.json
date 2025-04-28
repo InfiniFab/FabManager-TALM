@@ -1082,8 +1082,8 @@
         "name": "spacer",
         "group": "3f0df9d3616d3899",
         "order": 6,
-        "width": 2,
-        "height": 1
+        "width": "0",
+        "height": "0"
     },
     {
         "id": "4bc6a3d12da891a4",
