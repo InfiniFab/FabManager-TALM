@@ -1,1 +1,33 @@
+# 🔁 Node.js modules
+node_modules/
+
+# 🔑 Fichiers sensibles
+projects/.sshkeys/
+credentials.json
+.config.*
+*.pem
+*.key
+*.crt
+
+# 🛑 Node-RED runtime local
+.sessions.json
+
+# 🧹 Fichiers temporaires, logs, backups
+*.log
+*.tmp
+*.bak
 *.backup
+*.swp
+backups/
+
+# 🧾 Données exports
+*.sql
+*.csv
+
+# 🧠 Fichiers IDE / Système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+cd ~/.node-red
+
