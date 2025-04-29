@@ -9347,24 +9347,6 @@
         "wires": []
     },
     {
-        "id": "delete_action",
-        "type": "function",
-        "z": "fd7dc8247b3e3472",
-        "name": "Action de suppression",
-        "func": "// Code pour supprimer l'élément\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1620,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3c54d38314cc15d5",
         "type": "link in",
         "z": "fd7dc8247b3e3472",
