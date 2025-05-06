@@ -1066,106 +1066,6 @@
         "height": 1
     },
     {
-        "id": "b10876286524de39",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 4,
-        "width": 3,
-        "height": 1
-    },
-    {
-        "id": "50abec25d7b039d2",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 6,
-        "width": 7,
-        "height": 1
-    },
-    {
-        "id": "15d320eb079b5f2d",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 8,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "3a0f5e4cbc6d58d9",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 9,
-        "width": 7,
-        "height": 1
-    },
-    {
-        "id": "632b8ae8051b7f69",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 10,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "a2fa1de332a96a1e",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 12,
-        "width": 18,
-        "height": 1
-    },
-    {
-        "id": "a63f962173de4dfc",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 16,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "3efe47262447c649",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 20,
-        "width": 9,
-        "height": 1
-    },
-    {
-        "id": "2869b4c037cac882",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 22,
-        "width": 16,
-        "height": 1
-    },
-    {
-        "id": "2620cee866e236f2",
-        "type": "ui_spacer",
-        "z": "test_tab_001",
-        "name": "spacer",
-        "group": "3f0df9d3616d3899",
-        "order": 24,
-        "width": 16,
-        "height": 1
-    },
-    {
         "id": "0278043ad83c31be",
         "type": "ui_group",
         "name": "Default",
@@ -1175,6 +1075,165 @@
         "width": 6,
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "9c0cebd0e0cec25e",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "9fbd1a17f1217b11",
+        "order": 2,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "9202df7f1718b363",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 4,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "e6fa0417d43c12eb",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 6,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "a8dbaf789a41a64d",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 8,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "02338b59f61bb5e8",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 9,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "d21f7f185cadeed0",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 10,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "f2d56fe73c2dc261",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 12,
+        "width": 19,
+        "height": 1
+    },
+    {
+        "id": "0d9afee7e8a82a8a",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 14,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "133323582941676f",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c28da652227d8275",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 18,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "8e06eebfc966c1ca",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 20,
+        "width": 16,
+        "height": 1
+    },
+    {
+        "id": "29a548d815a612b7",
+        "type": "ui_spacer",
+        "z": "test_tab_001",
+        "name": "spacer",
+        "group": "3f0df9d3616d3899",
+        "order": 22,
+        "width": 16,
+        "height": 1
+    },
+    {
+        "id": "tab_admin",
+        "type": "ui_tab",
+        "name": "Admin Utilisateurs",
+        "icon": "person",
+        "order": 6
+    },
+    {
+        "id": "grp_config",
+        "type": "ui_group",
+        "name": "Configuration BDD",
+        "tab": "tab_admin",
+        "order": 1,
+        "width": 12
+    },
+    {
+        "id": "grp_import",
+        "type": "ui_group",
+        "name": "Import Excel",
+        "tab": "tab_admin",
+        "order": 2,
+        "width": 12
+    },
+    {
+        "id": "grp_add",
+        "type": "ui_group",
+        "name": "Ajout Manuel",
+        "tab": "tab_admin",
+        "order": 3,
+        "width": 12
+    },
+    {
+        "id": "grp_manage",
+        "type": "ui_group",
+        "name": "Gestion Utilisateurs",
+        "tab": "tab_admin",
+        "order": 4,
+        "width": 12
     },
     {
         "id": "d5d56893c001fa7a",
@@ -4638,9 +4697,9 @@
         "name": "link out insert xlsx",
         "mode": "link",
         "links": [
+            "3c54d38314cc15d5",
             "8b089876db0dfe6e",
-            "988ee3a15f32b724",
-            "3c54d38314cc15d5"
+            "988ee3a15f32b724"
         ],
         "x": 1025,
         "y": 960,
@@ -7376,7 +7435,7 @@
         "label": "CAO",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 23,
+        "order": 21,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -7410,7 +7469,7 @@
         "label": "reglement",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 21,
+        "order": 19,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -7600,11 +7659,12 @@
         "id": "ui_template_buttons",
         "type": "ui_template",
         "z": "test_tab_001",
+        "d": true,
         "group": "9fbd1a17f1217b11",
         "name": "Last Students Buttons",
-        "order": 1,
+        "order": 3,
         "width": 10,
-        "height": 19,
+        "height": 13,
         "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n<strong style=\"text-transform: none;\">{{el.nom}}</strong><span ng-if=\"el.classe\"> ({{el.classe}})</span>    </md-button>\n  </div>\n</div>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
@@ -7661,7 +7721,8 @@
         "z": "test_tab_001",
         "name": "link in 2",
         "links": [
-            "197f22faecc6c2e8"
+            "197f22faecc6c2e8",
+            "34d204a8ce1f345b"
         ],
         "x": 755,
         "y": 200,
@@ -7721,7 +7782,8 @@
         "z": "test_tab_001",
         "name": "link in 4",
         "links": [
-            "2c55ac2da9fe2ae4"
+            "2c55ac2da9fe2ae4",
+            "d3e5f4b75a9f8e2e"
         ],
         "x": 995,
         "y": 200,
@@ -7978,7 +8040,8 @@
         "name": "link out 7",
         "mode": "link",
         "links": [
-            "27d7771dbabedaa6"
+            "27d7771dbabedaa6",
+            "8fcbbee85f273fb5"
         ],
         "x": 895,
         "y": 640,
@@ -7991,7 +8054,8 @@
         "name": "link out 8",
         "mode": "link",
         "links": [
-            "27d7771dbabedaa6"
+            "27d7771dbabedaa6",
+            "8fcbbee85f273fb5"
         ],
         "x": 995,
         "y": 860,
@@ -8215,7 +8279,7 @@
         "label": "Quantité",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 14,
+        "order": 13,
         "width": 8,
         "height": 1,
         "passthru": true,
@@ -8278,7 +8342,7 @@
         "type": "ui_text",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
-        "order": 18,
+        "order": 17,
         "width": 8,
         "height": 1,
         "name": "Prix total",
@@ -8346,7 +8410,7 @@
         "label": "Remarques",
         "tooltip": "",
         "group": "3f0df9d3616d3899",
-        "order": 25,
+        "order": 23,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -8395,7 +8459,7 @@
         "z": "test_tab_001",
         "name": "Valider",
         "group": "3f0df9d3616d3899",
-        "order": 26,
+        "order": 24,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -8856,7 +8920,7 @@
         "type": "ui_text",
         "z": "test_tab_001",
         "group": "3f0df9d3616d3899",
-        "order": 19,
+        "order": 15,
         "width": 2,
         "height": 1,
         "name": "",
@@ -8906,6 +8970,400 @@
         ],
         "x": 295,
         "y": 40,
+        "wires": []
+    },
+    {
+        "id": "56dcddc13d6f9137",
+        "type": "inject",
+        "z": "test_tab_001",
+        "name": "Get Last Students",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 1560,
+        "wires": [
+            [
+                "44a1e4bd4dac65de"
+            ]
+        ]
+    },
+    {
+        "id": "8fcbbee85f273fb5",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "link in 11",
+        "links": [
+            "24c0b79966777b30",
+            "325f948297a7aafc"
+        ],
+        "x": 345,
+        "y": 1520,
+        "wires": [
+            [
+                "44a1e4bd4dac65de"
+            ]
+        ]
+    },
+    {
+        "id": "44a1e4bd4dac65de",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "SELECT LAST STUDENTS",
+        "func": "// Récupère la limite choisie (false→10, true→50)\nlet use50 = flow.get(\"use50_last_students\");\nlet limit = use50 ? 50 : 10;\n\n// Choix de la table selon ton booléen de test\nlet bdd_bool_test = flow.get(\"bdd_bool_test\");\nlet table_name = bdd_bool_test ? \"usage_lab\" : \"usage_lab_test\";\n\n// Construction de la requête SQL dynamique\nmsg.topic = `\n  SELECT nom, classe, MAX(date) AS derniere_utilisation\n    FROM \\`nodered\\`.\\`${table_name}\\`\n   GROUP BY nom, classe\n   ORDER BY derniere_utilisation DESC\n   LIMIT ${limit};\n`.trim();\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1560,
+        "wires": [
+            [
+                "8d7fc5d1b5a2c63f"
+            ]
+        ]
+    },
+    {
+        "id": "8d7fc5d1b5a2c63f",
+        "type": "mysql",
+        "z": "test_tab_001",
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 820,
+        "y": 1560,
+        "wires": [
+            [
+                "e9e5170174fbd2a3"
+            ]
+        ]
+    },
+    {
+        "id": "e9e5170174fbd2a3",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Format Last Students",
+        "func": "// On suppose que msg.payload contient le tableau SQL\nmsg.lastStudents = msg.payload.map(el => ({ nom: el.nom, classe: el.classe }));\nmsg.payload = msg.lastStudents;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 1560,
+        "wires": [
+            [
+                "2e506b76888663b0"
+            ]
+        ]
+    },
+    {
+        "id": "2e506b76888663b0",
+        "type": "ui_template",
+        "z": "test_tab_001",
+        "group": "9fbd1a17f1217b11",
+        "name": "Last Students Buttons",
+        "order": 4,
+        "width": 10,
+        "height": 15,
+        "format": "<div layout=\"column\" layout-wrap>\n  <div ng-repeat=\"el in msg.payload\" style=\"margin:10px;\">\n    <md-button class=\"md-raised md-primary\" ng-click=\"send({payload: el})\">\n      <strong style=\"text-transform: none;\">{{el.nom}}</strong><span ng-if=\"el.classe\"> ({{el.classe}})</span>\n    </md-button>\n  </div>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1340,
+        "y": 1560,
+        "wires": [
+            [
+                "0a0fc943eece6b5c"
+            ]
+        ]
+    },
+    {
+        "id": "0a0fc943eece6b5c",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Set Selected Student",
+        "func": "msg.options = msg.payload.classe;\nlet msg1 = Object.assign({}, msg);\nlet msg2 = msg;\nmsg2.options = msg.payload.nom;\nreturn [msg1, msg2];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 1560,
+        "wires": [
+            [
+                "34d204a8ce1f345b"
+            ],
+            [
+                "791f18a935e2d809"
+            ]
+        ]
+    },
+    {
+        "id": "34d204a8ce1f345b",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "1b3b44f86ae626c6"
+        ],
+        "x": 1715,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "791f18a935e2d809",
+        "type": "delay",
+        "z": "test_tab_001",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "50",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1770,
+        "y": 1600,
+        "wires": [
+            [
+                "d3e5f4b75a9f8e2e"
+            ]
+        ]
+    },
+    {
+        "id": "d3e5f4b75a9f8e2e",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "link out 5",
+        "mode": "link",
+        "links": [
+            "d817f2a7d4e644b2"
+        ],
+        "x": 1875,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "7ed6512c4f711206",
+        "type": "ui_switch",
+        "z": "test_tab_001",
+        "name": "Switch 10/50",
+        "label": "Afficher 50?",
+        "tooltip": "",
+        "group": "9fbd1a17f1217b11",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 460,
+        "y": 1480,
+        "wires": [
+            [
+                "4c390ccff7eb2b80"
+            ]
+        ]
+    },
+    {
+        "id": "4c390ccff7eb2b80",
+        "type": "change",
+        "z": "test_tab_001",
+        "name": "Save use50_last_students",
+        "rules": [
+            {
+                "t": "set",
+                "p": "use50_last_students",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 1480,
+        "wires": [
+            [
+                "1e8332c7d26c360b"
+            ]
+        ]
+    },
+    {
+        "id": "1e8332c7d26c360b",
+        "type": "link out",
+        "z": "test_tab_001",
+        "name": "reload list",
+        "mode": "link",
+        "links": [
+            "40cf3b9ee0c342a4"
+        ],
+        "x": 920,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "40cf3b9ee0c342a4",
+        "type": "link in",
+        "z": "test_tab_001",
+        "name": "reload_list_link",
+        "links": [
+            "1e8332c7d26c360b"
+        ],
+        "x": 345,
+        "y": 1600,
+        "wires": [
+            [
+                "44a1e4bd4dac65de"
+            ]
+        ]
+    },
+    {
+        "id": "5879e2290afa87d3",
+        "type": "ui_upload",
+        "z": "test_tab_001",
+        "group": "grp_import",
+        "title": "",
+        "accept": ".xlsx",
+        "name": "Uploader Excel",
+        "order": 1,
+        "width": 12,
+        "height": 1,
+        "chunk": "256",
+        "transfer": "binary",
+        "x": 280,
+        "y": 1140,
+        "wires": [
+            [
+                "a86c8c9692aec15d",
+                "fa84e1c2e1150857"
+            ]
+        ]
+    },
+    {
+        "id": "a86c8c9692aec15d",
+        "type": "function",
+        "z": "test_tab_001",
+        "name": "Préparer sauvegarde",
+        "func": "// msg.payload est un Buffer contenant le fichier qu'on retourne\nmsg.filename = \"/home/pi/Documents/import.xlsx\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 1140,
+        "wires": [
+            [
+                "dcc8508130a65421",
+                "719ec23f1a80095e"
+            ]
+        ]
+    },
+    {
+        "id": "dcc8508130a65421",
+        "type": "file",
+        "z": "test_tab_001",
+        "name": "Enregistrer sur disque",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 700,
+        "y": 1140,
+        "wires": [
+            [
+                "3e445d3d8a0f54c3"
+            ]
+        ]
+    },
+    {
+        "id": "fa84e1c2e1150857",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "719ec23f1a80095e",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "3e445d3d8a0f54c3",
+        "type": "debug",
+        "z": "test_tab_001",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 1060,
         "wires": []
     },
     {
@@ -9388,6 +9846,270 @@
             [
                 "182e2805887e908f",
                 "b524787c77625f65"
+            ]
+        ]
+    },
+    {
+        "id": "btn_create_table",
+        "type": "ui_button",
+        "z": "fd7dc8247b3e3472",
+        "name": "Créer la table",
+        "group": "grp_config",
+        "order": 1,
+        "width": 6,
+        "label": "Créer table utilisateurs",
+        "payload": "create",
+        "payloadType": "str",
+        "topic": "create_table",
+        "x": 540,
+        "y": 620,
+        "wires": [
+            [
+                "fn_create_table"
+            ]
+        ]
+    },
+    {
+        "id": "fn_create_table",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "SQL CREATE TABLE",
+        "func": "msg.topic = `\nDROP TABLE IF EXISTS utilisateurs;\nCREATE TABLE IF NOT EXISTS utilisateurs (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  nom VARCHAR(100),\n  prenom VARCHAR(100),\n  classe VARCHAR(50),\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 620,
+        "wires": [
+            [
+                "mysql_admin"
+            ]
+        ]
+    },
+    {
+        "id": "btn_import",
+        "type": "ui_button",
+        "z": "fd7dc8247b3e3472",
+        "name": "Importer Excel",
+        "group": "grp_import",
+        "order": 1,
+        "width": 6,
+        "label": "Importer Excel",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "import_excel",
+        "x": 360,
+        "y": 720,
+        "wires": [
+            [
+                "22acc374d56d4231"
+            ]
+        ]
+    },
+    {
+        "id": "fn_parse_excel",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Parser et SQL INSERT",
+        "func": "// Lecture du fichier Excel\nlet wb = global.get('xlsx').read(msg.payload, {type:'buffer'});\nlet sheet = wb.Sheets[wb.SheetNames[0]];\nlet data = global.get('xlsx').utils.sheet_to_json(sheet);\n\n// Préparation des requêtes SQL INSERT\nlet stmts = data.map(u => {\n  return `INSERT INTO utilisateurs (nom, prenom, classe) VALUES (\n    ${global.get('mysql').escape(u.nom)},\n    ${global.get('mysql').escape(u.prenom)},\n    ${global.get('mysql').escape(u.classe)}\n  );`;\n}).join(\"\\n\");\n\nmsg.topic = stmts;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 720,
+        "wires": [
+            [
+                "mysql_admin",
+                "fn_reload_globals"
+            ]
+        ]
+    },
+    {
+        "id": "form_add",
+        "type": "ui_form",
+        "z": "fd7dc8247b3e3472",
+        "name": "Formulaire ajout",
+        "label": "",
+        "group": "grp_add",
+        "order": 1,
+        "width": 0,
+        "height": "",
+        "options": [],
+        "formValue": {},
+        "submit": "",
+        "cancel": "",
+        "topic": "add_user",
+        "topicType": "str",
+        "splitLayout": false,
+        "className": "",
+        "x": 140,
+        "y": 800,
+        "wires": [
+            [
+                "fn_insert_user",
+                "fn_reload_globals"
+            ]
+        ]
+    },
+    {
+        "id": "fn_insert_user",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "SQL INSERT user",
+        "func": "let u = msg.payload;\nmsg.topic = `INSERT INTO utilisateurs (nom, prenom, classe, commentaire)\n  VALUES (\n    ${global.get('mysql').escape(u.nom)},\n    ${global.get('mysql').escape(u.prenom)},\n    ${global.get('mysql').escape(u.classe)},\n    ${global.get('mysql').escape(u.commentaire||'')}\n  );`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "btn_reload",
+        "type": "inject",
+        "z": "fd7dc8247b3e3472",
+        "name": "Charger liste",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "reload_users",
+        "x": 150,
+        "y": 960,
+        "wires": [
+            [
+                "fn_reload_globals"
+            ]
+        ]
+    },
+    {
+        "id": "fn_reload_globals",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "SELECT * utilisateurs",
+        "func": "msg.topic = 'SELECT id, nom, prenom, classe, commentaire FROM utilisateurs ORDER BY nom;';\nreturn msg;",
+        "outputs": 1,
+        "x": 400,
+        "y": 960,
+        "wires": [
+            [
+                "mysql_admin",
+                "fn_store_globals"
+            ]
+        ]
+    },
+    {
+        "id": "fn_store_globals",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Stocker en global",
+        "func": "global.set('users', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "x": 630,
+        "y": 960,
+        "wires": [
+            [
+                "ui_table_users"
+            ]
+        ]
+    },
+    {
+        "id": "ui_table_users",
+        "type": "ui_template",
+        "z": "fd7dc8247b3e3472",
+        "group": "grp_manage",
+        "name": "Table utilisateurs",
+        "order": 2,
+        "width": 0,
+        "height": 10,
+        "format": "<table style=\"width:100%\"><tr><th>Nom</th><th>Prénom</th><th>Classe</th><th>Comment</th><th>Action</th></tr>\n<tr ng-repeat=\"u in msg.payload\">\n  <td>{{u.nom}}</td>\n  <td>{{u.prenom}}</td>\n  <td>{{u.classe}}</td>\n  <td>{{u.commentaire}}</td>\n  <td><md-button class=\"md-warn md-raised\" ng-click=\"send({payload:u})\">Supprimer</md-button></td>\n</tr></table>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "templateScope": "local",
+        "x": 830,
+        "y": 960,
+        "wires": [
+            [
+                "69ca3f9efda31356"
+            ]
+        ]
+    },
+    {
+        "id": "fn_delete_user",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "SQL DELETE user",
+        "func": "let u = msg.payload;\nmsg.topic = `DELETE FROM utilisateurs WHERE id = ${u.id};`;\nreturn msg;",
+        "outputs": 1,
+        "x": 1210,
+        "y": 960,
+        "wires": [
+            [
+                "fn_reload_globals"
+            ]
+        ]
+    },
+    {
+        "id": "mysql_admin",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "MariaDB",
+        "x": 1380,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22acc374d56d4231",
+        "type": "alafile in",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "filename": "/home/pi/Documents/test",
+        "format": "xlsx",
+        "columns": "*",
+        "headers": true,
+        "x": 530,
+        "y": 720,
+        "wires": [
+            [
+                "fn_parse_excel"
+            ]
+        ]
+    },
+    {
+        "id": "69ca3f9efda31356",
+        "type": "rbe",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 1010,
+        "y": 960,
+        "wires": [
+            [
+                "fn_delete_user"
             ]
         ]
     }
