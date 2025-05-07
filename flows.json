@@ -8240,7 +8240,7 @@
         "type": "function",
         "z": "test_tab_001",
         "name": "function 21",
-        "func": "// Récupérer la liste depuis la variable globale\nlet eleves = global.get(\"elevesExcel\") || [];\n\nlet newEleve = {\n    \"Nom et Prénom d'usage\": msg.payload,\n    \"Promotion\": \"non_inscrit\"\n};\n\n// Vérifier l'absence de doublon\nlet exists = eleves.some(e => \n    e[\"Nom et Prénom d'usage\"] === newEleve[\"Nom et Prénom d'usage\"] && \n    e[\"Promotion\"] === \"non_inscrit\"\n);\n\nif (!exists) {\n    // Ajouter l'élève dans le tableau\n    eleves.push(newEleve);\n\n    // Mettre à jour la variable globale\n    global.set(\"elevesExcel\", eleves);\n}\n\n// Préparer le payload pour le dropdown\nmsg.payload = eleves\n    .filter(e => e[\"Promotion\"] === \"non_inscrit\")\n    .map(e => e[\"Nom et Prénom d'usage\"])\n    .sort();\n\nmsg.annee = \"non_inscrit\";\nreturn msg;\n",
+        "func": "// Récupérer la liste depuis la variable globale\nlet eleves = global.get(\"elevesExcel\") || [];\nlet testEleves = global.get(\"newElevesExcel\") || [];\n\nlet newEleve = {\n    \"Nom et Prénom d'usage\": msg.payload,\n    \"Promotion\": \"non_inscrit\"\n};\n\n// Vérifier l'absence de doublon\nlet exists = eleves.some(e => \n    e[\"Nom et Prénom d'usage\"] === newEleve[\"Nom et Prénom d'usage\"] && \n    e[\"Promotion\"] === \"non_inscrit\"\n);\n\nif (!exists) {\n    // Ajouter l'élève dans le tableau\n    eleves.push(newEleve);\n    testEleves.push(newEleve);\n\n    // Mettre à jour la variable globale\n    global.set(\"elevesExcel\", eleves);\n    global.set(\"newElevesExcel\", testEleves);\n\n}\n\n// Préparer le payload pour le dropdown\nmsg.payload = eleves\n    .filter(e => e[\"Promotion\"] === \"non_inscrit\")\n    .map(e => e[\"Nom et Prénom d'usage\"])\n    .sort();\n\nmsg.annee = \"non_inscrit\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -8251,7 +8251,8 @@
         "y": 140,
         "wires": [
             [
-                "325172790c7d6837"
+                "325172790c7d6837",
+                "f54773d6859947b7"
             ]
         ]
     },
@@ -9254,117 +9255,36 @@
         ]
     },
     {
-        "id": "5879e2290afa87d3",
-        "type": "ui_upload",
-        "z": "test_tab_001",
-        "group": "grp_import",
-        "title": "",
-        "accept": ".xlsx",
-        "name": "Uploader Excel",
-        "order": 1,
-        "width": 12,
-        "height": 1,
-        "chunk": "256",
-        "transfer": "binary",
-        "x": 280,
-        "y": 1140,
-        "wires": [
-            [
-                "a86c8c9692aec15d",
-                "fa84e1c2e1150857"
-            ]
-        ]
-    },
-    {
-        "id": "a86c8c9692aec15d",
+        "id": "f54773d6859947b7",
         "type": "function",
         "z": "test_tab_001",
-        "name": "Préparer sauvegarde",
-        "func": "// msg.payload est un Buffer contenant le fichier qu'on retourne\nmsg.filename = \"/home/pi/Documents/import.xlsx\";\nreturn msg;",
+        "name": "insert in database",
+        "func": "// Récupère la liste des nouveaux élèves à insérer\nlet testEleves = global.get(\"newElevesExcel\") || [];\nif (testEleves.length === 0) {\n    return null;\n}\n\n// On prend le dernier entré (celui qu'on vient d'ajouter)\nlet e = testEleves[testEleves.length - 1];\n\n// Échappement simple\nfunction esc(v) { return \"'\" + String(v).replace(/'/g, \"''\") + \"'\"; }\n\n// Prépare la requête INSERT\nmsg.topic = `\nINSERT INTO utilisateurs (nom, prenom, classe)\nVALUES (\n  ${esc(e[\"Nom et Prénom d'usage\"].split(\" \")[0])},\n  ${esc(e[\"Nom et Prénom d'usage\"].split(\" \").slice(1).join(\" \"))},\n  ${esc(e[\"Promotion\"])}\n);\n`.trim();\n\nreturn msg;\n",
         "outputs": 1,
-        "timeout": "",
+        "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
-        "y": 1140,
+        "x": 2410,
+        "y": 140,
         "wires": [
             [
-                "dcc8508130a65421",
-                "719ec23f1a80095e"
+                "a5600da2c7c487ae"
             ]
         ]
     },
     {
-        "id": "dcc8508130a65421",
-        "type": "file",
+        "id": "a5600da2c7c487ae",
+        "type": "mysql",
         "z": "test_tab_001",
-        "name": "Enregistrer sur disque",
-        "filename": "filename",
-        "filenameType": "msg",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 700,
-        "y": 1140,
+        "mydb": "f3318311c7abaf8f",
+        "name": "",
+        "x": 2640,
+        "y": 140,
         "wires": [
-            [
-                "3e445d3d8a0f54c3"
-            ]
+            []
         ]
-    },
-    {
-        "id": "fa84e1c2e1150857",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 420,
-        "y": 1040,
-        "wires": []
-    },
-    {
-        "id": "719ec23f1a80095e",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "3e445d3d8a0f54c3",
-        "type": "debug",
-        "z": "test_tab_001",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 1060,
-        "wires": []
     },
     {
         "id": "mysql_get_mat",
@@ -9850,87 +9770,6 @@
         ]
     },
     {
-        "id": "btn_create_table",
-        "type": "ui_button",
-        "z": "fd7dc8247b3e3472",
-        "name": "Créer la table",
-        "group": "grp_config",
-        "order": 1,
-        "width": 6,
-        "label": "Créer table utilisateurs",
-        "payload": "create",
-        "payloadType": "str",
-        "topic": "create_table",
-        "x": 540,
-        "y": 620,
-        "wires": [
-            [
-                "fn_create_table"
-            ]
-        ]
-    },
-    {
-        "id": "fn_create_table",
-        "type": "function",
-        "z": "fd7dc8247b3e3472",
-        "name": "SQL CREATE TABLE",
-        "func": "msg.topic = `\nDROP TABLE IF EXISTS utilisateurs;\nCREATE TABLE IF NOT EXISTS utilisateurs (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  nom VARCHAR(100),\n  prenom VARCHAR(100),\n  classe VARCHAR(50),\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n`;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 620,
-        "wires": [
-            [
-                "mysql_admin"
-            ]
-        ]
-    },
-    {
-        "id": "btn_import",
-        "type": "ui_button",
-        "z": "fd7dc8247b3e3472",
-        "name": "Importer Excel",
-        "group": "grp_import",
-        "order": 1,
-        "width": 6,
-        "label": "Importer Excel",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "import_excel",
-        "x": 360,
-        "y": 720,
-        "wires": [
-            [
-                "22acc374d56d4231"
-            ]
-        ]
-    },
-    {
-        "id": "fn_parse_excel",
-        "type": "function",
-        "z": "fd7dc8247b3e3472",
-        "name": "Parser et SQL INSERT",
-        "func": "// Lecture du fichier Excel\nlet wb = global.get('xlsx').read(msg.payload, {type:'buffer'});\nlet sheet = wb.Sheets[wb.SheetNames[0]];\nlet data = global.get('xlsx').utils.sheet_to_json(sheet);\n\n// Préparation des requêtes SQL INSERT\nlet stmts = data.map(u => {\n  return `INSERT INTO utilisateurs (nom, prenom, classe) VALUES (\n    ${global.get('mysql').escape(u.nom)},\n    ${global.get('mysql').escape(u.prenom)},\n    ${global.get('mysql').escape(u.classe)}\n  );`;\n}).join(\"\\n\");\n\nmsg.topic = stmts;\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 720,
-        "wires": [
-            [
-                "mysql_admin",
-                "fn_reload_globals"
-            ]
-        ]
-    },
-    {
         "id": "form_add",
         "type": "ui_form",
         "z": "fd7dc8247b3e3472",
@@ -9948,8 +9787,8 @@
         "topicType": "str",
         "splitLayout": false,
         "className": "",
-        "x": 140,
-        "y": 800,
+        "x": 700,
+        "y": 620,
         "wires": [
             [
                 "fn_insert_user",
@@ -9969,8 +9808,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
-        "y": 800,
+        "x": 930,
+        "y": 620,
         "wires": [
             []
         ]
@@ -9989,8 +9828,8 @@
         "once": true,
         "onceDelay": "1",
         "topic": "reload_users",
-        "x": 150,
-        "y": 960,
+        "x": 710,
+        "y": 780,
         "wires": [
             [
                 "fn_reload_globals"
@@ -10004,8 +9843,8 @@
         "name": "SELECT * utilisateurs",
         "func": "msg.topic = 'SELECT id, nom, prenom, classe, commentaire FROM utilisateurs ORDER BY nom;';\nreturn msg;",
         "outputs": 1,
-        "x": 400,
-        "y": 960,
+        "x": 960,
+        "y": 780,
         "wires": [
             [
                 "mysql_admin",
@@ -10020,8 +9859,8 @@
         "name": "Stocker en global",
         "func": "global.set('users', msg.payload);\nreturn msg;",
         "outputs": 1,
-        "x": 630,
-        "y": 960,
+        "x": 1190,
+        "y": 780,
         "wires": [
             [
                 "ui_table_users"
@@ -10041,8 +9880,8 @@
         "storeOutMessages": false,
         "fwdInMessages": false,
         "templateScope": "local",
-        "x": 830,
-        "y": 960,
+        "x": 1390,
+        "y": 780,
         "wires": [
             [
                 "69ca3f9efda31356"
@@ -10056,8 +9895,8 @@
         "name": "SQL DELETE user",
         "func": "let u = msg.payload;\nmsg.topic = `DELETE FROM utilisateurs WHERE id = ${u.id};`;\nreturn msg;",
         "outputs": 1,
-        "x": 1210,
-        "y": 960,
+        "x": 1770,
+        "y": 780,
         "wires": [
             [
                 "fn_reload_globals"
@@ -10077,23 +9916,6 @@
         ]
     },
     {
-        "id": "22acc374d56d4231",
-        "type": "alafile in",
-        "z": "fd7dc8247b3e3472",
-        "name": "",
-        "filename": "/home/pi/Documents/test",
-        "format": "xlsx",
-        "columns": "*",
-        "headers": true,
-        "x": 530,
-        "y": 720,
-        "wires": [
-            [
-                "fn_parse_excel"
-            ]
-        ]
-    },
-    {
         "id": "69ca3f9efda31356",
         "type": "rbe",
         "z": "fd7dc8247b3e3472",
@@ -10105,11 +9927,280 @@
         "septopics": true,
         "property": "payload",
         "topi": "topic",
-        "x": 1010,
-        "y": 960,
+        "x": 1570,
+        "y": 780,
         "wires": [
             [
                 "fn_delete_user"
+            ]
+        ]
+    },
+    {
+        "id": "5879e2290afa87d3",
+        "type": "ui_upload",
+        "z": "fd7dc8247b3e3472",
+        "group": "grp_import",
+        "title": "",
+        "accept": ".xlsx",
+        "name": "Uploader Excel",
+        "order": 1,
+        "width": 12,
+        "height": 1,
+        "chunk": "256",
+        "transfer": "binary",
+        "x": 240,
+        "y": 1000,
+        "wires": [
+            [
+                "a86c8c9692aec15d"
+            ]
+        ]
+    },
+    {
+        "id": "a86c8c9692aec15d",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Préparer sauvegarde",
+        "func": "let now = new Date();\nlet year = now.getFullYear();\nlet anneeScolaire = now.getMonth() < 7 ? `${year - 1}-${year}` : `${year}-${year + 1}`;\nmsg.filename = `/home/pi/Documents/eleves_${anneeScolaire}.xlsx`;\n//le fichier aura un nom type : eleves_2024-2025\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1000,
+        "wires": [
+            [
+                "dcc8508130a65421"
+            ]
+        ]
+    },
+    {
+        "id": "dcc8508130a65421",
+        "type": "file",
+        "z": "fd7dc8247b3e3472",
+        "name": "Enregistrer sur disque",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 680,
+        "y": 1000,
+        "wires": [
+            [
+                "507436b0af3ab638"
+            ]
+        ]
+    },
+    {
+        "id": "45a89d8975164e14",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "Entrés des nouveaux eleves",
+        "func": "global.set(\"newElevesExcel\", msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1100,
+        "wires": [
+            [
+                "8b276aa7b147b4e2"
+            ]
+        ]
+    },
+    {
+        "id": "3433bac1e6c8e009",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "function 16",
+        "func": "// Fonction d'échappement minimale\nfunction esc(val) {\n  return \"'\" + String(val).replace(/'/g, \"''\") + \"'\";\n}\n\n// 1. On récupère le tableau stocké en global\nlet eleves = global.get(\"newElevesExcel\") || [];\n\nif (eleves.length === 0) {\n  node.warn(\"newElevesExcel est vide !\");\n  return null;  // stop si pas de données\n}\n\n// 2. Construction des requêtes\nlet insertions = eleves.map(e => {\n  let parts = (e[\"Nom et Prénom d'usage\"] || \"\").trim().split(\" \");\n  let nom = parts.shift() || \"\";\n  let prenom = parts.join(\" \");\n  let promo = (e[\"Promotion\"] || \"\").trim();\n  let classe = \"\", type = \"\";\n  let m = promo.match(/^(1re|2e|3e|[0-9]+[a-z]*) année\\s+(.+)/i);\n  if (m) { classe = m[1] + \" année\"; type = m[2]; }\n  else { classe = promo; }\n  return `INSERT INTO utilisateurs (nom, prenom, classe, type) VALUES (\n      ${esc(nom)}, ${esc(prenom)}, ${esc(classe)}, ${esc(type)}\n    );`;\n}).join(\"\\n\");\n\n// 3. On expédie tout vers MySQL\nmsg.topic = insertions;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 1040,
+        "wires": [
+            [
+                "43e0d45f34a3b14d",
+                "9687b6985b09945d"
+            ]
+        ]
+    },
+    {
+        "id": "43e0d45f34a3b14d",
+        "type": "mysql",
+        "z": "fd7dc8247b3e3472",
+        "mydb": "f3318311c7abaf8f",
+        "name": "insert students",
+        "x": 1420,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9687b6985b09945d",
+        "type": "debug",
+        "z": "fd7dc8247b3e3472",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "03449bb64f758d53",
+        "type": "debug",
+        "z": "fd7dc8247b3e3472",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "8b276aa7b147b4e2",
+        "type": "debug",
+        "z": "fd7dc8247b3e3472",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "9945a7662a9ce066",
+        "type": "inject",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1070,
+        "y": 1200,
+        "wires": [
+            [
+                "92eea9549b153535"
+            ]
+        ]
+    },
+    {
+        "id": "b99a9b6d8cf73f31",
+        "type": "debug",
+        "z": "fd7dc8247b3e3472",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "58329e145936d2db",
+        "type": "alafile in",
+        "z": "fd7dc8247b3e3472",
+        "name": "",
+        "filename": "",
+        "format": "xlsx",
+        "columns": "*",
+        "headers": true,
+        "x": 550,
+        "y": 1100,
+        "wires": [
+            [
+                "b99a9b6d8cf73f31",
+                "45a89d8975164e14"
+            ]
+        ]
+    },
+    {
+        "id": "507436b0af3ab638",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "tweak filename",
+        "func": "let now = new Date();\nlet year = now.getFullYear();\nlet anneeScolaire = now.getMonth() < 7 ? `${year - 1}-${year}` : `${year}-${year + 1}`;\nmsg.filename = `/home/pi/Documents/eleves_${anneeScolaire}`;\n//le fichier aura un nom type : eleves_2024-2025\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 1100,
+        "wires": [
+            [
+                "58329e145936d2db"
+            ]
+        ]
+    },
+    {
+        "id": "92eea9549b153535",
+        "type": "function",
+        "z": "fd7dc8247b3e3472",
+        "name": "function 17",
+        "func": "// Fonction d'échappement minimale\nfunction esc(val) {\n  return \"'\" + String(val).replace(/'/g, \"''\") + \"'\";\n}\n\n// On récupère le tableau stocké en global\nlet eleves = global.get(\"newElevesExcel\") || [];\nif (eleves.length === 0) {\n  node.warn(\"newElevesExcel est vide !\");\n  return null;\n}\n\n// On prépare les listes utiles\nconst nonRemoveClasses = [\"non_inscrit\", \"Césure\"];\nconst allIdsToKeep = [];   // si tu as un identifiant unique, sinon on se base sur nom+prenom+classe\n\n// 1. DELETE des anciens élèves (sauf non_inscrit et Césure)\nlet deleteSQL = `\nDELETE FROM utilisateurs\n WHERE classe NOT IN (${nonRemoveClasses.map(esc).join(\", \")});`.trim();\n\n// 2. INSERT des nouveaux\nlet insertSQL = eleves.map(e => {\n  // découpe nom/prenom\n  let parts = (e[\"Nom et Prénom d'usage\"] || \"\").trim().split(\" \");\n  let nom = parts.shift() || \"\";\n  let prenom = parts.join(\" \");\n\n  // analyse promotion\n  let promo = (e[\"Promotion\"] || \"\").trim();\n  let m = promo.match(/^(1re|2e|3e|[0-9]+[a-z]*) année\\s+(.+)/i);\n  let classe = m ? (m[1] + \" année\") : promo;\n  let type = m ? m[2] : \"\";\n\n  // Si classe non_inscrit ou Césure, on ne supprime pas ; on insert seulement si pas déjà présent\n  if (nonRemoveClasses.includes(classe)) {\n    // Utilisation d'une requête MERGE-like : INSERT ... ON DUPLICATE KEY IGNORE\n    // Ici on suppose que tu as une clé unique sur (nom,prenom,classe)\n    return `\nINSERT IGNORE INTO utilisateurs (nom, prenom, classe, type)\nVALUES (${esc(nom)}, ${esc(prenom)}, ${esc(classe)}, ${esc(type)});`.trim();\n  }\n\n  // Pour les autres classes on supprime tout puis on réinsère\n  return `\nINSERT INTO utilisateurs (nom, prenom, classe, type)\nVALUES (${esc(nom)}, ${esc(prenom)}, ${esc(classe)}, ${esc(type)});`.trim();\n\n}).join(\"\\n\");\n\n// Fusionne tout en un batch\nmsg.topic = [deleteSQL, insertSQL].join(\"\\n\\n\");\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 1300,
+        "wires": [
+            [
+                "9687b6985b09945d",
+                "43e0d45f34a3b14d"
             ]
         ]
     }
