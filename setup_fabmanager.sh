@@ -5,10 +5,10 @@ set -e
 # Variables
 # --------------------------------
 USER=pi
-HOME=/home/$USER
+HOME_DIR="/home/$USER"
 REPO_URL="https://github.com/InfiniFab/FabManager-TALM.git"
-INSTALL_DIR="$HOME/FabManager-TALM"
-NODERED_USERDIR="$HOME/.node-red"
+INSTALL_DIR="$HOME_DIR/FabManager-TALM"
+NODERED_USERDIR="$HOME_DIR/.node-red"
 FLOWFILE="flows_$(hostname).json"
 
 # --------------------------------
@@ -19,9 +19,9 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 # --------------------------------
-# 2) Désinstallation d'anciennes versions de Node.js
+# 2) Désinstallation de Node.js v12
 # --------------------------------
-echo "→ Suppression de Node.js/npm obsolètes (si présents)..."
+echo "→ Suppression de Node.js/npm obsolètes..."
 sudo apt-get remove -y nodejs npm || true
 sudo apt-get autoremove -y
 
@@ -32,16 +32,16 @@ echo "→ Installation de Git, Curl, build-essential et MariaDB..."
 sudo apt-get install -y git curl build-essential mariadb-server
 
 # --------------------------------
-# 4) Installation de Node-RED (et Node.js ≥ v18)
+# 4) Installation de Node-RED (+ Node.js ≥18)
 # --------------------------------
-echo "→ Installation de Node-RED (avec Node.js adapté)..."
+echo "→ Installation de Node-RED et détection automatique de Node.js..."
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered) --confirm-root
 
 # --------------------------------
-# 5) Clone ou mise à jour du dépôt dans /home/pi
+# 5) Clonage ou mise à jour du dépôt
 # --------------------------------
 if [ -d "$INSTALL_DIR" ]; then
-  echo "→ Mise à jour du dépôt existant ($INSTALL_DIR)..."
+  echo "→ Mise à jour du dépôt existant..."
   cd "$INSTALL_DIR"
   git pull origin main
 else
@@ -50,52 +50,70 @@ else
 fi
 
 # --------------------------------
-# 6) Fix des permissions
+# 6) Propriétés et permissions
 # --------------------------------
-echo "→ Attribution des droits sur $INSTALL_DIR à l’utilisateur $USER..."
+echo "→ Réglage des droits sur le projet à $USER..."
 sudo chown -R $USER:$USER "$INSTALL_DIR"
 
 # --------------------------------
-# 7) Installation des dépendances npm du projet
+# 7) Déploiement des flows dans Node-RED
 # --------------------------------
-echo "→ Installation des modules npm du projet..."
-cd "$INSTALL_DIR"
-npm install
-
-# --------------------------------
-# 8) Déploiement des flows dans Node-RED
-# --------------------------------
-echo "→ Déploiement des flows dans $NODERED_USERDIR/$FLOWFILE..."
-# Crée le dossier userDir s’il n’existe pas
+echo "→ Copie des flows dans $NODERED_USERDIR/$FLOWFILE..."
 mkdir -p "$NODERED_USERDIR"
-# Copie le flows.json du projet (à adapter si le fichier porte un autre nom dans votre repo)
 cp "$INSTALL_DIR/flows.json" "$NODERED_USERDIR/$FLOWFILE"
-# S’assure que pi possède bien ces fichiers
 sudo chown $USER:$USER "$NODERED_USERDIR/$FLOWFILE"
 
 # --------------------------------
-# 9) Création d’un alias 'nred'
+# 8) Installation des dépendances des flows (nodes)
 # --------------------------------
-echo "→ Ajout de l’alias 'nred' dans le .bashrc de $USER..."
-grep -qxF "alias nred='cd $INSTALL_DIR && node-red'" "$HOME/.bashrc" || \
-  echo "alias nred='cd $INSTALL_DIR && node-red'" >> "$HOME/.bashrc"
+# Si votre projet contient un package.json pour les nodes, on le copie et installe :
+if [ -f "$INSTALL_DIR/package.json" ]; then
+  echo "→ Installation des nodes supplémentaires pour Node-RED..."
+  cp "$INSTALL_DIR/package.json" "$NODERED_USERDIR/"
+  sudo chown $USER:$USER "$NODERED_USERDIR/package.json"
+  # Installation en tant que pi pour éviter les permissions root
+  sudo -u $USER bash -c "cd $NODERED_USERDIR && npm install --production"
+fi
 
 # --------------------------------
-# 10) Résumé et instructions finales
+# 9) Installation des dépendances npm du projet (outil, scripts, etc.)
+# --------------------------------
+echo "→ Installation des modules npm du projet..."
+cd "$INSTALL_DIR"
+sudo -u $USER npm install --production
+
+# --------------------------------
+# 10) Création de l’alias nred
+# --------------------------------
+echo "→ Ajout de l’alias 'nred' pour $USER..."
+# On utilise tee en tant que pi pour écrire dans son .bashrc
+grep -qxF "alias nred='cd $INSTALL_DIR && node-red'" "$HOME_DIR/.bashrc" \
+  || sudo -u $USER tee -a "$HOME_DIR/.bashrc" > /dev/null <<EOF
+# Alias pour FabManager-TALM
+alias nred='cd $INSTALL_DIR && node-red'
+EOF
+
+# --------------------------------
+# 11) Résumé
 # --------------------------------
 cat << EOF
 
 =====================================
 ✔ Installation terminée !
-  
-• Pour entrer dans le dossier & lancer Node-RED :  
-  $ nred
-  
-• Votre dépôt est dans : $INSTALL_DIR  
-• Vos flows sont copiés dans : $NODERED_USERDIR/$FLOWFILE  
-• Pour voir la version de Node.js : node -v       (doit être ≥ v18)  
-• Pour voir la version de Node-RED : node-red --version
 
-Redémarrez votre session (ou faites `source ~/.bashrc`) pour prendre en compte l’alias.
+• Rechargez votre profil : 
+    source ~/.bashrc
+
+• Pour démarrer Node-RED et aller dans le projet :
+    nred
+
+• Vérifications :
+    node -v           (doit être ≥ v18)
+    node-red --version
+
+• Emplacements :
+    Projet : $INSTALL_DIR
+    Flows   : $NODERED_USERDIR/$FLOWFILE
+
 =====================================
 EOF
