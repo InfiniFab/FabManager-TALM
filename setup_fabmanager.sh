@@ -11,7 +11,7 @@ fi
 GIT_REPO="${1:-https://github.com/InfiniFab/FabManager-TALM.git}"
 GIT_BRANCH="${2:-main}"
 INSTALL_DIR="/opt/fabmanager"
-NR_USER="nodered"
+NR_USER="pi"
 LOG_FILE="/var/log/fabmanager_install.log"
 
 ### Fonction de log ###
