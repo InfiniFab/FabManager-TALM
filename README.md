@@ -3,6 +3,7 @@
 Un gestionnaire d'accès, de suivi et de traçabilité des machines pour un FabLab, conçu avec **Node-RED**, **MariaDB** et une interface utilisateur Web.
 
 ---
+bash <(curl -sL https://raw.githubusercontent.com/InfiniFab/FabManager-TALM/main/scripts/setup_fabmanager.sh)
 
 ## 🧩 Objectif du projet
 
