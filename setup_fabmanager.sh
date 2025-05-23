@@ -19,7 +19,7 @@ sudo systemctl enable nodered.service
 # Création conditionnelle de la base de données et de l'utilisateur
 DB_EXISTS=$(sudo mariadb -e "SHOW DATABASES LIKE 'fabmanager';" | grep fabmanager || true)
 if [ -z "$DB_EXISTS" ]; then
-  echo "🗄️Création de la base de données MariaDB..."
+  echo "Création de la base de données MariaDB..."
   sudo mariadb <<EOF
 CREATE DATABASE fabmanager;
 CREATE USER IF NOT EXISTS 'nodered'@'localhost' IDENTIFIED BY 'nodered';
@@ -39,9 +39,12 @@ else
   echo "Le dépôt FabManager-TALM existe déjà. Étape ignorée."
 fi
 
-# Copie conditionnelle des fichiers (ne remplace pas les fichiers existants)
+# Copie des fichiers du projet dans le répertoire Node-RED (remplace les fichiers existants)
 echo "Copie des fichiers du projet dans le répertoire Node-RED..."
-rsync -av --ignore-existing FabManager-TALM/ ~/.node-red/
+rsync -av FabManager-TALM/ ~/.node-red/
+
+# Copie forcée des fichiers de flows Node-RED
+cp -f FabManager-TALM/flows*.json ~/.node-red/
 
 echo "Installation des dépendances Node.js du projet..."
 cd ~/.node-red
