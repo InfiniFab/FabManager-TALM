@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script d'installation de FabManager-TALM sur Raspberry Pi OS
+# Script d'installation de FabManager-TALM sur Raspberry Pi OS (mode Projects Git)
 
 set -e
 
@@ -13,8 +13,9 @@ sudo apt install -y build-essential git curl mariadb-server
 echo "Installation de Node.js, npm et Node-RED..."
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 
-echo "Activation de Node-RED au démarrage..."
+echo "Activation et démarrage de Node-RED au démarrage..."
 sudo systemctl enable nodered.service
+sudo systemctl start nodered.service
 
 # Création conditionnelle de la base de données et de l'utilisateur
 DB_EXISTS=$(sudo mariadb -e "SHOW DATABASES LIKE 'fabmanager';" | grep fabmanager || true)
@@ -30,46 +31,38 @@ else
   echo "La base de données 'fabmanager' existe déjà. Étape ignorée."
 fi
 
-# Clonage conditionnel du dépôt
-cd ~
-if [ ! -d "FabManager-TALM" ]; then
-  echo "Clonage du dépôt FabManager-TALM..."
-  git clone --depth 1 https://github.com/InfiniFab/FabManager-TALM.git
+# Clonage conditionnel du projet Git dans le répertoire Projects de Node-RED
+PROJECT_NAME="Fabmanager"
+PROJECT_DIR="$HOME/.node-red/projects/$PROJECT_NAME"
+REMOTE_URL="https://github.com/InfiniFab/FabManager-TALM.git"
+
+mkdir -p "$HOME/.node-red/projects"
+if [ ! -d "$PROJECT_DIR" ]; then
+  echo "Clonage du projet '$PROJECT_NAME' dans Node-RED Projects..."
+  git clone --depth 1 "$REMOTE_URL" "$PROJECT_DIR"
 else
-  echo "Le dépôt FabManager-TALM existe déjà. Étape ignorée."
+  echo "Le projet '$PROJECT_NAME' existe déjà. Pull des dernières modifications..."
+  cd "$PROJECT_DIR"
+  git pull
 fi
 
-# Copie des fichiers du projet dans le répertoire Node-RED (remplace les fichiers existants)
-echo "Copie des fichiers du projet dans le répertoire Node-RED..."
-rsync -av FabManager-TALM/ ~/.node-red/
+# Copie des fichiers de configuration (settings.js, package.json) si présents
+echo "Synchronisation des fichiers de configuration..."
+cp -f "$PROJECT_DIR/settings.js" "$HOME/.node-red/" 2>/dev/null || true
+cp -f "$PROJECT_DIR/package.json" "$HOME/.node-red/" 2>/dev/null || true
 
-# Copie forcée des fichiers de flows Node-RED
-cp -f FabManager-TALM/flows*.json ~/.node-red/
-
-# Copie du fichier credentials s’il existe
-if [ -f FabManager-TALM/flows_cred.json ]; then
-  cp -f FabManager-TALM/flows_cred.json ~/.node-red/
-fi
-
-# Copie du fichier settings.js et package.json s’ils existent
-cp -f FabManager-TALM/settings.js ~/.node-red/ 2>/dev/null || true
-cp -f FabManager-TALM/package.json ~/.node-red/ 2>/dev/null || true
-
+# Installation des dépendances Node.js du projet
 echo "Installation des dépendances Node.js du projet..."
-cd ~/.node-red
-# Utiliser npm ci si un package-lock.json est présent pour garantir la cohérence des versions
+cd "$PROJECT_DIR"
 if [ -f package-lock.json ]; then
-  echo "package-lock.json trouvé, exécution de 'npm ci' pour installer les dépendances verrouillées..."
   npm ci
 else
-  echo "package-lock.json non trouvé, exécution de 'npm install'..."
   npm install
 fi
 
-echo "Redémarrage de Node-RED pour appliquer les modifications..."
-# Redémarrage via systemctl pour plus de fiabilité
+# Redémarrage de Node-RED pour prendre en compte le projet Git
+echo "Redémarrage de Node-RED pour appliquer les changements..."
 sudo systemctl restart nodered.service
 
-echo "Installation terminée avec succès !"
-echo "Accédez à l'éditeur Node-RED via : http://<adresse_IP_du_Raspberry_Pi>:1880"
-echo "Accédez au tableau de bord via : http://<adresse_IP_du_Raspberry_Pi>:1880/ui"
+echo "Installation et configuration terminées avec succès !"
+echo "Ouvre l’éditeur Node-RED et sélectionne le projet '$PROJECT_NAME' pour voir les flows."
