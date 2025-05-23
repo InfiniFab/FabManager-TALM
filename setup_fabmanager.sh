@@ -34,7 +34,7 @@ fi
 cd ~
 if [ ! -d "FabManager-TALM" ]; then
   echo "Clonage du dépôt FabManager-TALM..."
-  git clone https://github.com/InfiniFab/FabManager-TALM.git
+  git clone --depth 1 https://github.com/InfiniFab/FabManager-TALM.git
 else
   echo "Le dépôt FabManager-TALM existe déjà. Étape ignorée."
 fi
@@ -46,13 +46,29 @@ rsync -av FabManager-TALM/ ~/.node-red/
 # Copie forcée des fichiers de flows Node-RED
 cp -f FabManager-TALM/flows*.json ~/.node-red/
 
+# Copie du fichier credentials s’il existe
+if [ -f FabManager-TALM/flows_cred.json ]; then
+  cp -f FabManager-TALM/flows_cred.json ~/.node-red/
+fi
+
+# Copie du fichier settings.js et package.json s’ils existent
+cp -f FabManager-TALM/settings.js ~/.node-red/ 2>/dev/null || true
+cp -f FabManager-TALM/package.json ~/.node-red/ 2>/dev/null || true
+
 echo "Installation des dépendances Node.js du projet..."
 cd ~/.node-red
-npm install
+# Utiliser npm ci si un package-lock.json est présent pour garantir la cohérence des versions
+if [ -f package-lock.json ]; then
+  echo "package-lock.json trouvé, exécution de 'npm ci' pour installer les dépendances verrouillées..."
+  npm ci
+else
+  echo "package-lock.json non trouvé, exécution de 'npm install'..."
+  npm install
+fi
 
 echo "Redémarrage de Node-RED pour appliquer les modifications..."
-node-red-stop
-node-red-start
+# Redémarrage via systemctl pour plus de fiabilité
+sudo systemctl restart nodered.service
 
 echo "Installation terminée avec succès !"
 echo "Accédez à l'éditeur Node-RED via : http://<adresse_IP_du_Raspberry_Pi>:1880"
