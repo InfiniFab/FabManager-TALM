@@ -16,21 +16,32 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/mast
 echo "Activation de Node-RED au démarrage..."
 sudo systemctl enable nodered.service
 
-echo "Configuration de la base de données MariaDB..."
-sudo mariadb <<EOF
+# Création conditionnelle de la base de données et de l'utilisateur
+DB_EXISTS=$(sudo mariadb -e "SHOW DATABASES LIKE 'fabmanager';" | grep fabmanager || true)
+if [ -z "$DB_EXISTS" ]; then
+  echo "🗄️Création de la base de données MariaDB..."
+  sudo mariadb <<EOF
 CREATE DATABASE fabmanager;
-CREATE USER 'nodered'@'localhost' IDENTIFIED BY 'nodered';
+CREATE USER IF NOT EXISTS 'nodered'@'localhost' IDENTIFIED BY 'nodered';
 GRANT ALL PRIVILEGES ON fabmanager.* TO 'nodered'@'localhost';
 FLUSH PRIVILEGES;
-EXIT
 EOF
+else
+  echo "La base de données 'fabmanager' existe déjà. Étape ignorée."
+fi
 
-echo "Clonage du dépôt FabManager-TALM..."
+# Clonage conditionnel du dépôt
 cd ~
-git clone https://github.com/InfiniFab/FabManager-TALM.git
+if [ ! -d "FabManager-TALM" ]; then
+  echo "Clonage du dépôt FabManager-TALM..."
+  git clone https://github.com/InfiniFab/FabManager-TALM.git
+else
+  echo "Le dépôt FabManager-TALM existe déjà. Étape ignorée."
+fi
 
+# Copie conditionnelle des fichiers (ne remplace pas les fichiers existants)
 echo "Copie des fichiers du projet dans le répertoire Node-RED..."
-cp -r FabManager-TALM/* ~/.node-red/
+rsync -av --ignore-existing FabManager-TALM/ ~/.node-red/
 
 echo "Installation des dépendances Node.js du projet..."
 cd ~/.node-red
