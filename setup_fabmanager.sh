@@ -53,22 +53,12 @@ echo "Nettoyage du userDir Node-RED..."
 sudo -u ${NODE_USER} find "${NODE_RED_DIR}" -maxdepth 1 \( -name '*.json' -o -name 'settings.js' -o -name 'package.json' \) -exec rm -f {} +
 sudo -u ${NODE_USER} rm -rf "${NODE_RED_DIR}/lib" "${NODE_RED_DIR}/node_modules"
 
-# 7. Clonage ou mise à jour du projet Git
-if [ ! -d "${PROJECT_DIR}/.git" ]; then
-  echo "Clonage du projet Git dans ${PROJECT_DIR}..."
-  sudo -u ${NODE_USER} git clone --depth 1 "${REMOTE_URL}" "${PROJECT_DIR}"
-else
-  echo "Mise à jour du projet Git..."
-  cd "${PROJECT_DIR}"
-  sudo -u ${NODE_USER} git pull --ff-only
-fi
-
-# 8. Synchronisation des fichiers de configuration Essentiels
+# 7. Synchronisation des fichiers de configuration Essentiels
 echo "Synchronisation des fichiers settings.js et package.json..."
 sudo -u ${NODE_USER} cp -f "${PROJECT_DIR}/settings.js" "${NODE_RED_DIR}/" 2>/dev/null || true
 sudo -u ${NODE_USER} cp -f "${PROJECT_DIR}/package.json" "${NODE_RED_DIR}/" 2>/dev/null || true
 
-# 9. Installation des dépendances Node.js du projet Git
+# 8. Installation des dépendances Node.js du projet Git
 echo "Installation des dépendances Node.js du projet..."
 cd "${PROJECT_DIR}"
 if [ -f package-lock.json ]; then
