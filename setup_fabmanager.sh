@@ -10,7 +10,7 @@ USER_HOME="/home/${NODE_USER}"
 NODE_RED_DIR="${USER_HOME}/.node-red"
 PROJECT_NAME="Fabmanager"
 PROJECT_DIR="${NODE_RED_DIR}/projects/${PROJECT_NAME}"
-REMOTE_URL="https://github.com/InfiniFab/FabManager-TALM.git"
+CLONED_REPO_DIR="$(pwd)"
 
 # 1. Mise à jour du système
 echo "Mise à jour du système..."
@@ -44,33 +44,29 @@ else
   echo "Base de données 'fabmanager' déjà existante, aucune action."
 fi
 
-# 6. Préparation du répertoire Projects de Node-RED
-echo "Préparation du répertoire Projects de Node-RED..."
-sudo -u ${NODE_USER} mkdir -p "${PROJECT_DIR}"
-
-# Nettoyage de toute ancienne configuration Git à la racine userDir
+# 6. Nettoyage de toute ancienne configuration Node-RED
 echo "Nettoyage du userDir Node-RED..."
+sudo -u ${NODE_USER} mkdir -p "${NODE_RED_DIR}"
 sudo -u ${NODE_USER} find "${NODE_RED_DIR}" -maxdepth 1 \( -name '*.json' -o -name 'settings.js' -o -name 'package.json' \) -exec rm -f {} +
 sudo -u ${NODE_USER} rm -rf "${NODE_RED_DIR}/lib" "${NODE_RED_DIR}/node_modules"
 
-# 7. Synchronisation des fichiers de configuration Essentiels
-echo "Synchronisation des fichiers settings.js et package.json..."
-sudo -u ${NODE_USER} cp -f "${PROJECT_DIR}/settings.js" "${NODE_RED_DIR}/" 2>/dev/null || true
-sudo -u ${NODE_USER} cp -f "${PROJECT_DIR}/package.json" "${NODE_RED_DIR}/" 2>/dev/null || true
+# 7. Copie des fichiers du projet Git cloné localement
+echo "Copie des fichiers du projet dans ${NODE_RED_DIR}..."
+sudo -u ${NODE_USER} rsync -av --exclude ".git" "${CLONED_REPO_DIR}/" "${NODE_RED_DIR}/"
 
 # 8. Installation des dépendances Node.js du projet Git
+cd "${NODE_RED_DIR}"
 echo "Installation des dépendances Node.js du projet..."
-cd "${PROJECT_DIR}"
 if [ -f package-lock.json ]; then
   sudo -u ${NODE_USER} npm ci
 else
   sudo -u ${NODE_USER} npm install
 fi
 
-# 10. Redémarrage de Node-RED
+# 9. Redémarrage de Node-RED
 echo "Redémarrage de Node-RED..."
 sudo systemctl restart nodered.service
 
-# 11. Fin
+# 10. Fin
 echo "Installation et configuration terminées avec succès !"
-echo "Ouvre l’éditeur Node-RED (http://<IP> :1880) et sélectionne le projet '${PROJECT_NAME}' pour voir tes flows."
+echo "Ouvre l’éditeur Node-RED (http://<IP>:1880) pour vérifier le déploiement."
