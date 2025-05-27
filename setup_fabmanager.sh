@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script d'installation de FabManager-TALM sur Raspberry Pi OS (mode local sans Git remote)
+# Script d'installation de FabManager-TALM sur Raspberry Pi OS (mode local sans Git remote, sans mode Projects)
 
 set -e
 
@@ -8,9 +8,6 @@ set -e
 NODE_USER="pi"
 USER_HOME="/home/${NODE_USER}"
 NODE_RED_DIR="${USER_HOME}/.node-red"
-PROJECT_NAME="Fabmanager"
-PROJECT_DIR="${NODE_RED_DIR}/projects/${PROJECT_NAME}"
-CLONED_REPO_DIR="$(pwd)"
 
 # 1. Mise à jour du système
 echo "Mise à jour du système..."
@@ -44,38 +41,34 @@ else
   echo "Base de données 'fabmanager' déjà existante, aucune action."
 fi
 
-# 6. Préparation du répertoire Projects de Node-RED
-echo "Préparation du répertoire Projects de Node-RED..."
-sudo -u ${NODE_USER} mkdir -p "${PROJECT_DIR}"
+# 6. Préparation du répertoire .node-red
+echo "Préparation du répertoire .node-red..."
+sudo -u ${NODE_USER} mkdir -p "${NODE_RED_DIR}"
 
-# 7. Copie des fichiers depuis le répertoire cloné vers le projet local
-echo "Copie des fichiers locaux depuis ${CLONED_REPO_DIR} vers le projet Node-RED..."
-sudo -u ${NODE_USER} cp -r "${CLONED_REPO_DIR}/"* "${PROJECT_DIR}/"
+# 7. Copie des fichiers depuis le répertoire courant vers .node-red
+echo "Copie des fichiers locaux vers ${NODE_RED_DIR}..."
+sudo -u ${NODE_USER} cp -r ./ "${NODE_RED_DIR}/"
 
-# 8. Nettoyage du userDir principal de Node-RED pour forcer le chargement du projet
-echo "Nettoyage du userDir Node-RED..."
-sudo -u ${NODE_USER} find "${NODE_RED_DIR}" -maxdepth 1 \( -name '*.json' -o -name 'settings.js' -o -name 'package.json' \) -exec rm -f {} +
-sudo -u ${NODE_USER} rm -rf "${NODE_RED_DIR}/lib" "${NODE_RED_DIR}/node_modules"
+# 8. Nettoyage éventuel de node_modules avant installation
+echo "Nettoyage de l'environnement précédent (si présent)..."
+sudo -u ${NODE_USER} rm -rf "${NODE_RED_DIR}/node_modules"
 
 # 8bis. Désactivation du mode projets dans settings.js
 echo "Désactivation du mode projets dans settings.js..."
 SETTINGS_FILE="${NODE_RED_DIR}/settings.js"
-# Active settings.js si un exemple existe
 if [ ! -f "${SETTINGS_FILE}" ] && [ -f "${SETTINGS_FILE}.example" ]; then
   sudo -u ${NODE_USER} cp "${SETTINGS_FILE}.example" "${SETTINGS_FILE}"
 fi
-# Désactiver le mode projets
 sudo -u ${NODE_USER} sed -i "s/^.*projects.*enabled.*:.*true.*/    projects: { enabled: false },/" "${SETTINGS_FILE}"
 
-
 # 9. Installation des dépendances Node.js du projet
-if [ -f "${PROJECT_DIR}/package-lock.json" ]; then
+if [ -f "${NODE_RED_DIR}/package-lock.json" ]; then
   echo "Installation via npm ci..."
-  cd "${PROJECT_DIR}"
+  cd "${NODE_RED_DIR}"
   sudo -u ${NODE_USER} npm ci
 else
   echo "Installation via npm install..."
-  cd "${PROJECT_DIR}"
+  cd "${NODE_RED_DIR}"
   sudo -u ${NODE_USER} npm install
 fi
 
@@ -85,6 +78,4 @@ sudo systemctl restart nodered.service
 
 # 11. Fin
 echo "Installation et configuration terminées avec succès !"
-LOCAL_IP=$(hostname -I | awk '{print $1}')
-echo "Ouvre l’éditeur Node-RED : http://${LOCAL_IP}:1880 Pour commencer a utiliser Fabmanager"
-echo "Fonctionnement en local uniquement. Git non configuré"
+echo "Ouvre l’éditeur Node-RED à l’adresse : http://$(hostname -I | awk '{print $1}'):1880"
