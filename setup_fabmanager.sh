@@ -104,15 +104,10 @@ fi
 sudo -u ${NODE_USER} sed -i "s/^.*projects.*enabled.*:.*true.*/    projects: { enabled: false },/" "${SETTINGS_FILE}"
 
 # 9. Installation des dépendances Node.js du projet
-if [ -f "${NODE_RED_DIR}/package-lock.json" ]; then
-  echo "Installation via npm ci..."
-  cd "${NODE_RED_DIR}"
-  sudo -u ${NODE_USER} npm ci
-else
-  echo "Installation via npm install..."
-  cd "${NODE_RED_DIR}"
-  sudo -u ${NODE_USER} npm install
-fi
+echo "Installation via npm install..."
+cd "${NODE_RED_DIR}"
+sudo -u ${NODE_USER} npm install
+
 
 # 10. Redémarrage de Node-RED
 echo "Redémarrage de Node-RED..."
