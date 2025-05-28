@@ -2,6 +2,9 @@
 
 Un gestionnaire d'accès, de suivi et de traçabilité des machines pour un FabLab, conçu avec **Node-RED**, **MariaDB** et une interface utilisateur Web.
 
+# Clone command :
+git clone --single-branch --branch sauvegarde-flows4 https://github.com/InfiniFab/FabManager-TALM.git
+
 ---
 
 ## 🧩 Objectif du projet
