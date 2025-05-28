@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script d'installation de FabManager-TALM sur Raspberry Pi OS (mode Projects Git)
+# Script d'installation de FabManager-TALM sur Raspberry Pi OS (mode local sans Git remote, sans mode Projects)
 
 set -e
 
@@ -8,9 +8,6 @@ set -e
 NODE_USER="pi"
 USER_HOME="/home/${NODE_USER}"
 NODE_RED_DIR="${USER_HOME}/.node-red"
-PROJECT_NAME="Fabmanager"
-PROJECT_DIR="${NODE_RED_DIR}/projects/${PROJECT_NAME}"
-CLONED_REPO_DIR="$(pwd)"
 
 # 1. Mise à jour du système
 echo "Mise à jour du système..."
@@ -29,8 +26,8 @@ echo "Activation et démarrage de Node-RED..."
 sudo systemctl enable nodered.service
 sudo systemctl start nodered.service
 
-# 5. Configuration de MariaDB
-echo "Configuration de MariaDB..."
+# 5. Configuration de MariaDB avec import du dump initial
+echo "Configuration de MariaDB et import des tables..."
 DB_EXISTS=$(sudo mariadb -e "SHOW DATABASES LIKE 'fabmanager';" | grep fabmanager || true)
 if [ -z "$DB_EXISTS" ]; then
   sudo mariadb <<EOF
@@ -38,35 +35,89 @@ CREATE DATABASE fabmanager;
 CREATE USER IF NOT EXISTS 'nodered'@'localhost' IDENTIFIED BY 'nodered';
 GRANT ALL PRIVILEGES ON fabmanager.* TO 'nodered'@'localhost';
 FLUSH PRIVILEGES;
+USE fabmanager;
+
+-- Désactivation temporaire des contraintes de clef étrangère
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP TABLE IF EXISTS \`type\`;
+CREATE TABLE \`type\` (
+  \`id\` int(11) NOT NULL AUTO_INCREMENT,
+  \`nom\` varchar(255) NOT NULL,
+  PRIMARY KEY (\`id\`),
+  UNIQUE KEY \`nom\` (\`nom\`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+DROP TABLE IF EXISTS \`materiaux\`;
+CREATE TABLE \`materiaux\` (
+  \`id\` int(11) NOT NULL AUTO_INCREMENT,
+  \`nom\` varchar(255) NOT NULL,
+  \`prix\` float NOT NULL,
+  \`type_id\` int(11) NOT NULL,
+  PRIMARY KEY (\`id\`),
+  UNIQUE KEY \`nom\` (\`nom\`),
+  KEY \`fk_materiaux_type\` (\`type_id\`),
+  CONSTRAINT \`fk_materiaux_type\` FOREIGN KEY (\`type_id\`) REFERENCES \`type\` (\`id\`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+DROP TABLE IF EXISTS \`usage_lab\`;
+CREATE TABLE \`usage_lab\` (
+  \`no\` int(11) NOT NULL AUTO_INCREMENT,
+  \`date\` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  \`classe\` varchar(80) DEFAULT NULL,
+  \`nom\` varchar(80) DEFAULT NULL,
+  \`fabrication\` varchar(80) DEFAULT NULL,
+  \`prix\` varchar(80) DEFAULT NULL,
+  \`reglement\` tinyint(1) DEFAULT NULL,
+  \`CAO\` tinyint(1) DEFAULT NULL,
+  \`date_entr\` varchar(100) DEFAULT NULL,
+  \`remarques\` varchar(100) DEFAULT NULL,
+  KEY \`no\` (\`no\`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Réactivation des contraintes
+SET FOREIGN_KEY_CHECKS=1;
 EOF
-  echo "Base de données créée."
+  echo "Import SQL initial terminé."
 else
-  echo "Base de données 'fabmanager' déjà existante, aucune action."
+  echo "Base de données 'fabmanager' déjà existante, import SQL ignoré."
 fi
 
-# 6. Nettoyage de toute ancienne configuration Node-RED
-echo "Nettoyage du userDir Node-RED..."
+# 6. Préparation du répertoire .node-red Préparation du répertoire .node-red
+echo "Préparation du répertoire .node-red..."
 sudo -u ${NODE_USER} mkdir -p "${NODE_RED_DIR}"
-sudo -u ${NODE_USER} find "${NODE_RED_DIR}" -maxdepth 1 \( -name '*.json' -o -name 'settings.js' -o -name 'package.json' \) -exec rm -f {} +
-sudo -u ${NODE_USER} rm -rf "${NODE_RED_DIR}/lib" "${NODE_RED_DIR}/node_modules"
 
-# 7. Copie des fichiers du projet Git cloné localement
-echo "Copie des fichiers du projet dans ${NODE_RED_DIR}..."
-sudo -u ${NODE_USER} rsync -av --exclude ".git" "${CLONED_REPO_DIR}/" "${NODE_RED_DIR}/"
+# 7. Copie des fichiers depuis le répertoire courant vers .node-red
+echo "Copie des fichiers locaux vers ${NODE_RED_DIR}..."
+sudo -u ${NODE_USER} cp -r ./ "${NODE_RED_DIR}/"
 
-# 8. Installation des dépendances Node.js du projet Git
-cd "${NODE_RED_DIR}"
-echo "Installation des dépendances Node.js du projet..."
-if [ -f package-lock.json ]; then
+# 8. Nettoyage éventuel de node_modules avant installation
+echo "Nettoyage de l'environnement précédent (si présent)..."
+sudo -u ${NODE_USER} rm -rf "${NODE_RED_DIR}/node_modules"
+
+# 8bis. Désactivation du mode projets dans settings.js
+echo "Désactivation du mode projets dans settings.js..."
+SETTINGS_FILE="${NODE_RED_DIR}/settings.js"
+if [ ! -f "${SETTINGS_FILE}" ] && [ -f "${SETTINGS_FILE}.example" ]; then
+  sudo -u ${NODE_USER} cp "${SETTINGS_FILE}.example" "${SETTINGS_FILE}"
+fi
+sudo -u ${NODE_USER} sed -i "s/^.*projects.*enabled.*:.*true.*/    projects: { enabled: false },/" "${SETTINGS_FILE}"
+
+# 9. Installation des dépendances Node.js du projet
+if [ -f "${NODE_RED_DIR}/package-lock.json" ]; then
+  echo "Installation via npm ci..."
+  cd "${NODE_RED_DIR}"
   sudo -u ${NODE_USER} npm ci
 else
+  echo "Installation via npm install..."
+  cd "${NODE_RED_DIR}"
   sudo -u ${NODE_USER} npm install
 fi
 
-# 9. Redémarrage de Node-RED
+# 10. Redémarrage de Node-RED
 echo "Redémarrage de Node-RED..."
 sudo systemctl restart nodered.service
 
-# 10. Fin
+# 11. Fin
 echo "Installation et configuration terminées avec succès !"
-echo "Ouvre l’éditeur Node-RED (http://<IP>:1880) pour vérifier le déploiement."
+echo "Ouvre l’éditeur Node-RED à l’adresse : http://$(hostname -I | awk '{print $1}'):1880"
