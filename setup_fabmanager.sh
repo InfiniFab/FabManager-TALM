@@ -26,8 +26,8 @@ echo "Activation et démarrage de Node-RED..."
 sudo systemctl enable nodered.service
 sudo systemctl start nodered.service
 
-# 5. Configuration de MariaDB
-echo "Configuration de MariaDB..."
+# 5. Configuration de MariaDB avec import du dump initial
+echo "Configuration de MariaDB et import des tables..."
 DB_EXISTS=$(sudo mariadb -e "SHOW DATABASES LIKE 'fabmanager';" | grep fabmanager || true)
 if [ -z "$DB_EXISTS" ]; then
   sudo mariadb <<EOF
@@ -35,13 +35,55 @@ CREATE DATABASE fabmanager;
 CREATE USER IF NOT EXISTS 'nodered'@'localhost' IDENTIFIED BY 'nodered';
 GRANT ALL PRIVILEGES ON fabmanager.* TO 'nodered'@'localhost';
 FLUSH PRIVILEGES;
+USE fabmanager;
+
+-- Désactivation temporaire des contraintes de clef étrangère
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP TABLE IF EXISTS \`type\`;
+CREATE TABLE \`type\` (
+  \`id\` int(11) NOT NULL AUTO_INCREMENT,
+  \`nom\` varchar(255) NOT NULL,
+  PRIMARY KEY (\`id\`),
+  UNIQUE KEY \`nom\` (\`nom\`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+DROP TABLE IF EXISTS \`materiaux\`;
+CREATE TABLE \`materiaux\` (
+  \`id\` int(11) NOT NULL AUTO_INCREMENT,
+  \`nom\` varchar(255) NOT NULL,
+  \`prix\` float NOT NULL,
+  \`type_id\` int(11) NOT NULL,
+  PRIMARY KEY (\`id\`),
+  UNIQUE KEY \`nom\` (\`nom\`),
+  KEY \`fk_materiaux_type\` (\`type_id\`),
+  CONSTRAINT \`fk_materiaux_type\` FOREIGN KEY (\`type_id\`) REFERENCES \`type\` (\`id\`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+DROP TABLE IF EXISTS \`usage_lab\`;
+CREATE TABLE \`usage_lab\` (
+  \`no\` int(11) NOT NULL AUTO_INCREMENT,
+  \`date\` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  \`classe\` varchar(80) DEFAULT NULL,
+  \`nom\` varchar(80) DEFAULT NULL,
+  \`fabrication\` varchar(80) DEFAULT NULL,
+  \`prix\` varchar(80) DEFAULT NULL,
+  \`reglement\` tinyint(1) DEFAULT NULL,
+  \`CAO\` tinyint(1) DEFAULT NULL,
+  \`date_entr\` varchar(100) DEFAULT NULL,
+  \`remarques\` varchar(100) DEFAULT NULL,
+  KEY \`no\` (\`no\`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Réactivation des contraintes
+SET FOREIGN_KEY_CHECKS=1;
 EOF
-  echo "Base de données créée."
+  echo "Import SQL initial terminé."
 else
-  echo "Base de données 'fabmanager' déjà existante, aucune action."
+  echo "Base de données 'fabmanager' déjà existante, import SQL ignoré."
 fi
 
-# 6. Préparation du répertoire .node-red
+# 6. Préparation du répertoire .node-red Préparation du répertoire .node-red
 echo "Préparation du répertoire .node-red..."
 sudo -u ${NODE_USER} mkdir -p "${NODE_RED_DIR}"
 
